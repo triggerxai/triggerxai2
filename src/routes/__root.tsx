@@ -80,6 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "AI Agents, Chatbots & Voice Automation" },
       { name: "twitter:card", content: "summary" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7dd1bbfd-41f0-43a4-9380-dd3945623aba/id-preview-19eb6575--62febc18-5cea-4ac2-a26e-ee96c43a2f93.lovable.app-1778782071768.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7dd1bbfd-41f0-43a4-9380-dd3945623aba/id-preview-19eb6575--62febc18-5cea-4ac2-a26e-ee96c43a2f93.lovable.app-1778782071768.png" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
