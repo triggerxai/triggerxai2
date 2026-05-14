@@ -32,8 +32,10 @@ export const Link = forwardRef<HTMLAnchorElement, AnyLinkProps>(
         </a>
       );
     }
+    const { state: _ignoredState, ...linkRest } = rest;
+    void _ignoredState;
     return (
-      <TSLink ref={ref} to={to as TSLinkProps["to"]} {...rest}>
+      <TSLink ref={ref} to={to as TSLinkProps["to"]} {...linkRest}>
         {children}
       </TSLink>
     );
