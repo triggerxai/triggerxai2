@@ -236,8 +236,29 @@ All colors MUST be HSL.
   }
 
   .glass-card-hover {
-    @apply glass-card;
+    @apply relative transition-all duration-500 rounded-2xl overflow-hidden;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(400px 200px at 0% 0%, rgba(167, 139, 250, 0.08), transparent 60%),
+      radial-gradient(400px 200px at 100% 100%, rgba(246, 199, 161, 0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glass-card-hover > * {
+    position: relative;
+    z-index: 1;
   }
 
   .glass-card-hover:hover {
