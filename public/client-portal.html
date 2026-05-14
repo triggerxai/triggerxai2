@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Client Application — FLUXARO × TRIGGERX AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border-active: rgba(255,255,255,0.25);
+    --accent-f: #c8f060;
+    --accent-t: #60c8f0;
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --text-dim: #555;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(200,240,96,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 90%, rgba(96,200,240,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+  }
+
+  .badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+
+  .badge-f { background: rgba(200,240,96,0.12); color: var(--accent-f); border: 0.5px solid rgba(200,240,96,0.3); }
+  .badge-t { background: rgba(96,200,240,0.12); color: var(--accent-t); border: 0.5px solid rgba(96,200,240,0.3); }
+  .badge-sep { font-size: 18px; color: var(--text-dim); font-weight: 300; }
+
+  .progress-wrap { margin-bottom: 2.5rem; }
+  .progress-bar { display: flex; gap: 4px; margin-bottom: 8px; }
+  .prog-seg { height: 2px; flex: 1; border-radius: 2px; background: var(--surface2); transition: background 0.4s ease; }
+  .prog-seg.active { background: var(--accent-f); }
+  .prog-seg.done { background: rgba(200,240,96,0.4); }
+  .progress-label { font-size: 12px; color: var(--text-dim); font-family: 'Syne', sans-serif; letter-spacing: 0.05em; }
+
+  .page { display: none; animation: fadeUp 0.35s ease forwards; }
+  .page.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-eyebrow { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.5rem; }
+  .page-title { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.2; }
+  .page-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 2rem; }
+
+  .field-group { margin-bottom: 1.25rem; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 7px; letter-spacing: 0.01em; }
+  label .req { color: var(--accent-f); margin-left: 2px; }
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], textarea, select {
+    width: 100%; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 12px 14px;
+    outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+  }
+
+  input:focus, textarea:focus, select:focus { border-color: var(--border-active); background: var(--surface2); }
+  input::placeholder, textarea::placeholder { color: var(--text-dim); }
+  textarea { resize: vertical; min-height: 100px; }
+
+  select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+  select option { background: #1a1a1a; }
+
+  .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .choice-grid.single { grid-template-columns: 1fr; }
+  .choice-item { position: relative; }
+  .choice-item input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .choice-label {
+    display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+    border: 0.5px solid var(--border); border-radius: var(--radius-sm); background: var(--surface);
+    cursor: pointer; font-size: 14px; color: var(--text-muted); transition: all 0.2s; user-select: none; line-height: 1.3;
+  }
+  .choice-label:hover { border-color: var(--border-active); color: var(--text); }
+  .choice-item input:checked + .choice-label { border-color: rgba(200,240,96,0.5); background: rgba(200,240,96,0.07); color: var(--accent-f); }
+
+  .choice-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--text-dim); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .choice-item input:checked + .choice-label .choice-dot { border-color: var(--accent-f); background: var(--accent-f); }
+  .choice-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--black); display: none; }
+  .choice-item input:checked + .choice-label .choice-dot::after { display: block; }
+
+  .checkbox-dot { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid var(--text-dim); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .choice-item input:checked + .choice-label .checkbox-dot { border-color: var(--accent-f); background: var(--accent-f); }
+  .checkbox-dot::after { content: '✓'; font-size: 9px; color: var(--black); display: none; font-weight: 700; }
+  .choice-item input:checked + .choice-label .checkbox-dot::after { display: block; }
+
+  .btn-row { display: flex; gap: 10px; margin-top: 2.5rem; align-items: center; }
+  .btn { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.03em; padding: 13px 28px; border-radius: var(--radius-sm); cursor: pointer; border: none; outline: none; transition: all 0.2s; }
+  .btn-primary { background: var(--accent-f); color: var(--black); flex: 1; }
+  .btn-primary:hover { background: #d4f570; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-back { background: transparent; border: 0.5px solid var(--border); color: var(--text-muted); padding: 13px 20px; }
+  .btn-back:hover { border-color: var(--border-active); color: var(--text); }
+
+  .disq-wrap { text-align: center; padding: 3rem 0; }
+  .disq-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 22px; }
+
+  .ty-wrap { text-align: center; padding: 3rem 0; }
+  .ty-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(200,240,96,0.1); border: 0.5px solid rgba(200,240,96,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 26px; }
+  .ty-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+  .ty-sub { font-size: 15px; color: var(--text-muted); max-width: 380px; margin: 0 auto; line-height: 1.7; }
+
+  .error-msg { font-size: 12px; color: #f06060; margin-top: 5px; display: none; }
+  .field-error input, .field-error textarea, .field-error select { border-color: rgba(240,96,96,0.5) !important; }
+  .field-error .error-msg { display: block; }
+
+  .divider { height: 0.5px; background: var(--border); margin: 1.75rem 0; }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 5px; }
+
+  @media (max-width: 480px) {
+    .choice-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 22px; }
+    .header { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="badge badge-f">FLUXARO</span>
+      <span class="badge-sep">×</span>
+      <span class="badge badge-t">TRIGGERX AI</span>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="prog-seg" data-seg="1"></div>
+        <div class="prog-seg" data-seg="2"></div>
+        <div class="prog-seg" data-seg="3"></div>
+        <div class="prog-seg" data-seg="4"></div>
+        <div class="prog-seg" data-seg="5"></div>
+        <div class="prog-seg" data-seg="6"></div>
+      </div>
+      <div class="progress-label" id="progLabel">Step 1 of 6</div>
+    </div>
+
+    <!-- PAGE 1 -->
+    <div class="page active" data-page="1">
+      <div class="page-eyebrow">Let's start</div>
+      <h2 class="page-title">Who are you?</h2>
+      <p class="page-sub">Tell us a bit about yourself and your business.</p>
+
+      <div class="field-group" id="fg-name">
+        <label>Full name <span class="req">*</span></label>
+        <input type="text" id="f-name" placeholder="Your full name" />
+        <div class="error-msg">Please enter your name</div>
+      </div>
+
+      <div class="field-group" id="fg-brand">
+        <label>Business / brand name <span class="req">*</span></label>
+        <input type="text" id="f-brand" placeholder="Your company or brand" />
+        <div class="error-msg">Please enter your brand name</div>
+      </div>
+
+      <div class="field-group">
+        <label>Your role in the company</label>
+        <input type="text" id="f-role" placeholder="Founder, Marketing Lead, etc." />
+      </div>
+
+      <div class="field-group" id="fg-industry">
+        <label>Industry / niche <span class="req">*</span></label>
+        <input type="text" id="f-industry" placeholder="e.g. SaaS, e-commerce, coaching" />
+        <div class="error-msg">Please enter your industry</div>
+      </div>
+
+      <div class="field-group">
+        <label>Country & timezone</label>
+        <input type="text" id="f-country" placeholder="e.g. Morocco — GMT+1" />
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goNext(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page" data-page="2">
+      <div class="page-eyebrow">Your business</div>
+      <h2 class="page-title">Tell us about your business</h2>
+      <p class="page-sub">This helps us understand if we're the right fit.</p>
+
+      <div class="field-group" id="fg-revenue">
+        <label>Monthly revenue range <span class="req">*</span></label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="revenue" id="rev1" value="under5k"><label class="choice-label" for="rev1"><span class="choice-dot"></span>Under $5,000</label></div>
+          <div class="choice-item"><input type="radio" name="revenue" id="rev2" value="5-20k"><label class="choice-label" for="rev2"><span class="choice-dot"></span>$5,000 – $20,000</label></div>
+          <div class="choice-item"><input type="radio" name="revenue" id="rev3" value="20-50k"><label class="choice-label" for="rev3"><span class="choice-dot"></span>$20,000 – $50,000</label></div>
+          <div class="choice-item"><input type="radio" name="revenue" id="rev4" value="50-100k"><label class="choice-label" for="rev4"><span class="choice-dot"></span>$50,000 – $100,000</label></div>
+          <div class="choice-item"><input type="radio" name="revenue" id="rev5" value="100k+"><label class="choice-label" for="rev5"><span class="choice-dot"></span>$100,000+</label></div>
+        </div>
+        <div class="error-msg">Please select your revenue range</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-group" id="fg-bizage">
+        <label>How long have you been in business? <span class="req">*</span></label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="bizage" id="age1" value="under6m"><label class="choice-label" for="age1"><span class="choice-dot"></span>Less than 6 months</label></div>
+          <div class="choice-item"><input type="radio" name="bizage" id="age2" value="6-12m"><label class="choice-label" for="age2"><span class="choice-dot"></span>6 – 12 months</label></div>
+          <div class="choice-item"><input type="radio" name="bizage" id="age3" value="1-3y"><label class="choice-label" for="age3"><span class="choice-dot"></span>1 – 3 years</label></div>
+          <div class="choice-item"><input type="radio" name="bizage" id="age4" value="3y+"><label class="choice-label" for="age4"><span class="choice-dot"></span>3+ years</label></div>
+        </div>
+        <div class="error-msg">Please select one</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-group">
+        <label>Current team size</label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="team" id="t1" value="solo"><label class="choice-label" for="t1"><span class="choice-dot"></span>Just me</label></div>
+          <div class="choice-item"><input type="radio" name="team" id="t2" value="2-5"><label class="choice-label" for="t2"><span class="choice-dot"></span>2 – 5 people</label></div>
+          <div class="choice-item"><input type="radio" name="team" id="t3" value="6-20"><label class="choice-label" for="t3"><span class="choice-dot"></span>6 – 20 people</label></div>
+          <div class="choice-item"><input type="radio" name="team" id="t4" value="20+"><label class="choice-label" for="t4"><span class="choice-dot"></span>20+ people</label></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Business website or social link</label>
+        <input type="url" id="f-website" placeholder="https://" />
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(2)">← Back</button>
+        <button class="btn btn-primary" onclick="goNext(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div class="page" data-page="3">
+      <div class="page-eyebrow">Your needs</div>
+      <h2 class="page-title">What do you need?</h2>
+      <p class="page-sub">Be as specific as possible — it helps us prepare.</p>
+
+      <div class="field-group" id="fg-services">
+        <label>Services you're looking for <span class="req">*</span></label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="checkbox" name="services" id="s1" value="video"><label class="choice-label" for="s1"><span class="checkbox-dot"></span>Video editing & content</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s2" value="social"><label class="choice-label" for="s2"><span class="checkbox-dot"></span>Social media management</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s3" value="ads"><label class="choice-label" for="s3"><span class="checkbox-dot"></span>Paid ads & performance</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s4" value="brand"><label class="choice-label" for="s4"><span class="checkbox-dot"></span>Brand strategy & identity</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s5" value="web"><label class="choice-label" for="s5"><span class="checkbox-dot"></span>Web / app development</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s6" value="ai"><label class="choice-label" for="s6"><span class="checkbox-dot"></span>Automation & AI systems</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s7" value="funnel"><label class="choice-label" for="s7"><span class="checkbox-dot"></span>Funnel & lead generation</label></div>
+          <div class="choice-item"><input type="checkbox" name="services" id="s8" value="other"><label class="choice-label" for="s8"><span class="checkbox-dot"></span>Something else</label></div>
+        </div>
+        <div class="error-msg">Please select at least one service</div>
+      </div>
+
+      <div class="field-group" id="fg-detail">
+        <label>Describe what you need in detail <span class="req">*</span></label>
+        <textarea id="f-detail" placeholder="Be specific — goals, deliverables, scope..."></textarea>
+        <div class="error-msg">Please describe what you need</div>
+      </div>
+
+      <div class="field-group">
+        <label>What problem are you trying to solve?</label>
+        <textarea id="f-problem" placeholder="The pain point or opportunity..."></textarea>
+      </div>
+
+      <div class="field-group" id="fg-prev">
+        <label>Have you worked with an agency or freelancer for this before? <span class="req">*</span></label>
+        <div class="choice-grid single">
+          <div class="choice-item"><input type="radio" name="prev" id="p1" value="good"><label class="choice-label" for="p1"><span class="choice-dot"></span>Yes, and it went well</label></div>
+          <div class="choice-item"><input type="radio" name="prev" id="p2" value="bad"><label class="choice-label" for="p2"><span class="choice-dot"></span>Yes, but had bad experiences</label></div>
+          <div class="choice-item"><input type="radio" name="prev" id="p3" value="first"><label class="choice-label" for="p3"><span class="choice-dot"></span>No, this is my first time</label></div>
+        </div>
+        <div class="error-msg">Please select one</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(3)">← Back</button>
+        <button class="btn btn-primary" onclick="goNext(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="page" data-page="4">
+      <div class="page-eyebrow">Budget & timeline</div>
+      <h2 class="page-title">What's the investment?</h2>
+      <p class="page-sub">We only work with clients serious about results.</p>
+
+      <div class="field-group" id="fg-budget">
+        <label>Project budget range <span class="req">*</span></label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="budget" id="b1" value="under500"><label class="choice-label" for="b1"><span class="choice-dot"></span>Under $500</label></div>
+          <div class="choice-item"><input type="radio" name="budget" id="b2" value="500-1500"><label class="choice-label" for="b2"><span class="choice-dot"></span>$500 – $1,500</label></div>
+          <div class="choice-item"><input type="radio" name="budget" id="b3" value="1500-5k"><label class="choice-label" for="b3"><span class="choice-dot"></span>$1,500 – $5,000</label></div>
+          <div class="choice-item"><input type="radio" name="budget" id="b4" value="5-10k"><label class="choice-label" for="b4"><span class="choice-dot"></span>$5,000 – $10,000</label></div>
+          <div class="choice-item"><input type="radio" name="budget" id="b5" value="10k+"><label class="choice-label" for="b5"><span class="choice-dot"></span>$10,000+</label></div>
+        </div>
+        <div class="error-msg">Please select your budget range</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-group">
+        <label>Preferred engagement structure</label>
+        <div class="choice-grid single">
+          <div class="choice-item"><input type="radio" name="engage" id="e1" value="onetime"><label class="choice-label" for="e1"><span class="choice-dot"></span>One-time project</label></div>
+          <div class="choice-item"><input type="radio" name="engage" id="e2" value="retainer"><label class="choice-label" for="e2"><span class="choice-dot"></span>Monthly retainer</label></div>
+          <div class="choice-item"><input type="radio" name="engage" id="e3" value="open"><label class="choice-label" for="e3"><span class="choice-dot"></span>Not sure yet — open to discussion</label></div>
+        </div>
+        <p class="hint">Note: We do not work on an hourly basis for manual tasks.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-group">
+        <label>When are you looking to get started?</label>
+        <select id="f-start">
+          <option value="">Select...</option>
+          <option>ASAP</option>
+          <option>Within 2 weeks</option>
+          <option>Within 1 month</option>
+          <option>1 – 3 months</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Do you have a project deadline or go-live target?</label>
+        <input type="date" id="f-deadline" />
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(4)">← Back</button>
+        <button class="btn btn-primary" onclick="goNext(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 5 -->
+    <div class="page" data-page="5">
+      <div class="page-eyebrow">Fit check</div>
+      <h2 class="page-title">Expectations & fit</h2>
+      <p class="page-sub">We want to make sure we can actually deliver what you need.</p>
+
+      <div class="field-group" id="fg-success">
+        <label>What does success look like for you in 90 days? <span class="req">*</span></label>
+        <textarea id="f-success" placeholder="Concrete outcomes, KPIs, milestones..."></textarea>
+        <div class="error-msg">Please describe your success goal</div>
+      </div>
+
+      <div class="field-group">
+        <label>How did you find us?</label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="found" id="fo1" value="yt"><label class="choice-label" for="fo1"><span class="choice-dot"></span>YouTube</label></div>
+          <div class="choice-item"><input type="radio" name="found" id="fo2" value="ig"><label class="choice-label" for="fo2"><span class="choice-dot"></span>Instagram</label></div>
+          <div class="choice-item"><input type="radio" name="found" id="fo3" value="ref"><label class="choice-label" for="fo3"><span class="choice-dot"></span>Referral</label></div>
+          <div class="choice-item"><input type="radio" name="found" id="fo4" value="li"><label class="choice-label" for="fo4"><span class="choice-dot"></span>LinkedIn</label></div>
+          <div class="choice-item"><input type="radio" name="found" id="fo5" value="x"><label class="choice-label" for="fo5"><span class="choice-dot"></span>Twitter / X</label></div>
+          <div class="choice-item"><input type="radio" name="found" id="fo6" value="other"><label class="choice-label" for="fo6"><span class="choice-dot"></span>Other</label></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field-group" id="fg-decide">
+        <label>Who makes the final decision on this? <span class="req">*</span></label>
+        <div class="choice-grid single">
+          <div class="choice-item"><input type="radio" name="decide" id="d1" value="sole"><label class="choice-label" for="d1"><span class="choice-dot"></span>I'm the sole decision maker</label></div>
+          <div class="choice-item"><input type="radio" name="decide" id="d2" value="approval"><label class="choice-label" for="d2"><span class="choice-dot"></span>I need approval from others</label></div>
+          <div class="choice-item"><input type="radio" name="decide" id="d3" value="behalf"><label class="choice-label" for="d3"><span class="choice-dot"></span>I'm researching on behalf of someone else</label></div>
+        </div>
+        <div class="error-msg">Please select one</div>
+      </div>
+
+      <div class="field-group">
+        <label>Anything else we should know before the call?</label>
+        <textarea id="f-extra" placeholder="Optional context, questions, concerns..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(5)">← Back</button>
+        <button class="btn btn-primary" onclick="goNext(5)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 6 -->
+    <div class="page" data-page="6">
+      <div class="page-eyebrow">Almost done</div>
+      <h2 class="page-title">How do we reach you?</h2>
+      <p class="page-sub">We'll be in touch within 24–48 hours if it's a good fit.</p>
+
+      <div class="field-group" id="fg-email">
+        <label>Email address <span class="req">*</span></label>
+        <input type="email" id="f-email" placeholder="you@yourbusiness.com" />
+        <div class="error-msg">Please enter a valid email address</div>
+      </div>
+
+      <div class="field-group" id="fg-phone">
+        <label>WhatsApp / phone number <span class="req">*</span></label>
+        <input type="tel" id="f-phone" placeholder="+1 555 555 5555" />
+        <div class="error-msg">Please enter your phone number</div>
+      </div>
+
+      <div class="field-group">
+        <label>Preferred contact method</label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="contact" id="c1" value="email"><label class="choice-label" for="c1"><span class="choice-dot"></span>Email</label></div>
+          <div class="choice-item"><input type="radio" name="contact" id="c2" value="wa"><label class="choice-label" for="c2"><span class="choice-dot"></span>WhatsApp</label></div>
+          <div class="choice-item"><input type="radio" name="contact" id="c3" value="phone"><label class="choice-label" for="c3"><span class="choice-dot"></span>Phone call</label></div>
+          <div class="choice-item"><input type="radio" name="contact" id="c4" value="any"><label class="choice-label" for="c4"><span class="choice-dot"></span>Any</label></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Best time to reach you</label>
+        <div class="choice-grid">
+          <div class="choice-item"><input type="radio" name="time" id="ti1" value="morning"><label class="choice-label" for="ti1"><span class="choice-dot"></span>Morning</label></div>
+          <div class="choice-item"><input type="radio" name="time" id="ti2" value="afternoon"><label class="choice-label" for="ti2"><span class="choice-dot"></span>Afternoon</label></div>
+          <div class="choice-item"><input type="radio" name="time" id="ti3" value="evening"><label class="choice-label" for="ti3"><span class="choice-dot"></span>Evening</label></div>
+          <div class="choice-item"><input type="radio" name="time" id="ti4" value="any"><label class="choice-label" for="ti4"><span class="choice-dot"></span>Anytime</label></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goBack(6)">← Back</button>
+        <button class="btn btn-primary" onclick="submitForm()">Submit Application →</button>
+      </div>
+    </div>
+
+    <!-- DISQUALIFY -->
+    <div class="page" data-page="disq">
+      <div class="disq-wrap">
+        <div class="disq-icon">✦</div>
+        <h2 class="page-title">Not the right fit — yet</h2>
+        <p class="page-sub">
+          Thanks for applying. Based on what you've shared, we don't think we're the right match at this stage. We work with established businesses ready to invest seriously in growth.<br><br>
+          We wish you all the best — and you're welcome to reapply when your situation changes.
+        </p>
+        <div class="header" style="justify-content:center; margin-top:2rem;">
+          <span class="badge badge-f">FLUXARO</span>
+          <span class="badge-sep">×</span>
+          <span class="badge badge-t">TRIGGERX AI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- THANK YOU -->
+    <div class="page" data-page="ty">
+      <div class="ty-wrap">
+        <div class="ty-icon">✓</div>
+        <h2 class="ty-title">Application received!</h2>
+        <p class="ty-sub">
+          Thanks for taking the time. We'll review your application and reach out within 24–48 hours if it's a good fit. Talk soon.
+        </p>
+        <div class="header" style="justify-content:center; margin-top:2rem;">
+          <span class="badge badge-f">FLUXARO</span>
+          <span class="badge-sep">×</span>
+          <span class="badge badge-t">TRIGGERX AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function showPage(p) {
+    document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+    const target = document.querySelector('.page[data-page="' + p + '"]');
+    if (target) target.classList.add('active');
+
+    const segs = document.querySelectorAll('.prog-seg');
+    const label = document.getElementById('progLabel');
+    if (typeof p === 'number') {
+      segs.forEach((s, i) => {
+        s.classList.remove('active', 'done');
+        if (i + 1 < p) s.classList.add('done');
+        if (i + 1 === p) s.classList.add('active');
+      });
+      label.textContent = 'Step ' + p + ' of 6';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function val(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function err(fgId) { const el = document.getElementById(fgId); if (el) el.classList.add('field-error'); }
+  function clearErr() { document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error')); }
+
+  function validate(pageNum) {
+    clearErr();
+    let ok = true;
+    const fail = (id) => { err(id); ok = false; };
+
+    if (pageNum === 1) {
+      if (!val('f-name')) fail('fg-name');
+      if (!val('f-brand')) fail('fg-brand');
+      if (!val('f-industry')) fail('fg-industry');
+    }
+    if (pageNum === 2) {
+      if (!document.querySelector('input[name="revenue"]:checked')) fail('fg-revenue');
+      if (!document.querySelector('input[name="bizage"]:checked')) fail('fg-bizage');
+    }
+    if (pageNum === 3) {
+      if (!document.querySelectorAll('input[name="services"]:checked').length) fail('fg-services');
+      if (!val('f-detail')) fail('fg-detail');
+      if (!document.querySelector('input[name="prev"]:checked')) fail('fg-prev');
+    }
+    if (pageNum === 4) {
+      if (!document.querySelector('input[name="budget"]:checked')) fail('fg-budget');
+    }
+    if (pageNum === 5) {
+      if (!val('f-success')) fail('fg-success');
+      if (!document.querySelector('input[name="decide"]:checked')) fail('fg-decide');
+    }
+    if (pageNum === 6) {
+      const email = val('f-email');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fail('fg-email');
+      if (!val('f-phone')) fail('fg-phone');
+    }
+    return ok;
+  }
+
+  function goNext(pageNum) {
+    if (!validate(pageNum)) return;
+    if (pageNum === 2) {
+      const rev = document.querySelector('input[name="revenue"]:checked');
+      const age = document.querySelector('input[name="bizage"]:checked');
+      if (rev && rev.value === 'under5k' && age && age.value === 'under6m') { showPage('disq'); return; }
+    }
+    if (pageNum === 4) {
+      const bud = document.querySelector('input[name="budget"]:checked');
+      if (bud && bud.value === 'under500') { showPage('disq'); return; }
+    }
+    showPage(pageNum + 1);
+  }
+
+  function goBack(pageNum) { showPage(pageNum - 1); }
+  function submitForm() { if (!validate(6)) return; showPage('ty'); }
+</script>
+</body>
+</html>
