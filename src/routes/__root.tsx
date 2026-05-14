@@ -4,11 +4,8 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -68,42 +65,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Triggerx Ai - Ai Implementation Partner" },
-      { name: "description", content: "Our focus is simple—remove friction from your business. We build AI systems that manage interactions, automate workflows, and free your team to focus on growth." },
-      { property: "og:title", content: "Triggerx Ai - Ai Implementation Partner" },
-      { name: "twitter:title", content: "Triggerx Ai - Ai Implementation Partner" },
-      { property: "og:description", content: "Our focus is simple—remove friction from your business. We build AI systems that manage interactions, automate workflows, and free your team to focus on growth." },
-      { name: "twitter:description", content: "Our focus is simple—remove friction from your business. We build AI systems that manage interactions, automate workflows, and free your team to focus on growth." },
-      { name: "twitter:card", content: "summary" },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9c0ec2b0-a42c-4ce4-b265-6192132e5e33" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9c0ec2b0-a42c-4ce4-b265-6192132e5e33" },
-    ],
-    links: [{ rel: "stylesheet", href: appCss }],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
