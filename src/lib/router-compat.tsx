@@ -1,4 +1,4 @@
-// Compatibility shim that maps the react-router-dom API surface used in this
+// Compatibility shim that maps the @/lib/router-compat API surface used in this
 // project to TanStack Router primitives, so ported pages keep working unchanged.
 import {
   Link as TSLink,

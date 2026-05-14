@@ -1,7 +1,7 @@
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import { ExternalLink, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 
 const Careers = () => {
   const navigate = useNavigate();

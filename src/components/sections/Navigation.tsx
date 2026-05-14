@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@/lib/router-compat";
 import { Menu, X, Calculator, ArrowUpRight } from "lucide-react";
 import FAQChatDialog from "./FAQChatDialog";
 import ROICalculator from "./ROICalculator";

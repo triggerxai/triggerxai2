@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, Phone, TrendingUp, CalendarCheck, BarChart3, ShieldCheck, RefreshCw } from "lucide-react";
 
 const VoiceAgentOutcome = () => {

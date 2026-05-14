@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 

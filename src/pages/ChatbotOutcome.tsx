@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, MessageCircle, TrendingUp, Users, Clock, Target, Zap } from "lucide-react";
 
 const ChatbotOutcome = () => {
