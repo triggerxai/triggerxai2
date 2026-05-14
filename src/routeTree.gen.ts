@@ -9,38 +9,214 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ClientPortalRouteImport } from './routes/client-portal'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VoiceAgentSupportRouteImport } from './routes/voice-agent.support'
+import { Route as VoiceAgentOutcomeRouteImport } from './routes/voice-agent.outcome'
+import { Route as ChatbotsSupportRouteImport } from './routes/chatbots.support'
+import { Route as ChatbotsOutcomeRouteImport } from './routes/chatbots.outcome'
 
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientPortalRoute = ClientPortalRouteImport.update({
+  id: '/client-portal',
+  path: '/client-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VoiceAgentSupportRoute = VoiceAgentSupportRouteImport.update({
+  id: '/voice-agent/support',
+  path: '/voice-agent/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceAgentOutcomeRoute = VoiceAgentOutcomeRouteImport.update({
+  id: '/voice-agent/outcome',
+  path: '/voice-agent/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatbotsSupportRoute = ChatbotsSupportRouteImport.update({
+  id: '/chatbots/support',
+  path: '/chatbots/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatbotsOutcomeRoute = ChatbotsOutcomeRouteImport.update({
+  id: '/chatbots/outcome',
+  path: '/chatbots/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/client-portal': typeof ClientPortalRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/chatbots/outcome': typeof ChatbotsOutcomeRoute
+  '/chatbots/support': typeof ChatbotsSupportRoute
+  '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
+  '/voice-agent/support': typeof VoiceAgentSupportRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/client-portal': typeof ClientPortalRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/chatbots/outcome': typeof ChatbotsOutcomeRoute
+  '/chatbots/support': typeof ChatbotsSupportRoute
+  '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
+  '/voice-agent/support': typeof VoiceAgentSupportRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/client-portal': typeof ClientPortalRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/chatbots/outcome': typeof ChatbotsOutcomeRoute
+  '/chatbots/support': typeof ChatbotsSupportRoute
+  '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
+  '/voice-agent/support': typeof VoiceAgentSupportRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/careers'
+    | '/client-portal'
+    | '/privacy-policy'
+    | '/resources'
+    | '/terms-of-service'
+    | '/testimonials'
+    | '/chatbots/outcome'
+    | '/chatbots/support'
+    | '/voice-agent/outcome'
+    | '/voice-agent/support'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/careers'
+    | '/client-portal'
+    | '/privacy-policy'
+    | '/resources'
+    | '/terms-of-service'
+    | '/testimonials'
+    | '/chatbots/outcome'
+    | '/chatbots/support'
+    | '/voice-agent/outcome'
+    | '/voice-agent/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/careers'
+    | '/client-portal'
+    | '/privacy-policy'
+    | '/resources'
+    | '/terms-of-service'
+    | '/testimonials'
+    | '/chatbots/outcome'
+    | '/chatbots/support'
+    | '/voice-agent/outcome'
+    | '/voice-agent/support'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareersRoute: typeof CareersRoute
+  ClientPortalRoute: typeof ClientPortalRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ResourcesRoute: typeof ResourcesRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  TestimonialsRoute: typeof TestimonialsRoute
+  ChatbotsOutcomeRoute: typeof ChatbotsOutcomeRoute
+  ChatbotsSupportRoute: typeof ChatbotsSupportRoute
+  VoiceAgentOutcomeRoute: typeof VoiceAgentOutcomeRoute
+  VoiceAgentSupportRoute: typeof VoiceAgentSupportRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client-portal': {
+      id: '/client-portal'
+      path: '/client-portal'
+      fullPath: '/client-portal'
+      preLoaderRoute: typeof ClientPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +224,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/voice-agent/support': {
+      id: '/voice-agent/support'
+      path: '/voice-agent/support'
+      fullPath: '/voice-agent/support'
+      preLoaderRoute: typeof VoiceAgentSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice-agent/outcome': {
+      id: '/voice-agent/outcome'
+      path: '/voice-agent/outcome'
+      fullPath: '/voice-agent/outcome'
+      preLoaderRoute: typeof VoiceAgentOutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chatbots/support': {
+      id: '/chatbots/support'
+      path: '/chatbots/support'
+      fullPath: '/chatbots/support'
+      preLoaderRoute: typeof ChatbotsSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chatbots/outcome': {
+      id: '/chatbots/outcome'
+      path: '/chatbots/outcome'
+      fullPath: '/chatbots/outcome'
+      preLoaderRoute: typeof ChatbotsOutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareersRoute: CareersRoute,
+  ClientPortalRoute: ClientPortalRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ResourcesRoute: ResourcesRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  TestimonialsRoute: TestimonialsRoute,
+  ChatbotsOutcomeRoute: ChatbotsOutcomeRoute,
+  ChatbotsSupportRoute: ChatbotsSupportRoute,
+  VoiceAgentOutcomeRoute: VoiceAgentOutcomeRoute,
+  VoiceAgentSupportRoute: VoiceAgentSupportRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
