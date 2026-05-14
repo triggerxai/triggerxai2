@@ -44,7 +44,7 @@ export const Link = forwardRef<HTMLAnchorElement, AnyLinkProps>(
 Link.displayName = "Link";
 
 type NavLinkRenderProps = { isActive: boolean; isPending: boolean };
-type NavLinkProps = Omit<AnyLinkProps, "className" | "style" | "children"> & {
+export type NavLinkProps = Omit<AnyLinkProps, "className" | "style" | "children"> & {
   className?: string | ((p: NavLinkRenderProps) => string);
   style?: React.CSSProperties | ((p: NavLinkRenderProps) => React.CSSProperties);
   children?: ReactNode | ((p: NavLinkRenderProps) => ReactNode);
