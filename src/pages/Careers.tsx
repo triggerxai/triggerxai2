@@ -2,8 +2,10 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { useNavigate } from "@/lib/router-compat";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const Careers = () => {
+  usePageMeta({ title: "Careers at Triggerx AI — Build the Future of AI Automation", description: "Join Triggerx AI and help us build AI agents, chatbots, and voice systems that transform how modern businesses operate.", canonical: "/careers" });
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-white">

@@ -2,8 +2,10 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/router-compat";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const TermsOfService = () => {
+  usePageMeta({ title: "Terms of Service — Triggerx AI", description: "Review the Triggerx AI terms of service that govern the use of our website and services.", canonical: "/terms-of-service" });
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

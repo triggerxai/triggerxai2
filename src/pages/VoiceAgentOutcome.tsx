@@ -1,7 +1,9 @@
 import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, Phone, TrendingUp, CalendarCheck, BarChart3, ShieldCheck, RefreshCw } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const VoiceAgentOutcome = () => {
+  usePageMeta({ title: "AI Voice Agent Outcomes — Triggerx AI", description: "Discover what Triggerx AI voice agents deliver: 24/7 inbound call handling, qualified leads, and reduced operational overhead.", canonical: "/voice-agent/outcome" });
   const navigate = useNavigate();
 
   const outcomes = [

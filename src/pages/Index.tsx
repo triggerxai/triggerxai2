@@ -14,8 +14,10 @@ import ROICalculator from "@/components/sections/ROICalculator";
 import ROIPreview from "@/components/sections/ROIPreview";
 import TrustedBy from "@/components/sections/TrustedBy";
 import FAQ from "@/components/sections/FAQ";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const Index = () => {
+  usePageMeta({ title: "Triggerx AI — AI Implementation Partner for Modern Businesses", description: "Triggerx AI builds custom AI agents, chatbots, and voice systems that automate workflows, manage interactions, and free your team to focus on growth.", canonical: "/" });
   const [isROIOpen, setIsROIOpen] = useState(false);
 
   return <div className="min-h-screen">

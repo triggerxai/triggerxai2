@@ -1,7 +1,9 @@
 import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, Calendar, Headphones, Video, CheckCircle } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const ChatbotSupport = () => {
+  usePageMeta({ title: "AI Chatbot Setup & Support — 7-Day Launch | Triggerx AI", description: "Triggerx AI delivers your AI chatbot in 7–8 days with training, handover video, and 1 month of complimentary support.", canonical: "/chatbots/support" });
   const navigate = useNavigate();
 
   const steps = [
