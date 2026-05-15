@@ -81,6 +81,34 @@ const Thumbnail = ({
   );
 };
 
+const NeonCTA = ({ label, onClick }: { label: string; onClick: () => void }) => (
+  <button
+    onClick={onClick}
+    className="group relative inline-flex items-center justify-center rounded-full p-[1.5px] transition-transform duration-300 hover:scale-[1.03]"
+  >
+    <span
+      className="absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        background:
+          "conic-gradient(from 0deg, #b9a6f3, #67e8f9, #bef264, #b9a6f3)",
+        filter: "blur(0.5px)",
+      }}
+      aria-hidden
+    />
+    <span
+      className="absolute -inset-1 rounded-full opacity-40 group-hover:opacity-70 blur-md transition-opacity duration-300"
+      style={{
+        background:
+          "conic-gradient(from 0deg, #b9a6f3, #67e8f9, #bef264, #b9a6f3)",
+      }}
+      aria-hidden
+    />
+    <span className="relative inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0a0a0a] text-white text-base font-semibold tracking-tight">
+      {label}
+    </span>
+  </button>
+);
+
 const Contact = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [activeId, setActiveId] = useState(videos[0].id);
