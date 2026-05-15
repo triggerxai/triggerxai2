@@ -1,19 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart, TrendingUp, Hourglass, UsersRound, ClipboardCheck, type LucideIcon } from "lucide-react";
 
-const INDUSTRIES = [
-  "Agencies",
-  "Restaurants",
-  "Real Estate",
-  "Coaches",
-  "Ecommerce",
-  "SaaS",
-  "Healthcare",
-  "Local Businesses",
-  "Recruitment",
-  "Service Businesses",
-];
-
 type HeroCard = {
   id: string;
   number: string;
@@ -41,20 +28,8 @@ const heroCards: HeroCard[] = [
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [industryIdx, setIndustryIdx] = useState(0);
-  const [industryAnim, setIndustryAnim] = useState(true);
   useEffect(() => {
     setIsVisible(true);
-  }, []);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndustryAnim(false);
-      setTimeout(() => {
-        setIndustryIdx((i) => (i + 1) % INDUSTRIES.length);
-        setIndustryAnim(true);
-      }, 280);
-    }, 2600);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -139,32 +114,54 @@ const Hero = () => {
               Instead
             </h1>
             <div
-              className="mt-7 flex items-center gap-3 text-base md:text-lg font-medium"
-              style={{ color: '#4b5563', fontFamily: "'Inter', 'Sora', sans-serif", letterSpacing: '-0.005em' }}
-              aria-live="polite"
+              className="mt-7 flex flex-col items-start gap-2.5"
+              style={{ fontFamily: "'Inter', 'Sora', sans-serif" }}
             >
-              <span className="relative inline-flex items-center justify-center" aria-hidden="true">
-                <span className="absolute w-2.5 h-2.5 rounded-full bg-[#a78bfa]/40 blur-[6px]" />
-                <span className="relative w-1.5 h-1.5 rounded-full bg-[#a78bfa] orbit-pulse" />
-              </span>
-              <span className="whitespace-nowrap">Built for</span>
-              <span
-                className="relative inline-block overflow-hidden align-baseline"
-                style={{ height: '1.5em', minWidth: '11ch' }}
-              >
-                <span
-                  key={industryIdx}
-                  className="block will-change-transform"
-                  style={{
-                    color: '#0f172a',
-                    transition: 'transform 360ms cubic-bezier(0.22,1,0.36,1), opacity 360ms ease',
-                    transform: industryAnim ? 'translateY(0)' : 'translateY(-100%)',
-                    opacity: industryAnim ? 1 : 0,
-                  }}
-                >
-                  {INDUSTRIES[industryIdx]}
-                </span>
-              </span>
+              {[
+                { text: "AI employees that work 24/7 without burnout", tint: "lavender" },
+                { text: "Built to handle the work your team shouldn't", tint: "lime" },
+              ].map((badge) => {
+                const isLavender = badge.tint === "lavender";
+                const accent = isLavender ? "#a78bfa" : "#a3c266";
+                const accentBg = isLavender ? "rgba(196,181,253,0.22)" : "rgba(216,233,168,0.32)";
+                return (
+                  <div
+                    key={badge.text}
+                    className="group inline-flex items-center gap-2.5 transition-all duration-300 hover:-translate-y-0.5"
+                    style={{
+                      padding: "8px 14px 8px 10px",
+                      borderRadius: 999,
+                      background: "rgba(255,255,255,0.78)",
+                      border: "1px solid rgba(255,255,255,0.9)",
+                      boxShadow: `0 1px 0 rgba(255,255,255,0.9) inset, 0 8px 24px -10px rgba(31,41,55,0.12), 0 0 0 1px rgba(15,23,42,0.04), 0 6px 18px -8px ${isLavender ? "rgba(167,139,250,0.28)" : "rgba(163,194,102,0.28)"}`,
+                      backdropFilter: "blur(10px)",
+                      WebkitBackdropFilter: "blur(10px)",
+                    }}
+                  >
+                    <span
+                      className="inline-flex items-center justify-center shrink-0"
+                      style={{
+                        width: 18,
+                        height: 18,
+                        borderRadius: 6,
+                        background: accentBg,
+                        color: accent,
+                      }}
+                      aria-hidden="true"
+                    >
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span
+                      className="text-[12.5px] md:text-[13px] font-medium whitespace-nowrap"
+                      style={{ color: "#1f2937", letterSpacing: "-0.005em" }}
+                    >
+                      {badge.text}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
