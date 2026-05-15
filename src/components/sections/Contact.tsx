@@ -1,5 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { Play } from "lucide-react";
+import { useState } from "react";
 
 const videos = [
   {
