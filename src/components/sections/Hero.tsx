@@ -120,16 +120,21 @@ const Hero = () => {
               </span>
               <br />
               Deploy{" "}
-              <span
-                className="italic"
-                style={{
-                  background: 'linear-gradient(135deg, #6c8cff 0%, #a78bfa 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                AI Employees
+              <span className="relative inline-block whitespace-nowrap">
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 -mx-1 -my-0.5 -z-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(105deg, rgba(196,181,253,0.55) 0%, rgba(196,181,253,0.7) 40%, rgba(216,233,168,0.55) 100%)',
+                    borderRadius: '14px 22px 16px 24px / 18px 14px 22px 16px',
+                    transform: 'rotate(-1deg)',
+                    filter: 'blur(0.3px)',
+                  }}
+                />
+                <span className="relative z-10" style={{ color: '#0f172a' }}>
+                  AI Employees
+                </span>
               </span>{" "}
               Instead
             </h1>
