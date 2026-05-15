@@ -204,10 +204,10 @@ const NavPill = ({
   };
   const inner = <>{icon}{label}</>;
   if (onClick) {
-    return <button onClick={onClick} className={classes} style={styleProps}>{inner}</button>;
+    return <button onClick={onClick} data-click-sound className={classes} style={styleProps}>{inner}</button>;
   }
   return (
-    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={classes} style={styleProps}>
+    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} data-click-sound className={classes} style={styleProps}>
       {inner}
     </a>
   );
@@ -221,6 +221,7 @@ const SocialIcon = ({
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
+    data-click-sound
     className="flex items-center justify-center w-12 h-12 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
     style={boxStyle}
   >
