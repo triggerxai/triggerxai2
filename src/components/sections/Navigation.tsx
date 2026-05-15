@@ -90,7 +90,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
-            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
+            className="hidden md:inline-flex md:justify-self-end items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
             style={{
               background: '#0a0a0a',
               color: '#ffffff',
