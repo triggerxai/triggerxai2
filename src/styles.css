@@ -12,8 +12,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Core Background System - Soft minimal SaaS (#f6f7fb) */
-    --background: 228 27% 97%; /* #f6f7fb */
+    /* Core Background System - Warm white / soft beige */
+    --background: 36 30% 97%; /* warm white #faf8f4 */
     --foreground: 0 0% 10%; /* #1a1a1a */
 
     /* Card System - Clean white with subtle shadow */
@@ -24,35 +24,39 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    /* Brand Colors - Soft Blue → Purple */
-    --primary: 226 100% 71%; /* #6c8cff */
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 258 90% 76%; /* #a78bfa */
+    /* Brand Colors - Soft Lavender (primary) + Muted Lime (accent) */
+    --primary: 258 75% 78%; /* soft lavender #b9a6f3 */
+    --primary-foreground: 0 0% 10%;
+    --primary-glow: 258 90% 85%; /* lighter lavender */
 
-    --secondary: 220 14% 96%; /* very light gray */
+    --secondary: 36 24% 94%; /* soft beige */
     --secondary-foreground: 0 0% 10%;
 
     /* UI State Colors */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%; /* #6b7280 */
+    --muted: 30 15% 94%;
+    --muted-foreground: 220 9% 40%;
 
-    --accent: 258 90% 76%; /* #a78bfa */
-    --accent-foreground: 0 0% 100%;
+    --accent: 84 55% 75%; /* muted lime #c8df9a */
+    --accent-foreground: 0 0% 12%;
+
+    /* Ambient glow tokens */
+    --glow-lavender: 258 90% 80%;
+    --glow-lime: 84 65% 72%;
 
     --destructive: 0 72% 60%;
     --destructive-foreground: 0 0% 100%;
 
     /* Border & Input System - subtle */
-    --border: 220 13% 91%; /* light gray border */
-    --input: 220 13% 91%;
-    --ring: 226 100% 71%;
+    --border: 30 12% 90%;
+    --input: 30 12% 90%;
+    --ring: 258 75% 78%;
 
-    /* Soft Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(226 100% 71%) 0%, hsl(258 90% 76%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(228 27% 97%) 0%, hsl(220 14% 96%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(228 27% 97%) 0%, hsl(0 0% 100%) 50%, hsl(228 27% 97%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(228 27% 99%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(226 100% 71%) 0%, hsl(258 90% 76%) 100%);
+    /* Soft Gradients - Lavender → Lime ambient blend */
+    --gradient-primary: linear-gradient(135deg, hsl(258 75% 78%) 0%, hsl(84 55% 78%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(36 30% 97%) 0%, hsl(30 18% 94%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(36 30% 97%) 0%, hsl(0 0% 100%) 50%, hsl(258 40% 96%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(36 30% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(258 75% 80%) 0%, hsl(84 55% 78%) 100%);
 
     /* Animation Properties */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
