@@ -1,19 +1,15 @@
 import { useState } from "react";
 import Navigation from "@/components/sections/Navigation";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Testimonials from "@/components/sections/Testimonials";
 import Projects from "@/components/sections/Projects";
-import Metrics from "@/components/sections/Metrics";
 import Process from "@/components/sections/Process";
 import Stats from "@/components/sections/Stats";
-
 import SocialMedia from "@/components/sections/SocialMedia";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
-
 import ROICalculator from "@/components/sections/ROICalculator";
 import ROIPreview from "@/components/sections/ROIPreview";
 import TrustedBy from "@/components/sections/TrustedBy";
