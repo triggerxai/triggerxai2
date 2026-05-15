@@ -214,32 +214,33 @@ const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
   const base =
-    "relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300";
+    "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300 backdrop-blur-md";
   const state = active
     ? "text-[#0f172a] font-semibold"
-    : "text-[#52525b] font-medium hover:text-[#0f172a]";
+    : "text-[#1f2937] font-medium hover:text-[#0f172a]";
   const classes = `${base} ${state} group`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: '-0.005em',
-    padding: '8px 14px',
+    padding: '7px 14px',
     background: active
-      ? 'linear-gradient(135deg, rgba(196,181,253,0.35) 0%, rgba(216,233,168,0.35) 100%)'
-      : 'transparent',
+      ? 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.70) 100%)'
+      : 'linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 100%)',
+    border: '1px solid rgba(255,255,255,0.6)',
     boxShadow: active
-      ? 'inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 14px rgba(167,139,250,0.20)'
-      : 'none',
+      ? 'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)'
+      : 'inset 0 1px 0 rgba(255,255,255,0.7), 0 2px 8px rgba(15,23,42,0.04)',
   };
   const inner = (
     <>
       <span
         aria-hidden
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
           background:
-            'linear-gradient(135deg, rgba(196,181,253,0.30) 0%, rgba(216,233,168,0.30) 100%)',
+            'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,243,255,0.75) 50%, rgba(243,250,235,0.75) 100%)',
           boxShadow:
-            'inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 14px rgba(167,139,250,0.20)',
+            'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)',
         }}
       />
       <span className="relative z-10 flex items-center gap-1.5">{icon}{label}</span>
