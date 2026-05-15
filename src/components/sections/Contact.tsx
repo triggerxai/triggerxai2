@@ -83,6 +83,8 @@ const Thumbnail = ({
 
 const Contact = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [activeId, setActiveId] = useState(videos[0].id);
+  const activeVideo = videos.find((v) => v.id === activeId) ?? videos[0];
 
   return (
     <section id="contact" className="px-4 py-16 md:py-20">
