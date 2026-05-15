@@ -25,8 +25,19 @@ const Navigation = () => {
             isScrolled ? "md:py-1" : "md:py-2"
           }`}
         >
-          {/* Logo (left) */}
-          <a href="/" className="flex items-center gap-2 shrink-0 pointer-events-auto">
+          {/* Logo box (left) */}
+          <a
+            href="/"
+            className={`flex items-center gap-2.5 shrink-0 pointer-events-auto rounded-2xl px-3.5 py-2 md:justify-self-start transition-all duration-500 ${
+              isScrolled
+                ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
+                : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
+            }`}
+            style={{
+              background: '#ffffff',
+              border: '1px solid rgba(15,23,42,0.06)',
+            }}
+          >
             <img
               src="/lovable-uploads/14bcde09-cf75-409a-bcbf-e346efc47a4f.png"
               alt="Triggerx AI Logo"
@@ -47,15 +58,15 @@ const Navigation = () => {
             </span>
           </a>
 
-          {/* Center floating white capsule */}
+          {/* Center solid white capsule */}
           <div
-            className={`hidden md:flex md:justify-self-center items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+            className={`hidden md:flex md:justify-self-center items-center gap-1 rounded-2xl px-2 py-1.5 transition-all duration-500 ${
               isScrolled
                 ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
                 : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
             }`}
             style={{
-              background: 'rgba(255,255,255,0.85)',
+              background: '#ffffff',
               border: '1px solid rgba(15,23,42,0.06)',
             }}
           >
