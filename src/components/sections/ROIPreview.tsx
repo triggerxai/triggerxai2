@@ -1,6 +1,5 @@
 import { useInView } from "react-intersection-observer";
 import { Sparkles, ArrowRight, Plus } from "lucide-react";
-import roiCharacter from "@/assets/roi-character.png";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
