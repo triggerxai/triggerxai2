@@ -49,7 +49,7 @@ const Navigation = () => {
 
           {/* Center floating white capsule */}
           <div
-            className={`hidden md:flex items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+            className={`hidden md:flex md:justify-self-center items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
               isScrolled
                 ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
                 : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
