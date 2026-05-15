@@ -1,6 +1,5 @@
 import { useInView } from "react-intersection-observer";
 import { Sparkles, ArrowRight, Plus } from "lucide-react";
-import roiCharacter from "@/assets/roi-character.png";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
@@ -10,16 +9,16 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
-        className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
+        className={`relative max-w-4xl mx-auto transition-all duration-1000 ${
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
         {/* Outer rounded container */}
         <div
-          className="relative overflow-hidden rounded-[36px] px-6 sm:px-10 md:px-16 py-14 md:py-20"
+          className="relative overflow-hidden rounded-[32px] px-6 sm:px-10 md:px-14 py-10 md:py-14"
           style={{
             background:
               "linear-gradient(180deg, #fbf9f5 0%, #faf6ee 50%, #f7f3ea 100%)",
@@ -125,24 +124,8 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               business.
             </p>
 
-            {/* Preview card with character */}
-            <div className="relative max-w-2xl mx-auto pt-28 sm:pt-32 md:pt-36">
-              {/* Character illustration — bottom anchored to card top, overlaps slightly */}
-              <div className="absolute left-1/2 -translate-x-1/2 sm:left-[6%] sm:translate-x-0 md:left-[4%] bottom-full w-36 sm:w-44 md:w-52 pointer-events-none select-none z-20">
-                <img
-                  src={roiCharacter}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="block w-full h-auto -mb-10 sm:-mb-12 md:-mb-14"
-                  style={{
-                    filter:
-                      "drop-shadow(0 18px 24px rgba(124,58,237,0.18)) drop-shadow(0 4px 8px rgba(163,230,53,0.12))",
-                  }}
-                />
-              </div>
+            {/* Preview card */}
+            <div className="relative max-w-xl mx-auto">
 
               <div
                 className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
