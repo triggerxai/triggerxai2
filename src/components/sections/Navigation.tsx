@@ -108,6 +108,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
+            data-click-sound
             className="hidden md:inline-flex items-center px-6 h-12 rounded-2xl text-[15px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)]"
             style={{
               background: "#0a0a0a",
@@ -164,6 +165,7 @@ const Navigation = () => {
                 onClick={() => { setIsROIOpen(true); setIsMobileMenuOpen(false); }}
               />
               <button
+                data-click-sound
                 onClick={() => {
                   window.open("https://calendly.com/aditya_das/triggerx-aditya-das-consultation", "_blank");
                   setIsMobileMenuOpen(false);
@@ -203,10 +205,10 @@ const NavPill = ({
   };
   const inner = <>{icon}{label}</>;
   if (onClick) {
-    return <button onClick={onClick} className={classes} style={styleProps}>{inner}</button>;
+    return <button onClick={onClick} data-click-sound className={classes} style={styleProps}>{inner}</button>;
   }
   return (
-    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={classes} style={styleProps}>
+    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} data-click-sound className={classes} style={styleProps}>
       {inner}
     </a>
   );
@@ -220,6 +222,7 @@ const SocialIcon = ({
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
+    data-click-sound
     className="flex items-center justify-center w-12 h-12 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
     style={boxStyle}
   >
@@ -233,10 +236,10 @@ const MobilePill = ({
   const classes =
     "w-full flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#f5f5f7] text-[#0a0a0a] text-sm font-semibold hover:bg-[#ececef] transition-colors";
   if (onClick) {
-    return <button onClick={onClick} className={classes}>{icon}{label}</button>;
+    return <button onClick={onClick} data-click-sound className={classes}>{icon}{label}</button>;
   }
   return (
-    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={onClose} className={classes}>
+    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={onClose} data-click-sound className={classes}>
       {icon}{label}
     </a>
   );

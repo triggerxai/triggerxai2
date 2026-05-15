@@ -224,14 +224,9 @@ const HoverSound = () => {
       }
     };
 
-    const CLICK_SELECTOR = [
-      "a[href]",
-      "button",
-      '[role="button"]',
-      'input[type="submit"]',
-      'input[type="button"]',
-      "[data-click-sound]",
-    ].join(",");
+    // Opt-in only: sound plays exclusively for elements explicitly marked
+    // with [data-click-sound]. No global listener on generic buttons/links.
+    const CLICK_SELECTOR = "[data-click-sound]";
 
     const onPointerDown = (e: PointerEvent) => {
       // Only main button / touch / pen
