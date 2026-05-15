@@ -16,6 +16,7 @@ const logos = [
   { src: agentsSpaceLogo, alt: "Agents Space", href: null, label: "Agents Space", rounded: true },
   { src: snbdHostLogo, alt: "SNBD HOST", href: null, label: null },
   { src: fluxaroLogo, alt: "Fluxaro", href: null, label: null },
+  { src: bookifyLogo, alt: "Bookify Reach", href: null, label: null, rounded: true },
 ];
 
 const LogoItem = ({ logo }: { logo: typeof logos[number] }) => {
