@@ -126,18 +126,23 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
             </p>
 
             {/* Preview card with character */}
-            <div className="relative max-w-2xl mx-auto pt-32 sm:pt-40">
-              {/* Character illustration */}
-              <img
-                src={roiCharacter}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="absolute left-[8%] sm:left-[12%] -top-16 sm:-top-20 md:-top-24 w-36 sm:w-44 md:w-52 pointer-events-none select-none z-20"
-                style={{ filter: "drop-shadow(0 14px 22px rgba(124,58,237,0.20))" }}
-              />
+            <div className="relative max-w-2xl mx-auto pt-28 sm:pt-32 md:pt-36">
+              {/* Character illustration — bottom anchored to card top, overlaps slightly */}
+              <div className="absolute left-1/2 -translate-x-1/2 sm:left-[6%] sm:translate-x-0 md:left-[4%] bottom-full w-36 sm:w-44 md:w-52 pointer-events-none select-none z-20">
+                <img
+                  src={roiCharacter}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="block w-full h-auto -mb-10 sm:-mb-12 md:-mb-14"
+                  style={{
+                    filter:
+                      "drop-shadow(0 18px 24px rgba(124,58,237,0.18)) drop-shadow(0 4px 8px rgba(163,230,53,0.12))",
+                  }}
+                />
+              </div>
 
               <div
                 className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
