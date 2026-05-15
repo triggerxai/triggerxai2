@@ -216,19 +216,19 @@ const NavPill = ({
   const base =
     "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300";
   const state = active
-    ? "text-[#d8f5b8] font-bold"
-    : "text-[#e8f0e4] font-semibold hover:text-[#d8f5b8]";
+    ? "text-[#f5d28a] font-bold"
+    : "text-[#f0e0c8] font-semibold hover:text-[#f5d28a]";
   const classes = `${base} ${state} group`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: '-0.005em',
     padding: '7px 14px',
     background: active
-      ? 'linear-gradient(135deg, rgba(216,245,184,0.18) 0%, rgba(216,245,184,0.10) 100%)'
+      ? 'linear-gradient(135deg, rgba(245,210,138,0.18) 0%, rgba(245,210,138,0.10) 100%)'
       : 'transparent',
-    border: active ? '1px solid rgba(216,245,184,0.25)' : '1px solid transparent',
+    border: active ? '1px solid rgba(245,210,138,0.30)' : '1px solid transparent',
     boxShadow: active
-      ? 'inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 14px rgba(216,245,184,0.10)'
+      ? 'inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 14px rgba(245,210,138,0.12)'
       : 'none',
   };
   const inner = (
@@ -238,7 +238,7 @@ const NavPill = ({
         className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
           background:
-            'linear-gradient(135deg, rgba(216,245,184,0.14) 0%, rgba(216,245,184,0.06) 100%)',
+            'linear-gradient(135deg, rgba(245,210,138,0.14) 0%, rgba(245,210,138,0.06) 100%)',
         }}
       />
       <span className="relative z-10 flex items-center gap-1.5">{icon}{label}</span>
