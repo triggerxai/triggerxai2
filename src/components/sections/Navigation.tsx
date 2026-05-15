@@ -58,18 +58,29 @@ const Navigation = () => {
             </span>
           </a>
 
-          {/* Center solid white capsule */}
-          <div
-            className={`hidden md:flex md:justify-self-center items-center gap-1 rounded-2xl px-2 py-1.5 transition-all duration-500 ${
-              isScrolled
-                ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
-                : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
-            }`}
-            style={{
-              background: '#ffffff',
-              border: '1px solid rgba(15,23,42,0.06)',
-            }}
-          >
+          {/* Center glowing glass capsule */}
+          <div className="relative hidden md:flex md:justify-self-center items-center">
+            {/* Ambient outer glow */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -m-3 rounded-[28px] blur-2xl opacity-70"
+              style={{
+                background:
+                  'radial-gradient(60% 80% at 20% 50%, rgba(196,181,253,0.45) 0%, rgba(196,181,253,0) 70%), radial-gradient(60% 80% at 80% 50%, rgba(216,233,168,0.45) 0%, rgba(216,233,168,0) 70%), radial-gradient(50% 80% at 50% 50%, rgba(167,224,219,0.35) 0%, rgba(167,224,219,0) 70%)',
+              }}
+            />
+            <div
+              className={`relative flex items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+                isScrolled
+                  ? "shadow-[0_10px_30px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,0.7)]"
+                  : "shadow-[0_6px_20px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.7)]"
+              }`}
+              style={{
+                background:
+                  'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,243,255,0.85) 35%, rgba(243,250,235,0.85) 70%, rgba(236,248,246,0.85) 100%)',
+                border: '1px solid rgba(255,255,255,0.7)',
+              }}
+            >
             <NavPill
               label="Community"
               href="https://www.skool.com/agents-space-1751"
