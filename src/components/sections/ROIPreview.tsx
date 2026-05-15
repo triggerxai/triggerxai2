@@ -1,5 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { Sparkles, ArrowRight, Plus } from "lucide-react";
+import roiCharacter from "@/assets/roi-character.png";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
@@ -124,9 +125,22 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               business.
             </p>
 
-            {/* Preview card */}
-            <div
-              className="relative max-w-2xl mx-auto rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
+            {/* Preview card with character */}
+            <div className="relative max-w-2xl mx-auto pt-32 sm:pt-40">
+              {/* Character illustration */}
+              <img
+                src={roiCharacter}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="absolute left-1/2 -translate-x-[58%] -top-2 sm:-top-6 w-48 sm:w-60 md:w-72 pointer-events-none select-none z-20"
+                style={{ filter: "drop-shadow(0 12px 20px rgba(124,58,237,0.18))" }}
+              />
+
+              <div
+                className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
               style={{
                 background: "rgba(255,255,255,0.85)",
                 backdropFilter: "blur(20px)",
@@ -217,6 +231,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                   <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </button>
+              </div>
             </div>
           </div>
         </div>
