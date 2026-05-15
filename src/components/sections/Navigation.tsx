@@ -72,13 +72,13 @@ const Navigation = () => {
             <div
               className={`relative flex items-center gap-1.5 rounded-full px-2 py-1.5 backdrop-blur-xl transition-all duration-500 overflow-hidden ${
                 isScrolled
-                  ? "shadow-[0_14px_36px_rgba(10,30,20,0.22),inset_0_1px_0_rgba(255,255,255,0.10)]"
-                  : "shadow-[0_10px_28px_rgba(10,30,20,0.18),inset_0_1px_0_rgba(255,255,255,0.10)]"
+                  ? "shadow-[0_14px_36px_rgba(60,30,15,0.25),inset_0_1px_0_rgba(255,255,255,0.10)]"
+                  : "shadow-[0_10px_28px_rgba(60,30,15,0.20),inset_0_1px_0_rgba(255,255,255,0.10)]"
               }`}
               style={{
                 background:
-                  'linear-gradient(120deg, #0f1a13 0%, #1a2e1f 50%, #0f1a13 100%)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                  'linear-gradient(120deg, #2a1810 0%, #4a2c1a 50%, #2a1810 100%)',
+                border: '1px solid rgba(232,184,74,0.15)',
               }}
             >
               {/* Tiny sparkle dots */}
