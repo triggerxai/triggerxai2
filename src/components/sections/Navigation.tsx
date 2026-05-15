@@ -108,6 +108,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
+            data-click-sound
             className="hidden md:inline-flex items-center px-6 h-12 rounded-2xl text-[15px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)]"
             style={{
               background: "#0a0a0a",
