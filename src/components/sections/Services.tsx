@@ -47,7 +47,7 @@ const services = [
   },
   {
     label: "AI Service",
-    title: "AI-Powered Social Media Automation",
+    title: "AI-Powered Social Media Management",
     description:
       "Automatically discover trends, create platform-specific content, and publish across your social channels — all without manual work.",
     image: consultingImg,
@@ -141,7 +141,7 @@ const ServiceRow = ({
         <div className={`relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 ${
           service.title === "AI-Powered Customer Conversations"
             ? "w-[94%]"
-            : service.title === "AI-Powered Social Media Automation"
+            : service.title === "AI-Powered Social Media Management"
             ? "w-[92%]"
             : "w-full"
         }`}>
