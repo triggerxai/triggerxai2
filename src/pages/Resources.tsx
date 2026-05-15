@@ -6,8 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { X, Download, FileText, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
 
 import resources, { type ResourceConfig } from "@/config/resources";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const Resources = () => {
+  usePageMeta({ title: "Free AI Resources & Guides — Triggerx AI", description: "Download free Triggerx AI resources: AI implementation guides, n8n roadmaps, and curated tool lists for modern businesses.", canonical: "/resources" });
   const navigate = useNavigate();
   const [selectedResource, setSelectedResource] = useState<ResourceConfig | null>(null);
   const [formData, setFormData] = useState({ fullName: "", email: "", phone: "" });

@@ -1,7 +1,9 @@
 import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, Calendar, Headphones, Users, CheckCircle } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const VoiceAgentSupport = () => {
+  usePageMeta({ title: "AI Voice Agent Setup & Support — Triggerx AI", description: "Triggerx AI deploys your AI voice agent fast with full training, handover, and post-launch support.", canonical: "/voice-agent/support" });
   const navigate = useNavigate();
 
   const steps = [

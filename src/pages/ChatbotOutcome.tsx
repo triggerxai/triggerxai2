@@ -1,7 +1,9 @@
 import { useNavigate } from "@/lib/router-compat";
 import { ArrowLeft, MessageCircle, TrendingUp, Users, Clock, Target, Zap } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const ChatbotOutcome = () => {
+  usePageMeta({ title: "AI Chatbot Outcomes — 3x Leads, Faster Sales | Triggerx AI", description: "See the real outcomes Triggerx AI chatbots deliver: 3x more leads, instant response times, reduced support load, and a faster sales cycle.", canonical: "/chatbots/outcome" });
   const navigate = useNavigate();
 
   const outcomes = [

@@ -2,8 +2,10 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "@/lib/router-compat";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const PrivacyPolicy = () => {
+  usePageMeta({ title: "Privacy Policy — Triggerx AI", description: "Read the Triggerx AI privacy policy to learn how we collect, use, and protect your data.", canonical: "/privacy-policy" });
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

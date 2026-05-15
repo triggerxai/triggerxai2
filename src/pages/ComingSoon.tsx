@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Bell, Sparkles } from "lucide-react";
 import { Link } from "@/lib/router-compat";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const ComingSoon = () => {
+  usePageMeta({ title: "Coming Soon — Triggerx AI", description: "This page is launching soon. Get notified when Triggerx AI rolls out new content and case studies." });
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
       {/* Animated Background */}

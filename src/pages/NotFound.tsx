@@ -1,7 +1,9 @@
 import { useLocation } from "@/lib/router-compat";
 import { useEffect } from "react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const NotFound = () => {
+  usePageMeta({ title: "Page Not Found — Triggerx AI", description: "The page you're looking for doesn't exist. Return to the Triggerx AI home page." });
   const location = useLocation();
 
   useEffect(() => {
