@@ -15,6 +15,7 @@ import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 import ROICalculator from "@/components/sections/ROICalculator";
+import ROIPreview from "@/components/sections/ROIPreview";
 import TrustedBy from "@/components/sections/TrustedBy";
 import FAQ from "@/components/sections/FAQ";
 
