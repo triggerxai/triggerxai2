@@ -117,7 +117,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
 
             {/* Subtitle */}
             <p
-              className="text-base sm:text-lg max-w-xl mx-auto mb-12"
+              className="text-base sm:text-lg max-w-xl mx-auto mb-8"
               style={{ color: "#64748b" }}
             >
               Estimate how much time and revenue AI automation can save your
@@ -125,7 +125,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
             </p>
 
             {/* Preview card */}
-            <div className="relative max-w-xl mx-auto">
+            <div className="relative max-w-2xl mx-auto">
 
               <div
                 className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
