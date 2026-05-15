@@ -4,6 +4,7 @@ import saasImg from "@/assets/service-saas.jpg";
 import voiceImg from "@/assets/service-voice.jpg";
 import chatbotImg from "@/assets/service-chatbot.jpg";
 import consultingImg from "@/assets/service-consulting.jpg";
+import leadGenImg from "@/assets/service-lead-gen.jpg";
 
 const services = [
   {
@@ -56,6 +57,19 @@ const services = [
       { title: "Smart Filtering", desc: "Keeps only content relevant to your brand." },
       { title: "AI Content Creation", desc: "Generates posts, captions, and visuals — Reels, images, UGC style." },
       { title: "Auto Publishing", desc: "Posts directly to Instagram, LinkedIn, Twitter & more." },
+    ],
+  },
+  {
+    label: "AI Service",
+    title: "AI-Powered Lead Generation Systems",
+    description:
+      "Automatically discover, qualify, nurture, and convert leads using fully automated AI workflows.",
+    image: leadGenImg,
+    steps: [
+      { title: "Lead Discovery", desc: "Finds qualified prospects automatically from multiple sources." },
+      { title: "AI Qualification", desc: "Filters high-intent leads based on your business criteria." },
+      { title: "Automated Follow-Ups", desc: "Sends personalized outreach and revives cold leads automatically." },
+      { title: "Meeting Booking", desc: "Books qualified meetings directly into your calendar." },
     ],
   },
 ];
