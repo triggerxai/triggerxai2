@@ -15,7 +15,8 @@ const HoverSound = () => {
     const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const hasHover = window.matchMedia("(hover: hover)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isCoarsePointer || !hasHover || reducedMotion) return;
+    const hoverDisabled = isCoarsePointer || !hasHover || reducedMotion;
+    if (reducedMotion) return;
 
     const SELECTOR = [
       'a[href]',
@@ -192,8 +193,10 @@ const HoverSound = () => {
       }
     };
 
-    document.addEventListener("pointerover", onPointerOver);
-    document.addEventListener("pointerout", onPointerOut);
+    if (!hoverDisabled) {
+      document.addEventListener("pointerover", onPointerOver);
+      document.addEventListener("pointerout", onPointerOut);
+    }
 
     // ---- Premium soft click sound (works on desktop + mobile) ----
     const CLICK_COOLDOWN_MS = 120;
