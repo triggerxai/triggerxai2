@@ -15,7 +15,8 @@ const HoverSound = () => {
     const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const hasHover = window.matchMedia("(hover: hover)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isCoarsePointer || !hasHover || reducedMotion) return;
+    const hoverDisabled = isCoarsePointer || !hasHover || reducedMotion;
+    if (reducedMotion) return;
 
     const SELECTOR = [
       'a[href]',
@@ -192,12 +193,71 @@ const HoverSound = () => {
       }
     };
 
-    document.addEventListener("pointerover", onPointerOver);
-    document.addEventListener("pointerout", onPointerOut);
+    if (!hoverDisabled) {
+      document.addEventListener("pointerover", onPointerOver);
+      document.addEventListener("pointerout", onPointerOut);
+    }
+
+    // ---- Premium soft click sound (works on desktop + mobile) ----
+    const CLICK_COOLDOWN_MS = 120;
+    let lastClickTs = 0;
+
+    const playClick = () => {
+      const ctx = ensureContext();
+      if (!ctx) return;
+      try {
+        const now = ctx.currentTime;
+        // Soft sine "tick" with quick exponential decay
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(420, now + 0.08);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.18, now + 0.005);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.1);
+      } catch {
+        /* noop */
+      }
+    };
+
+    const CLICK_SELECTOR = [
+      "a[href]",
+      "button",
+      '[role="button"]',
+      'input[type="submit"]',
+      'input[type="button"]',
+      "[data-click-sound]",
+    ].join(",");
+
+    const onPointerDown = (e: PointerEvent) => {
+      // Only main button / touch / pen
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      const target = e.target as Element | null;
+      if (!target) return;
+      const el = target.closest(CLICK_SELECTOR) as HTMLElement | null;
+      if (!el) return;
+      if (el.hasAttribute("data-no-click-sound")) return;
+      if ((el as HTMLButtonElement).disabled) return;
+
+      const now = Date.now();
+      if (now - lastClickTs < CLICK_COOLDOWN_MS) return;
+      lastClickTs = now;
+
+      // Ensure context unlocked for first interaction
+      unlock();
+      playClick();
+    };
+
+    document.addEventListener("pointerdown", onPointerDown, { capture: true });
 
     return () => {
       document.removeEventListener("pointerover", onPointerOver);
       document.removeEventListener("pointerout", onPointerOut);
+      document.removeEventListener("pointerdown", onPointerDown, { capture: true } as any);
       interactionEvents.forEach((ev) =>
         window.removeEventListener(ev, unlock, { capture: true } as any)
       );
