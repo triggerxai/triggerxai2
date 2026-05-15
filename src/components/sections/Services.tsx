@@ -141,7 +141,7 @@ const ServiceRow = ({
         <div className={`relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 ${
           service.title === "AI-Powered Customer Conversations"
             ? "w-[94%]"
-            : service.title === "AI-Powered Social Media Automation"
+            : service.title === "AI-Powered Social Media Management"
             ? "w-[92%]"
             : "w-full"
         }`}>
