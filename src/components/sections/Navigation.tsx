@@ -19,20 +19,14 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 md:px-8 pointer-events-none">
         <div
-          className={`max-w-5xl mx-auto flex items-center justify-between gap-3 pointer-events-auto rounded-2xl backdrop-blur-md transition-all duration-500 pl-4 pr-2 py-2 md:pl-5 md:pr-2 md:py-2 ${
-            isScrolled
-              ? "shadow-[0_10px_30px_rgba(15,23,42,0.08)]"
-              : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
+          className={`max-w-7xl mx-auto flex items-center justify-between gap-4 pointer-events-auto transition-all duration-500 ${
+            isScrolled ? "md:py-1" : "md:py-2"
           }`}
-          style={{
-            background: '#ffffff',
-            border: '1px solid rgba(15,23,42,0.06)',
-          }}
         >
           {/* Logo (left) */}
-          <a href="/" className="flex items-center gap-2 shrink-0">
+          <a href="/" className="flex items-center gap-2 shrink-0 pointer-events-auto">
             <img
               src="/lovable-uploads/14bcde09-cf75-409a-bcbf-e346efc47a4f.png"
               alt="Triggerx AI Logo"
@@ -53,8 +47,18 @@ const Navigation = () => {
             </span>
           </a>
 
-          {/* Centered nav links (no inner pill, minimal) */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Center floating white capsule */}
+          <div
+            className={`hidden md:flex items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+              isScrolled
+                ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
+                : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
+            }`}
+            style={{
+              background: 'rgba(255,255,255,0.85)',
+              border: '1px solid rgba(15,23,42,0.06)',
+            }}
+          >
             <NavPill
               label="Community"
               href="https://www.skool.com/agents-space-1751"
@@ -78,7 +82,7 @@ const Navigation = () => {
             />
           </div>
 
-          {/* Right: Let's Talk (black pill) */}
+          {/* Right: Book a Call */}
           <button
             onClick={() =>
               window.open(
@@ -86,7 +90,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
-            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)]"
+            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
             style={{
               background: '#0a0a0a',
               color: '#ffffff',
@@ -111,7 +115,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-black/5 border border-black/5"
+            className="md:hidden p-2 rounded-xl bg-white/80 backdrop-blur border border-black/5 shadow-sm pointer-events-auto"
           >
             {isMobileMenuOpen ? (
               <X className="w-5 h-5 text-[#0f172a]" />
@@ -179,9 +183,9 @@ const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
   const base =
-    "flex items-center gap-1.5 rounded-full text-[14px] transition-all duration-200";
+    "flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-200 hover:bg-black/[0.04]";
   const state = active
-    ? "text-[#0f172a] font-semibold"
+    ? "text-[#0f172a] font-semibold bg-black/[0.05]"
     : "text-[#52525b] font-medium hover:text-[#0f172a]";
   const classes = `${base} ${state}`;
   const styleProps: React.CSSProperties = {
