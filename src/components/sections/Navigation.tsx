@@ -19,9 +19,9 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 md:px-8 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 md:px-10 lg:px-16 pointer-events-none">
         <div
-          className={`max-w-7xl mx-auto flex items-center justify-between gap-4 pointer-events-auto transition-all duration-500 ${
+          className={`max-w-[1500px] mx-auto flex items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 lg:gap-12 pointer-events-auto transition-all duration-500 ${
             isScrolled ? "md:py-1" : "md:py-2"
           }`}
         >
@@ -49,7 +49,7 @@ const Navigation = () => {
 
           {/* Center floating white capsule */}
           <div
-            className={`hidden md:flex items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+            className={`hidden md:flex md:justify-self-center items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
               isScrolled
                 ? "shadow-[0_10px_30px_rgba(15,23,42,0.10)]"
                 : "shadow-[0_6px_20px_rgba(15,23,42,0.06)]"
@@ -90,7 +90,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
-            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
+            className="hidden md:inline-flex md:justify-self-end items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
             style={{
               background: '#0a0a0a',
               color: '#ffffff',
