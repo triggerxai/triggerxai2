@@ -235,10 +235,10 @@ const MobilePill = ({
   const classes =
     "w-full flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#f5f5f7] text-[#0a0a0a] text-sm font-semibold hover:bg-[#ececef] transition-colors";
   if (onClick) {
-    return <button onClick={onClick} className={classes}>{icon}{label}</button>;
+    return <button onClick={onClick} data-click-sound className={classes}>{icon}{label}</button>;
   }
   return (
-    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={onClose} className={classes}>
+    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={onClose} data-click-sound className={classes}>
       {icon}{label}
     </a>
   );
