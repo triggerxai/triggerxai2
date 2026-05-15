@@ -19,9 +19,9 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 md:px-10 lg:px-16 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 px-4 pointer-events-none">
         <div
-          className={`max-w-[1500px] mx-auto flex items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 lg:gap-12 pointer-events-auto transition-all duration-500 ${
+          className={`mx-auto flex items-center justify-center gap-2 md:gap-3 w-fit pointer-events-auto transition-all duration-500 ${
             isScrolled ? "md:py-1" : "md:py-2"
           }`}
         >
