@@ -1,19 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart, TrendingUp, Hourglass, UsersRound, ClipboardCheck, type LucideIcon } from "lucide-react";
 
-const INDUSTRIES = [
-  "Agencies",
-  "Restaurants",
-  "Real Estate",
-  "Coaches",
-  "Ecommerce",
-  "SaaS",
-  "Healthcare",
-  "Local Businesses",
-  "Recruitment",
-  "Service Businesses",
-];
-
 type HeroCard = {
   id: string;
   number: string;
@@ -41,20 +28,8 @@ const heroCards: HeroCard[] = [
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [industryIdx, setIndustryIdx] = useState(0);
-  const [industryAnim, setIndustryAnim] = useState(true);
   useEffect(() => {
     setIsVisible(true);
-  }, []);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndustryAnim(false);
-      setTimeout(() => {
-        setIndustryIdx((i) => (i + 1) % INDUSTRIES.length);
-        setIndustryAnim(true);
-      }, 280);
-    }, 2600);
-    return () => clearInterval(interval);
   }, []);
 
   return (
