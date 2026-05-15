@@ -111,18 +111,20 @@ const Contact = () => {
               real business outcomes.
             </p>
 
-            <div className="pt-2">
-              <button
+            <div className="pt-2 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <NeonCTA
+                label="Book a Slot"
                 onClick={() =>
-                  window.open("https://www.youtube.com/@aditya_das_222", "_blank")
+                  window.open(
+                    "https://calendly.com/aditya_das/triggerx-aditya-das-consultation",
+                    "_blank"
+                  )
                 }
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gray-900 text-white text-lg font-semibold hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-2xl"
-              >
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-                Subscribe me on Youtube
-              </button>
+              />
+              <NeonCTA
+                label="My FREE Courses"
+                onClick={() => window.open("https://agentsspace.shop/", "_blank")}
+              />
             </div>
           </div>
 
