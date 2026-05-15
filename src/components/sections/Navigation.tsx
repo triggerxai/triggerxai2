@@ -216,8 +216,8 @@ const NavPill = ({
   const base =
     "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300 backdrop-blur-md";
   const state = active
-    ? "text-[#0f172a] font-semibold"
-    : "text-[#1f2937] font-medium hover:text-[#0f172a]";
+    ? "text-[#a16207] font-semibold"
+    : "text-[#b45309] font-medium hover:text-[#854d0e]";
   const classes = `${base} ${state} group`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
