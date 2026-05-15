@@ -20,27 +20,64 @@ const videos = [
   },
 ];
 
-const VideoCard = ({ video }: { video: (typeof videos)[0] }) => {
+const FeaturedVideo = ({ video }: { video: (typeof videos)[0] }) => {
   return (
     <a
+      key={video.id}
       href={video.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="glass-card-hover aspect-video relative block cursor-pointer group"
+      className="glass-card-hover aspect-video relative block cursor-pointer group rounded-2xl overflow-hidden animate-fade-in"
       aria-label={video.title}
+    >
+      <img
+        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+        }}
+        alt={video.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg ring-1 ring-white/30 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110 group-hover:shadow-[0_0_28px_rgba(185,166,243,0.4)]">
+          <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+        </div>
+      </div>
+    </a>
+  );
+};
+
+const Thumbnail = ({
+  video,
+  active,
+  onClick,
+}: {
+  video: (typeof videos)[0];
+  active: boolean;
+  onClick: () => void;
+}) => {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={`Play ${video.title}`}
+      className={`relative aspect-video rounded-xl overflow-hidden flex-1 group transition-all duration-300 hover:scale-[1.04] shadow-md hover:shadow-lg ${
+        active ? "ring-2 ring-primary/60 shadow-[0_0_20px_rgba(185,166,243,0.35)]" : "ring-1 ring-black/5"
+      }`}
     >
       <img
         src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
         alt={video.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        className="w-full h-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg ring-1 ring-white/30 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(185,166,243,0.35)]">
-          <Play className="w-4 h-4 text-white fill-white ml-0.5" />
+      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center ring-1 ring-white/30">
+          <Play className="w-3 h-3 text-white fill-white ml-0.5" />
         </div>
       </div>
-    </a>
+    </button>
   );
 };
 
