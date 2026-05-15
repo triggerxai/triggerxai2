@@ -12,8 +12,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Core Background System - Soft minimal SaaS (#f6f7fb) */
-    --background: 228 27% 97%; /* #f6f7fb */
+    /* Core Background System - Warm white / soft beige */
+    --background: 36 30% 97%; /* warm white #faf8f4 */
     --foreground: 0 0% 10%; /* #1a1a1a */
 
     /* Card System - Clean white with subtle shadow */
@@ -24,35 +24,39 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    /* Brand Colors - Soft Blue → Purple */
-    --primary: 226 100% 71%; /* #6c8cff */
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 258 90% 76%; /* #a78bfa */
+    /* Brand Colors - Soft Lavender (primary) + Muted Lime (accent) */
+    --primary: 258 75% 78%; /* soft lavender #b9a6f3 */
+    --primary-foreground: 0 0% 10%;
+    --primary-glow: 258 90% 85%; /* lighter lavender */
 
-    --secondary: 220 14% 96%; /* very light gray */
+    --secondary: 36 24% 94%; /* soft beige */
     --secondary-foreground: 0 0% 10%;
 
     /* UI State Colors */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%; /* #6b7280 */
+    --muted: 30 15% 94%;
+    --muted-foreground: 220 9% 40%;
 
-    --accent: 258 90% 76%; /* #a78bfa */
-    --accent-foreground: 0 0% 100%;
+    --accent: 84 55% 75%; /* muted lime #c8df9a */
+    --accent-foreground: 0 0% 12%;
+
+    /* Ambient glow tokens */
+    --glow-lavender: 258 90% 80%;
+    --glow-lime: 84 65% 72%;
 
     --destructive: 0 72% 60%;
     --destructive-foreground: 0 0% 100%;
 
     /* Border & Input System - subtle */
-    --border: 220 13% 91%; /* light gray border */
-    --input: 220 13% 91%;
-    --ring: 226 100% 71%;
+    --border: 30 12% 90%;
+    --input: 30 12% 90%;
+    --ring: 258 75% 78%;
 
-    /* Soft Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(226 100% 71%) 0%, hsl(258 90% 76%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(228 27% 97%) 0%, hsl(220 14% 96%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(228 27% 97%) 0%, hsl(0 0% 100%) 50%, hsl(228 27% 97%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(228 27% 99%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(226 100% 71%) 0%, hsl(258 90% 76%) 100%);
+    /* Soft Gradients - Lavender → Lime ambient blend */
+    --gradient-primary: linear-gradient(135deg, hsl(258 75% 78%) 0%, hsl(84 55% 78%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(36 30% 97%) 0%, hsl(30 18% 94%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(36 30% 97%) 0%, hsl(0 0% 100%) 50%, hsl(258 40% 96%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(36 30% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(258 75% 80%) 0%, hsl(84 55% 78%) 100%);
 
     /* Animation Properties */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -120,11 +124,12 @@ All colors MUST be HSL.
     min-height: 100vh;
     transition: all 0.3s ease;
     position: relative;
-    /* Soft warm SaaS dashboard gradient */
+    /* Warm white base with ambient lavender + lime glows */
     background:
-      radial-gradient(1200px 800px at 0% 0%, rgba(246, 199, 161, 0.55), transparent 60%),
-      radial-gradient(1000px 700px at 100% 100%, rgba(196, 181, 253, 0.35), transparent 55%),
-      linear-gradient(135deg, #f6c7a1 0%, #f4f6fa 55%, #eef1f8 100%);
+      radial-gradient(1100px 750px at 0% 0%, rgba(196, 181, 253, 0.32), transparent 60%),
+      radial-gradient(1000px 700px at 100% 100%, rgba(200, 223, 154, 0.28), transparent 58%),
+      radial-gradient(700px 500px at 50% 110%, rgba(196, 181, 253, 0.18), transparent 65%),
+      linear-gradient(135deg, #faf8f4 0%, #f6f4ef 55%, #f2efe9 100%);
     background-attachment: fixed;
   }
 
@@ -218,14 +223,14 @@ All colors MUST be HSL.
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
-  /* Soft gradient glow inside cards */
+  /* Soft lavender + lime ambient glow inside cards */
   .glass-card::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(400px 200px at 0% 0%, rgba(167, 139, 250, 0.08), transparent 60%),
-      radial-gradient(400px 200px at 100% 100%, rgba(246, 199, 161, 0.08), transparent 60%);
+      radial-gradient(400px 220px at 0% 0%, rgba(185, 166, 243, 0.14), transparent 60%),
+      radial-gradient(400px 220px at 100% 100%, rgba(200, 223, 154, 0.14), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -250,8 +255,8 @@ All colors MUST be HSL.
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(400px 200px at 0% 0%, rgba(167, 139, 250, 0.08), transparent 60%),
-      radial-gradient(400px 200px at 100% 100%, rgba(246, 199, 161, 0.08), transparent 60%);
+      radial-gradient(400px 220px at 0% 0%, rgba(185, 166, 243, 0.14), transparent 60%),
+      radial-gradient(400px 220px at 100% 100%, rgba(200, 223, 154, 0.14), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -265,9 +270,10 @@ All colors MUST be HSL.
     transform: translateY(-4px);
     background: #ffffff;
     box-shadow:
-      0 18px 40px rgba(108, 140, 255, 0.12),
+      0 18px 40px rgba(185, 166, 243, 0.22),
+      0 6px 18px rgba(200, 223, 154, 0.14),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    border-color: rgba(108, 140, 255, 0.18);
+    border-color: rgba(185, 166, 243, 0.25);
   }
 
   /* Gradient Text Effects */
