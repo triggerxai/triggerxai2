@@ -165,6 +165,7 @@ const Navigation = () => {
                 onClick={() => { setIsROIOpen(true); setIsMobileMenuOpen(false); }}
               />
               <button
+                data-click-sound
                 onClick={() => {
                   window.open("https://calendly.com/aditya_das/triggerx-aditya-das-consultation", "_blank");
                   setIsMobileMenuOpen(false);
