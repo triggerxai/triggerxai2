@@ -231,6 +231,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                   <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </button>
+              </div>
             </div>
           </div>
         </div>
