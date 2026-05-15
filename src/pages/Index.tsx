@@ -28,6 +28,7 @@ const Index = () => {
       <div className="reveal reveal-stagger"><Services /></div>
       <div className="reveal reveal-stagger"><TrustedBy /></div>
       <div className="reveal reveal-stagger"><Projects className="my-0 py-px" onOpenROI={() => setIsROIOpen(true)} /></div>
+      <div className="reveal reveal-stagger"><Testimonials /></div>
       <div className="reveal reveal-stagger"><Process /></div>
       
       <div className="reveal reveal-stagger"><FAQ /></div>

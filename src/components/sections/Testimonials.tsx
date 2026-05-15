@@ -1,81 +1,144 @@
-import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-const testimonials = [{
-  name: "Michael Chen",
-  role: "Operations Director",
-  company: "GlobalTrade Inc",
-  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-  rating: 5,
-  text: "The workflow automation Aditya implemented saved us 40 hours per week in manual data entry. His attention to detail and understanding of our business needs was exceptional. Highly recommended!",
-  project: "B2B Business Automation"
-}, {
-  name: "Emily Rodriguez",
-  role: "Marketing Manager",
-  company: "GrowthHub Agency",
-  image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-  rating: 5,
-  text: "Our lead generation increased by 300% after implementing Aditya's AI agent system. The quality of leads improved dramatically, and our conversion rates are through the roof. Amazing work!",
-  project: "Lead Generation AI Agent"
-}, {
-  name: "David Park",
-  role: "Founder",
-  company: "InnovateLab",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-  rating: 5,
-  text: "Working with Aditya was a game-changer for our startup. His AI automation solutions helped us scale operations without hiring additional staff. Professional, reliable, and incredibly skilled.",
-  project: "Complete Business Automation"
-}];
-const Testimonials = () => {
-  const {
-    ref,
-    inView
-  } = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+import { useInView } from "react-intersection-observer";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-  // Auto-advance testimonials
+const testimonials = [
+  {
+    text: "Triggerx AI completely changed how we handle lead follow-up. What used to take hours is now fully automated.",
+    name: "Sarah K.",
+    role: "Marketing Agency",
+    initials: "SK",
+  },
+  {
+    text: "The AI voice assistant reduced missed calls and increased booked appointments within the first week.",
+    name: "Daniel R.",
+    role: "Dental Clinic",
+    initials: "DR",
+  },
+  {
+    text: "We replaced multiple manual workflows with one automated system. Huge time saver.",
+    name: "Michael T.",
+    role: "SaaS Founder",
+    initials: "MT",
+  },
+  {
+    text: "Our support response time dropped dramatically after implementing their AI systems.",
+    name: "Olivia M.",
+    role: "Ecommerce Brand",
+    initials: "OM",
+  },
+];
+
+const Testimonials = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [index, setIndex] = useState(0);
+  const [auto, setAuto] = useState(true);
+
   useEffect(() => {
-    if (!isAutoPlaying) return;
-    const timer = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isAutoPlaying]);
-  const nextTestimonial = () => {
-    setCurrentIndex(prev => (prev + 1) % testimonials.length);
-    setIsAutoPlaying(false);
+    if (!auto) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 5500);
+    return () => clearInterval(t);
+  }, [auto]);
+
+  const go = (dir: number) => {
+    setAuto(false);
+    setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
   };
-  const prevTestimonial = () => {
-    setCurrentIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
-    setIsAutoPlaying(false);
-  };
-  const goToTestimonial = (index: number) => {
-    setCurrentIndex(index);
-    setIsAutoPlaying(false);
-  };
-  return <section id="testimonials" className="py-20 px-4" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            
+
+  const getCard = (offset: number) => testimonials[(index + offset) % testimonials.length];
+
+  return (
+    <section id="testimonials" ref={ref} className="relative py-24 px-4 overflow-hidden">
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full blur-3xl opacity-60"
+        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lavender) / 0.45), transparent)" }} />
+      <div className="pointer-events-none absolute bottom-0 -right-20 w-[460px] h-[460px] rounded-full blur-3xl opacity-60"
+        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lime) / 0.4), transparent)" }} />
+
+      <div className="max-w-5xl mx-auto relative">
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-white/60 backdrop-blur border border-border text-foreground/70">
+            Testimonials
+          </span>
+          <h2 className="mt-5 text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            Loved by founders and modern teams.
           </h2>
-          
+          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Real businesses using AI systems to automate operations, save time, and scale faster.
+          </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className={`relative transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          
+        {/* Stacked cards */}
+        <div className={`relative h-[340px] md:h-[300px] flex items-center justify-center transition-all duration-700 delay-150 ${inView ? "opacity-100" : "opacity-0"}`}>
+          {/* Back card 2 */}
+          <div className="absolute w-[88%] md:w-[70%] h-full rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-xl"
+            style={{ transform: "rotate(-6deg) translateY(28px) scale(0.92)" }} />
+          {/* Back card 1 */}
+          <div className="absolute w-[92%] md:w-[76%] h-full rounded-3xl bg-white/55 backdrop-blur-xl border border-white/70 shadow-xl"
+            style={{ transform: "rotate(3deg) translateY(14px) scale(0.96)" }} />
 
-          {/* Navigation Arrows */}
-          
+          {/* Active card */}
+          <div
+            key={index}
+            className="relative w-full md:w-[80%] h-full rounded-3xl border border-white/80 shadow-2xl p-8 md:p-12 flex flex-col justify-between transition-transform duration-500 hover:-translate-y-1 animate-fade-in"
+            style={{
+              background: "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.75))",
+              backdropFilter: "blur(20px)",
+            }}
+          >
+            <p className="text-lg md:text-2xl font-medium leading-relaxed text-foreground/90">
+              "{getCard(0).text}"
+            </p>
+
+            <div className="flex items-center gap-4 mt-6">
+              <div className="relative">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-semibold text-foreground"
+                  style={{ background: "var(--gradient-accent)" }}>
+                  {getCard(0).initials}
+                </div>
+                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" />
+              </div>
+              <div>
+                <div className="font-semibold text-foreground">{getCard(0).name}</div>
+                <div className="text-sm text-muted-foreground">{getCard(0).role}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button
+            onClick={() => go(-1)}
+            aria-label="Previous testimonial"
+            className="w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-border hover:bg-white transition-all hover:-translate-y-0.5 shadow-sm flex items-center justify-center"
+          >
+            <ChevronLeft className="w-5 h-5 text-foreground" />
+          </button>
+
+          <div className="flex gap-2">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setAuto(false); setIndex(i); }}
+                aria-label={`Go to testimonial ${i + 1}`}
+                className={`h-2 rounded-full transition-all ${i === index ? "w-8 bg-foreground" : "w-2 bg-foreground/30"}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => go(1)}
+            aria-label="Next testimonial"
+            className="w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-border hover:bg-white transition-all hover:-translate-y-0.5 shadow-sm flex items-center justify-center"
+          >
+            <ChevronRight className="w-5 h-5 text-foreground" />
+          </button>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Testimonials;
