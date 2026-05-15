@@ -110,7 +110,7 @@ const Hero = () => {
           <div className="md:col-span-7 text-left">
             <h1 className="font-display-hero text-[2.5rem] sm:text-[3rem] md:text-[3.6rem] lg:text-[4.2rem] xl:text-[4.8rem]" style={{ color: '#1f2937' }}>
               Fire Your{" "}
-              <span className="relative inline-block whitespace-nowrap italic" style={{ color: '#6b7280' }}>
+              <span className="relative inline-block whitespace-nowrap" style={{ color: '#6b7280' }}>
                 <span className="relative z-10">Lazy Employees</span>
                 <span
                   aria-hidden="true"
