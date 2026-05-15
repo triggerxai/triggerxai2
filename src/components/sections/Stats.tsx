@@ -3,7 +3,7 @@ import { Bot, Eye, Users } from "lucide-react";
 
 const stats = [
   { value: "75+", label: "Agentic Systems Built", icon: Bot, href: "https://adityadasn8n.gumroad.com/" },
-  { value: "1.4M+", label: "Media Views", icon: Eye, href: "https://www.youtube.com/@aditya_das_222" },
+  { value: "1.7M+", label: "Media Views", icon: Eye, href: "https://www.youtube.com/@aditya_das_222" },
   { value: "41K+", label: "Ai Community", icon: Users, href: "https://web.facebook.com/share/g/1DsprQbnKh/" },
 ];
 
