@@ -84,6 +84,7 @@ const Thumbnail = ({
 const NeonCTA = ({ label, onClick }: { label: string; onClick: () => void }) => (
   <button
     onClick={onClick}
+    data-click-sound
     className="group relative inline-flex items-center justify-center rounded-full p-[1.5px] transition-transform duration-300 hover:scale-[1.03]"
   >
     <span
