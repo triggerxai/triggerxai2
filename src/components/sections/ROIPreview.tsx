@@ -1,9 +1,68 @@
 import { useInView } from "react-intersection-observer";
-import { Sparkles, ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
 }
+
+/* Premium glossy calculator app icon */
+const CalculatorIcon = ({ size = 18 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      filter: "drop-shadow(0 2px 4px rgba(15,23,42,0.25))",
+    }}
+  >
+    <defs>
+      <linearGradient id="calcBody" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#2a2740" />
+        <stop offset="55%" stopColor="#16121f" />
+        <stop offset="100%" stopColor="#0a0810" />
+      </linearGradient>
+      <linearGradient id="calcScreen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#fbf9f5" />
+        <stop offset="100%" stopColor="#e9e2d3" />
+      </linearGradient>
+      <linearGradient id="calcGloss" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="rgba(255,255,255,0.35)" />
+        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+      </linearGradient>
+    </defs>
+    {/* Body */}
+    <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#calcBody)" />
+    {/* Top gloss */}
+    <rect x="2" y="2" width="36" height="16" rx="9" fill="url(#calcGloss)" />
+    {/* Screen */}
+    <rect x="7" y="7" width="26" height="9" rx="2.2" fill="url(#calcScreen)" />
+    <rect
+      x="7"
+      y="7"
+      width="26"
+      height="3.5"
+      rx="2.2"
+      fill="rgba(255,255,255,0.6)"
+    />
+    {/* Buttons row 1 */}
+    <circle cx="10.5" cy="22" r="2.2" fill="#3a3450" />
+    <circle cx="17" cy="22" r="2.2" fill="#3a3450" />
+    <circle cx="23.5" cy="22" r="2.2" fill="#3a3450" />
+    <circle cx="30" cy="22" r="2.2" fill="#bef264" />
+    {/* Buttons row 2 */}
+    <circle cx="10.5" cy="28" r="2.2" fill="#3a3450" />
+    <circle cx="17" cy="28" r="2.2" fill="#3a3450" />
+    <circle cx="23.5" cy="28" r="2.2" fill="#3a3450" />
+    <circle cx="30" cy="28" r="2.2" fill="#c4b5fd" />
+    {/* Buttons row 3 */}
+    <circle cx="10.5" cy="34" r="2.2" fill="#3a3450" />
+    <circle cx="17" cy="34" r="2.2" fill="#3a3450" />
+    <circle cx="23.5" cy="34" r="2.2" fill="#3a3450" />
+    <circle cx="30" cy="34" r="2.2" fill="#a78bfa" />
+  </svg>
+);
 
 const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
