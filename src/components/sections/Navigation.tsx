@@ -216,12 +216,44 @@ const NavPill = ({
     letterSpacing: '-0.005em',
     padding: '8px 14px',
   };
+  const base =
+    "relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300";
+  const state = active
+    ? "text-[#0f172a] font-semibold"
+    : "text-[#52525b] font-medium hover:text-[#0f172a]";
+  const classes = `${base} ${state} group`;
+  const styleProps: React.CSSProperties = {
+    fontFamily: "'Inter', 'Sora', sans-serif",
+    letterSpacing: '-0.005em',
+    padding: '8px 14px',
+    background: active
+      ? 'linear-gradient(135deg, rgba(196,181,253,0.35) 0%, rgba(216,233,168,0.35) 100%)'
+      : 'transparent',
+    boxShadow: active
+      ? 'inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 14px rgba(167,139,250,0.20)'
+      : 'none',
+  };
+  const inner = (
+    <>
+      <span
+        aria-hidden
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(135deg, rgba(196,181,253,0.30) 0%, rgba(216,233,168,0.30) 100%)',
+          boxShadow:
+            'inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 14px rgba(167,139,250,0.20)',
+        }}
+      />
+      <span className="relative z-10 flex items-center gap-1.5">{icon}{label}</span>
+    </>
+  );
   if (onClick) {
-    return <button onClick={onClick} className={classes} style={styleProps}>{icon}{label}</button>;
+    return <button onClick={onClick} className={classes} style={styleProps}>{inner}</button>;
   }
   return (
     <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={classes} style={styleProps}>
-      {icon}{label}
+      {inner}
     </a>
   );
 };
