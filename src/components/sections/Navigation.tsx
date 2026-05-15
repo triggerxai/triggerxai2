@@ -102,6 +102,7 @@ const Navigation = () => {
               icon={<Calculator className="w-3.5 h-3.5" />}
               onClick={() => setIsROIOpen(true)}
             />
+            </div>
           </div>
 
           {/* Right: Book a Call */}
