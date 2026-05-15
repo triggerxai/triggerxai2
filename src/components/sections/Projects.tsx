@@ -194,28 +194,6 @@ const Projects = ({ className, onOpenROI }: ProjectsProps = {}) => {
           })}
         </div>
 
-        {/* CTA Button */}
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={onOpenROI}
-            className="px-8 py-3.5 rounded-full text-sm md:text-base font-medium transition-all duration-300"
-            style={{
-              backgroundColor: "#111111",
-              color: "#FFFFFF",
-              boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#222222";
-              e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#111111";
-              e.currentTarget.style.boxShadow = "0 4px 14px rgba(0,0,0,0.15)";
-            }}
-          >
-            Calculate How Much Revenue You're Losing
-          </button>
-        </div>
       </div>
     </section>
   );
