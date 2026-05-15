@@ -135,8 +135,8 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="absolute left-1/2 -translate-x-[58%] -top-2 sm:-top-6 w-48 sm:w-60 md:w-72 pointer-events-none select-none z-20"
-                style={{ filter: "drop-shadow(0 12px 20px rgba(124,58,237,0.18))" }}
+                className="absolute left-[8%] sm:left-[12%] -top-16 sm:-top-20 md:-top-24 w-36 sm:w-44 md:w-52 pointer-events-none select-none z-20"
+                style={{ filter: "drop-shadow(0 14px 22px rgba(124,58,237,0.20))" }}
               />
 
               <div
