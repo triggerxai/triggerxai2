@@ -15,6 +15,7 @@ import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 import ROICalculator from "@/components/sections/ROICalculator";
+import ROIPreview from "@/components/sections/ROIPreview";
 import TrustedBy from "@/components/sections/TrustedBy";
 import FAQ from "@/components/sections/FAQ";
 
@@ -28,6 +29,7 @@ const Index = () => {
       <div className="reveal reveal-stagger"><Services /></div>
       <div className="reveal reveal-stagger"><TrustedBy /></div>
       <div className="reveal reveal-stagger"><Projects className="my-0 py-px" onOpenROI={() => setIsROIOpen(true)} /></div>
+      <div className="reveal reveal-stagger"><ROIPreview onOpenROI={() => setIsROIOpen(true)} /></div>
       <div className="reveal reveal-stagger"><Testimonials /></div>
       <div className="reveal reveal-stagger"><Process /></div>
       
