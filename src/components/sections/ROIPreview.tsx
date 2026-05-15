@@ -1,5 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { ArrowRight, Plus } from "lucide-react";
+import sittingPerson from "@/assets/roi-sitting-person.png";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
@@ -185,6 +186,17 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
 
             {/* Preview card */}
             <div className="relative max-w-2xl mx-auto">
+              {/* Sitting person illustration */}
+              <img
+                src={sittingPerson}
+                alt=""
+                aria-hidden="true"
+                width={160}
+                height={160}
+                loading="lazy"
+                className="hidden sm:block absolute -top-24 md:-top-28 left-2 md:left-6 w-32 md:w-40 h-auto pointer-events-none select-none z-10"
+                style={{ filter: "drop-shadow(0 10px 20px rgba(15,23,42,0.12))" }}
+              />
 
               <div
                 className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
