@@ -126,12 +126,22 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right — Video Stack */}
+          {/* Right — Video Showcase */}
           <div className="flex justify-center md:justify-end">
-            <div className="flex flex-col gap-4 w-full max-w-md">
-              {videos.map((video) => (
-                <VideoCard key={video.id} video={video} />
-              ))}
+            <div className="flex flex-col gap-3 w-full max-w-md">
+              <FeaturedVideo key={activeVideo.id} video={activeVideo} />
+              <div className="flex gap-3">
+                {videos
+                  .filter((v) => v.id !== activeId)
+                  .map((video) => (
+                    <Thumbnail
+                      key={video.id}
+                      video={video}
+                      active={false}
+                      onClick={() => setActiveId(video.id)}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
         </div>
