@@ -16,6 +16,7 @@ import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 import ROICalculator from "@/components/sections/ROICalculator";
 import TrustedBy from "@/components/sections/TrustedBy";
+import FAQ from "@/components/sections/FAQ";
 
 const Index = () => {
   const [isROIOpen, setIsROIOpen] = useState(false);
@@ -29,6 +30,7 @@ const Index = () => {
       <div className="reveal reveal-stagger"><Projects className="my-0 py-px" onOpenROI={() => setIsROIOpen(true)} /></div>
       <div className="reveal reveal-stagger"><Process /></div>
       <div className="reveal reveal-stagger"><Availability /></div>
+      <div className="reveal reveal-stagger"><FAQ /></div>
       <div className="reveal reveal-stagger"><Contact /></div>
       <div className="reveal reveal-stagger"><SocialMedia className="py-px rounded-2xl" /></div>
       <Footer />
