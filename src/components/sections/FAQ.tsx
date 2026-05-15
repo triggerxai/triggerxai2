@@ -31,18 +31,18 @@ const FAQ = () => {
   const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <section id="faq" className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-white via-[#faf8ff] to-white">
-      {/* Decorative lavender glows */}
-      <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-violet-200/30 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-200/20 blur-3xl" />
+    <section id="faq" className="relative py-24 md:py-32 overflow-hidden bg-background">
+      {/* Decorative brand glows */}
+      <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/10 blur-3xl" />
 
       <div className="relative max-w-3xl mx-auto px-5">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.05]">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.05]">
             Got questions?
             <br />
-            <span className="text-slate-900">We've got answers</span>
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">We've got answers</span>
           </h2>
         </div>
 
@@ -55,30 +55,30 @@ const FAQ = () => {
                 key={i}
                 className={`relative transition-all duration-500 ease-out ${isOpen ? item.rotation : "rotate-0"}`}
               >
-                {/* Lavender glow behind active card */}
+                {/* Brand glow behind active card */}
                 {isOpen && (
                   <div
                     aria-hidden
-                    className="absolute -inset-3 rounded-[28px] bg-gradient-to-br from-violet-300/40 via-indigo-200/30 to-transparent blur-2xl -z-10"
+                    className="absolute -inset-3 rounded-[28px] bg-gradient-to-br from-primary/25 via-accent/20 to-transparent blur-2xl -z-10"
                   />
                 )}
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full text-left rounded-2xl bg-white border transition-all duration-300 ${
+                  className={`w-full text-left rounded-2xl bg-card border transition-all duration-300 ${
                     isOpen
-                      ? "border-violet-200/80 shadow-[0_20px_50px_-20px_rgba(139,92,246,0.35)]"
-                      : "border-slate-200/70 shadow-[0_4px_20px_-8px_rgba(15,23,42,0.08)] hover:shadow-[0_8px_30px_-10px_rgba(15,23,42,0.12)]"
+                      ? "border-primary/30 shadow-[0_20px_50px_-20px_hsl(var(--primary)/0.35)]"
+                      : "border-border shadow-[0_4px_20px_-8px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_30px_-10px_rgba(15,23,42,0.10)]"
                   }`}
                 >
                   <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-5 md:py-6">
-                    <h3 className="text-base md:text-lg font-medium text-slate-900">
+                    <h3 className="text-base md:text-lg font-medium text-foreground">
                       {item.q}
                     </h3>
                     <span
                       className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 ${
                         isOpen
-                          ? "bg-slate-900 border-slate-900 text-white rotate-180"
-                          : "bg-white border-slate-200 text-slate-700"
+                          ? "bg-gradient-to-br from-primary to-accent border-transparent text-primary-foreground rotate-180"
+                          : "bg-card border-border text-foreground/70"
                       }`}
                     >
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -90,7 +90,7 @@ const FAQ = () => {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 md:px-8 pb-6 md:pb-7 text-sm md:text-[15px] leading-relaxed text-slate-600 max-w-2xl">
+                      <p className="px-6 md:px-8 pb-6 md:pb-7 text-sm md:text-[15px] leading-relaxed text-muted-foreground max-w-2xl">
                         {item.a}
                       </p>
                     </div>
@@ -103,25 +103,25 @@ const FAQ = () => {
 
         {/* CTA support box */}
         <div className="mt-16 md:mt-20">
-          <div className="relative group rounded-3xl p-[1px] bg-gradient-to-br from-violet-200/80 via-white to-indigo-200/60 shadow-[0_20px_60px_-25px_rgba(139,92,246,0.35)]">
-            <div className="relative rounded-3xl bg-gradient-to-br from-white via-[#faf8ff] to-[#f3efff] px-6 md:px-10 py-7 md:py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 overflow-hidden">
-              <div aria-hidden className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-violet-300/20 blur-3xl" />
+          <div className="relative group rounded-3xl p-[1px] bg-gradient-to-br from-primary/40 via-card to-accent/40 shadow-[0_20px_60px_-25px_hsl(var(--primary)/0.35)]">
+            <div className="relative rounded-3xl bg-gradient-to-br from-card via-background to-secondary px-6 md:px-10 py-7 md:py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 overflow-hidden">
+              <div aria-hidden className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-primary/15 blur-3xl" />
               <div className="flex items-start md:items-center gap-4 relative">
-                <div className="shrink-0 w-12 h-12 rounded-2xl bg-white border border-violet-100 shadow-sm flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-violet-600" />
+                <div className="shrink-0 w-12 h-12 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="text-lg md:text-xl font-semibold text-slate-900">
+                  <h4 className="text-lg md:text-xl font-semibold text-foreground">
                     Still have questions?
                   </h4>
-                  <p className="text-sm text-slate-600 mt-0.5">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Try our AI assistant or book a quick strategy call.
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setChatOpen(true)}
-                className="relative inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-lg group/btn"
+                className="relative inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg group/btn"
               >
                 Chat with AI
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
