@@ -157,7 +157,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                 boxShadow: "0 4px 12px -2px rgba(167,139,250,0.15)",
               }}
             >
-              <Sparkles className="w-3.5 h-3.5" style={{ color: "#7c3aed" }} />
+              <CalculatorIcon size={16} />
               <span
                 className="text-xs font-semibold tracking-[0.18em] uppercase"
                 style={{ color: "#7c3aed" }}
@@ -207,7 +207,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                     border: "1px solid rgba(0,0,0,0.06)",
                   }}
                 >
-                  <Sparkles className="w-4 h-4" style={{ color: "#0f172a" }} />
+                  <CalculatorIcon size={20} />
                 </div>
                 <h3
                   className="text-base sm:text-lg font-semibold"
