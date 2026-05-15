@@ -8,7 +8,7 @@ import Projects from "@/components/sections/Projects";
 import Metrics from "@/components/sections/Metrics";
 import Process from "@/components/sections/Process";
 import Stats from "@/components/sections/Stats";
-import Availability from "@/components/sections/Availability";
+
 import SocialMedia from "@/components/sections/SocialMedia";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -29,7 +29,7 @@ const Index = () => {
       <div className="reveal reveal-stagger"><TrustedBy /></div>
       <div className="reveal reveal-stagger"><Projects className="my-0 py-px" onOpenROI={() => setIsROIOpen(true)} /></div>
       <div className="reveal reveal-stagger"><Process /></div>
-      <div className="reveal reveal-stagger"><Availability /></div>
+      
       <div className="reveal reveal-stagger"><FAQ /></div>
       <div className="reveal reveal-stagger"><Contact /></div>
       <div className="reveal reveal-stagger"><SocialMedia className="py-px rounded-2xl" /></div>
