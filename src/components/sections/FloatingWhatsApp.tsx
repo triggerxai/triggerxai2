@@ -92,6 +92,7 @@ const FloatingWhatsApp = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Talk to an Expert on WhatsApp"
+        data-click-sound
         className="floating-expert-cta"
       >
         <span className="floating-expert-cta__icon">
