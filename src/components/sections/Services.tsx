@@ -47,7 +47,7 @@ const services = [
   },
   {
     label: "AI Service",
-    title: "AI-Powered Social Media Automation",
+    title: "AI-Powered Social Media Management",
     description:
       "Automatically discover trends, create platform-specific content, and publish across your social channels — all without manual work.",
     image: consultingImg,
