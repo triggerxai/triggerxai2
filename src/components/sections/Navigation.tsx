@@ -63,45 +63,53 @@ const Navigation = () => {
             {/* Ambient outer glow */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 -m-3 rounded-[28px] blur-2xl opacity-70"
+              className="pointer-events-none absolute inset-0 -m-4 rounded-full blur-2xl opacity-80"
               style={{
                 background:
-                  'radial-gradient(60% 80% at 20% 50%, rgba(196,181,253,0.45) 0%, rgba(196,181,253,0) 70%), radial-gradient(60% 80% at 80% 50%, rgba(216,233,168,0.45) 0%, rgba(216,233,168,0) 70%), radial-gradient(50% 80% at 50% 50%, rgba(167,224,219,0.35) 0%, rgba(167,224,219,0) 70%)',
+                  'radial-gradient(50% 80% at 20% 50%, rgba(196,181,253,0.55) 0%, rgba(196,181,253,0) 70%), radial-gradient(50% 80% at 80% 50%, rgba(216,233,168,0.55) 0%, rgba(216,233,168,0) 70%), radial-gradient(40% 80% at 50% 50%, rgba(167,224,219,0.40) 0%, rgba(167,224,219,0) 70%)',
               }}
             />
             <div
-              className={`relative flex items-center gap-1 rounded-2xl px-2 py-1.5 backdrop-blur-xl transition-all duration-500 ${
+              className={`relative flex items-center gap-1.5 rounded-full px-2 py-1.5 backdrop-blur-xl transition-all duration-500 overflow-hidden ${
                 isScrolled
-                  ? "shadow-[0_10px_30px_rgba(15,23,42,0.10),inset_0_1px_0_rgba(255,255,255,0.7)]"
-                  : "shadow-[0_6px_20px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.7)]"
+                  ? "shadow-[0_14px_36px_rgba(15,23,42,0.12),inset_0_1px_0_rgba(255,255,255,0.8)]"
+                  : "shadow-[0_10px_28px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.8)]"
               }`}
               style={{
                 background:
-                  'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,243,255,0.85) 35%, rgba(243,250,235,0.85) 70%, rgba(236,248,246,0.85) 100%)',
+                  'linear-gradient(120deg, rgba(221,214,254,0.75) 0%, rgba(214,234,222,0.78) 50%, rgba(220,240,196,0.75) 100%)',
                 border: '1px solid rgba(255,255,255,0.7)',
               }}
             >
-            <NavPill
-              label="Community"
-              href="https://www.skool.com/agents-space-1751"
-              external
-            />
-            <NavPill label="FAQs" onClick={() => setIsFAQOpen(true)} />
-            <NavPill
-              label="Resource Hub"
-              href="/resources"
-              active={location.pathname.startsWith("/resources")}
-            />
-            <NavPill
-              label="Careers"
-              href="/careers"
-              active={location.pathname.startsWith("/careers")}
-            />
-            <NavPill
-              label="ROI Cal"
-              icon={<Calculator className="w-3.5 h-3.5" />}
-              onClick={() => setIsROIOpen(true)}
-            />
+              {/* Tiny sparkle dots */}
+              <span aria-hidden className="pointer-events-none absolute inset-0">
+                <span className="absolute top-2 left-[18%] w-[2px] h-[2px] rounded-full bg-white/70" />
+                <span className="absolute bottom-3 left-[32%] w-[2px] h-[2px] rounded-full bg-white/60" />
+                <span className="absolute top-3 left-[55%] w-[1.5px] h-[1.5px] rounded-full bg-white/70" />
+                <span className="absolute bottom-2 left-[72%] w-[2px] h-[2px] rounded-full bg-white/60" />
+                <span className="absolute top-2 right-[8%] w-[1.5px] h-[1.5px] rounded-full bg-white/70" />
+              </span>
+              <NavPill
+                label="Community"
+                href="https://www.skool.com/agents-space-1751"
+                external
+              />
+              <NavPill label="FAQs" onClick={() => setIsFAQOpen(true)} />
+              <NavPill
+                label="Resource Hub"
+                href="/resources"
+                active={location.pathname.startsWith("/resources")}
+              />
+              <NavPill
+                label="Careers"
+                href="/careers"
+                active={location.pathname.startsWith("/careers")}
+              />
+              <NavPill
+                label="ROI Cal"
+                icon={<Calculator className="w-3.5 h-3.5" />}
+                onClick={() => setIsROIOpen(true)}
+              />
             </div>
           </div>
 
@@ -206,32 +214,33 @@ const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
   const base =
-    "relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300";
+    "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300 backdrop-blur-md";
   const state = active
     ? "text-[#0f172a] font-semibold"
-    : "text-[#52525b] font-medium hover:text-[#0f172a]";
+    : "text-[#1f2937] font-medium hover:text-[#0f172a]";
   const classes = `${base} ${state} group`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: '-0.005em',
-    padding: '8px 14px',
+    padding: '7px 14px',
     background: active
-      ? 'linear-gradient(135deg, rgba(196,181,253,0.35) 0%, rgba(216,233,168,0.35) 100%)'
-      : 'transparent',
+      ? 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.70) 100%)'
+      : 'linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 100%)',
+    border: '1px solid rgba(255,255,255,0.6)',
     boxShadow: active
-      ? 'inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 14px rgba(167,139,250,0.20)'
-      : 'none',
+      ? 'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)'
+      : 'inset 0 1px 0 rgba(255,255,255,0.7), 0 2px 8px rgba(15,23,42,0.04)',
   };
   const inner = (
     <>
       <span
         aria-hidden
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
           background:
-            'linear-gradient(135deg, rgba(196,181,253,0.30) 0%, rgba(216,233,168,0.30) 100%)',
+            'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,243,255,0.75) 50%, rgba(243,250,235,0.75) 100%)',
           boxShadow:
-            'inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 14px rgba(167,139,250,0.20)',
+            'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)',
         }}
       />
       <span className="relative z-10 flex items-center gap-1.5">{icon}{label}</span>
