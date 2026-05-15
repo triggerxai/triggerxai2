@@ -183,9 +183,9 @@ const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
   const base =
-    "flex items-center gap-1.5 rounded-full text-[14px] transition-all duration-200";
+    "flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-200 hover:bg-black/[0.04]";
   const state = active
-    ? "text-[#0f172a] font-semibold"
+    ? "text-[#0f172a] font-semibold bg-black/[0.05]"
     : "text-[#52525b] font-medium hover:text-[#0f172a]";
   const classes = `${base} ${state}`;
   const styleProps: React.CSSProperties = {
