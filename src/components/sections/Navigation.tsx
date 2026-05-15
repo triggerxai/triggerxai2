@@ -72,13 +72,13 @@ const Navigation = () => {
             <div
               className={`relative flex items-center gap-1.5 rounded-full px-2 py-1.5 backdrop-blur-xl transition-all duration-500 overflow-hidden ${
                 isScrolled
-                  ? "shadow-[0_14px_36px_rgba(60,30,15,0.25),inset_0_1px_0_rgba(255,255,255,0.10)]"
-                  : "shadow-[0_10px_28px_rgba(60,30,15,0.20),inset_0_1px_0_rgba(255,255,255,0.10)]"
+                  ? "shadow-[0_14px_36px_rgba(15,23,42,0.12),inset_0_1px_0_rgba(255,255,255,0.8)]"
+                  : "shadow-[0_10px_28px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.8)]"
               }`}
               style={{
                 background:
-                  'linear-gradient(120deg, #2a1810 0%, #4a2c1a 50%, #2a1810 100%)',
-                border: '1px solid rgba(232,184,74,0.15)',
+                  'linear-gradient(120deg, rgba(221,214,254,0.75) 0%, rgba(214,234,222,0.78) 50%, rgba(220,240,196,0.75) 100%)',
+                border: '1px solid rgba(255,255,255,0.7)',
               }}
             >
               {/* Tiny sparkle dots */}
@@ -214,22 +214,22 @@ const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
   const base =
-    "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300";
+    "relative flex items-center gap-1.5 rounded-full text-[13.5px] transition-all duration-300 backdrop-blur-md";
   const state = active
-    ? "text-[#f5d28a] font-bold"
-    : "text-[#f0e0c8] font-semibold hover:text-[#f5d28a]";
+    ? "text-[#5b21b6] font-bold"
+    : "text-[#6d28d9] font-semibold hover:text-[#4c1d95]";
   const classes = `${base} ${state} group`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: '-0.005em',
     padding: '7px 14px',
     background: active
-      ? 'linear-gradient(135deg, rgba(245,210,138,0.18) 0%, rgba(245,210,138,0.10) 100%)'
-      : 'transparent',
-    border: active ? '1px solid rgba(245,210,138,0.30)' : '1px solid transparent',
+      ? 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.70) 100%)'
+      : 'linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 100%)',
+    border: '1px solid rgba(255,255,255,0.6)',
     boxShadow: active
-      ? 'inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 14px rgba(245,210,138,0.12)'
-      : 'none',
+      ? 'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)'
+      : 'inset 0 1px 0 rgba(255,255,255,0.7), 0 2px 8px rgba(15,23,42,0.04)',
   };
   const inner = (
     <>
@@ -238,7 +238,9 @@ const NavPill = ({
         className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
           background:
-            'linear-gradient(135deg, rgba(245,210,138,0.14) 0%, rgba(245,210,138,0.06) 100%)',
+            'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,243,255,0.75) 50%, rgba(243,250,235,0.75) 100%)',
+          boxShadow:
+            'inset 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(167,139,250,0.22)',
         }}
       />
       <span className="relative z-10 flex items-center gap-1.5">{icon}{label}</span>
