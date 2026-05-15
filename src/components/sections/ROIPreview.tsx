@@ -1,6 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { ArrowRight, Plus } from "lucide-react";
-import sittingPerson from "@/assets/roi-sitting-person-v2.png";
+
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
