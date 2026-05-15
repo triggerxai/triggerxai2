@@ -58,9 +58,23 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden px-4 pt-24 md:pt-32 pb-8 md:pb-10">
+    <section className="relative px-3 sm:px-6 md:px-8 lg:px-10 pt-20 md:pt-28 pb-6 md:pb-10">
+      <div
+        className="relative mx-auto w-full max-w-[1400px] overflow-hidden transition-all duration-500 hover:-translate-y-0.5"
+        style={{
+          borderRadius: 'clamp(28px, 3vw, 40px)',
+          padding: 'clamp(20px, 3vw, 56px) clamp(16px, 3vw, 48px)',
+          background:
+            'linear-gradient(135deg, rgba(250,243,232,0.85) 0%, rgba(255,255,255,0.92) 45%, rgba(237,233,254,0.78) 100%)',
+          border: '1px solid rgba(255,255,255,0.7)',
+          boxShadow:
+            '0 1px 0 rgba(255,255,255,0.8) inset, 0 30px 80px -30px rgba(31,41,55,0.18), 0 12px 40px -16px rgba(167,139,250,0.18)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
+        }}
+      >
       {/* Monochrome background behind cards */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[inherit]">
         {/* Orbit Ring 1 — monochrome */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-black/[0.035] opacity-30" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -292,6 +306,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
