@@ -121,7 +121,7 @@ const Navigation = () => {
                 "_blank"
               )
             }
-            className="hidden md:inline-flex md:justify-self-end items-center px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
+            className="hidden md:inline-flex md:justify-self-end items-center px-6 py-3 rounded-2xl text-[15px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] pointer-events-auto"
             style={{
               background: '#0a0a0a',
               color: '#ffffff',
@@ -131,15 +131,15 @@ const Navigation = () => {
           >
             Book a Call
             <span
-              className="ml-2 inline-flex items-center justify-center"
+              className="ml-2.5 inline-flex items-center justify-center"
               style={{
-                width: 22,
-                height: 22,
-                borderRadius: 6,
+                width: 26,
+                height: 26,
+                borderRadius: 8,
                 background: 'rgba(255,255,255,0.10)',
               }}
             >
-              <ArrowUpRight strokeWidth={1.5} className="w-3.5 h-3.5" style={{ color: '#ffffff', opacity: 0.9 }} />
+              <ArrowUpRight strokeWidth={1.5} className="w-4 h-4" style={{ color: '#ffffff', opacity: 0.9 }} />
             </span>
           </button>
 
