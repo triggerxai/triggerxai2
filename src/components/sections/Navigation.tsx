@@ -79,7 +79,7 @@ const Navigation = () => {
           {/* Social icons */}
           <div className="hidden md:flex items-center gap-2">
             <SocialIcon
-              href="https://twitter.com"
+              href="https://x.com/Aditya_das_222"
               label="X (Twitter)"
               boxStyle={boxStyle}
             >
