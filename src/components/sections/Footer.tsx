@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Briefcase, GraduationCap, Heart, DollarSign, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Network, GraduationCap, ShieldCheck, TrendingUp, Linkedin, Youtube } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/triggerx-logo.png";
 
@@ -92,33 +92,38 @@ const Footer = () => {
             <div className="relative h-[380px] md:h-[420px]">
               {/* connecting lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none" preserveAspectRatio="none">
-                <line x1="80" y1="80" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="320" y1="80" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="70" y1="320" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="330" y1="320" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="120" y1="120" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="280" y1="120" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="115" y1="285" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="285" y1="285" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
                 <defs>
                   <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#bef264" stopOpacity="0.5" />
+                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#bef264" stopOpacity="0.6" />
                   </linearGradient>
                 </defs>
               </svg>
 
               {/* orbit rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="absolute w-[260px] h-[260px] rounded-full border border-violet-200/50" />
-                <div className="absolute w-[160px] h-[160px] rounded-full border border-lime-200/60" />
+                <div className="absolute w-[230px] h-[230px] rounded-full border border-violet-200/50" />
+                <div className="absolute w-[140px] h-[140px] rounded-full border border-lime-200/60" />
               </div>
 
-              {/* Center logo node */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-3xl bg-white shadow-xl shadow-violet-500/30 border border-black/5 flex items-center justify-center p-3">
+              {/* Center logo node — enhanced glow */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <div className="absolute inset-0 -m-8 rounded-full bg-violet-400/30 blur-2xl animate-pulse" />
+                <div className="absolute inset-0 -m-4 rounded-full bg-lime-300/20 blur-xl" />
+              </div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-3xl bg-white shadow-2xl shadow-violet-500/40 border border-black/5 flex items-center justify-center p-3 z-10">
                 <img src={logo} alt="Triggerx AI" className="w-full h-full object-contain" />
               </div>
 
               {/* Stat card 1 — top left */}
-              <div className="absolute top-0 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-violet-300/70 transition-all animate-[float_6s_ease-in-out_infinite]">
-                <div className="w-9 h-9 rounded-xl bg-violet-100 flex items-center justify-center">
-                  <Briefcase className="w-4.5 h-4.5 text-violet-600" />
+              <div className="group absolute top-8 left-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-violet-200/60 border border-white/80 px-4 py-3 flex items-center gap-3 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-violet-300/70 transition-all duration-300 animate-[float_6s_ease-in-out_infinite]">
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center shadow-md shadow-violet-400/40 group-hover:shadow-violet-500/60 group-hover:scale-110 transition-all">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 to-transparent" />
+                  <Network className="w-5 h-5 text-white relative z-10 group-hover:rotate-6 transition-transform" />
                 </div>
                 <div>
                   <div className="text-base font-bold text-gray-900 leading-tight">18+</div>
@@ -127,9 +132,10 @@ const Footer = () => {
               </div>
 
               {/* Stat card 2 — top right */}
-              <div className="absolute top-2 right-0 bg-white rounded-2xl shadow-lg shadow-lime-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-lime-300/70 transition-all animate-[float_7s_ease-in-out_infinite_0.5s]">
-                <div className="w-9 h-9 rounded-xl bg-lime-100 flex items-center justify-center">
-                  <GraduationCap className="w-4.5 h-4.5 text-lime-700" />
+              <div className="group absolute top-10 right-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-lime-200/60 border border-white/80 px-4 py-3 flex items-center gap-3 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-lime-300/70 transition-all duration-300 animate-[float_7s_ease-in-out_infinite_0.5s]">
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-lime-300 to-lime-500 flex items-center justify-center shadow-md shadow-lime-400/40 group-hover:shadow-lime-500/60 group-hover:scale-110 transition-all">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 to-transparent" />
+                  <GraduationCap className="w-5 h-5 text-lime-900 relative z-10 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
                 <div>
                   <div className="text-base font-bold text-gray-900 leading-tight">50+</div>
@@ -138,9 +144,10 @@ const Footer = () => {
               </div>
 
               {/* Stat card 3 — bottom left */}
-              <div className="absolute bottom-2 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-violet-300/70 transition-all animate-[float_8s_ease-in-out_infinite_1s]">
-                <div className="w-9 h-9 rounded-xl bg-gray-900 flex items-center justify-center">
-                  <Heart className="w-4.5 h-4.5 text-lime-300" />
+              <div className="group absolute bottom-10 left-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-violet-200/60 border border-white/80 px-4 py-3 flex items-center gap-3 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-violet-300/70 transition-all duration-300 animate-[float_8s_ease-in-out_infinite_1s]">
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-md shadow-gray-400/40 group-hover:shadow-violet-400/60 group-hover:scale-110 transition-all">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/15 to-transparent" />
+                  <ShieldCheck className="w-5 h-5 text-lime-300 relative z-10 group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
                   <div className="text-base font-bold text-gray-900 leading-tight">97%</div>
@@ -149,9 +156,10 @@ const Footer = () => {
               </div>
 
               {/* Stat card 4 — bottom right */}
-              <div className="absolute bottom-0 right-2 bg-white rounded-2xl shadow-lg shadow-lime-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-lime-300/70 transition-all animate-[float_6.5s_ease-in-out_infinite_1.5s]">
-                <div className="w-9 h-9 rounded-xl bg-lime-100 flex items-center justify-center">
-                  <DollarSign className="w-4.5 h-4.5 text-lime-700" />
+              <div className="group absolute bottom-8 right-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-lime-200/60 border border-white/80 px-4 py-3 flex items-center gap-3 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-lime-300/70 transition-all duration-300 animate-[float_6.5s_ease-in-out_infinite_1.5s]">
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-lime-400 flex items-center justify-center shadow-md shadow-violet-400/40 group-hover:shadow-lime-400/60 group-hover:scale-110 transition-all">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 to-transparent" />
+                  <TrendingUp className="w-5 h-5 text-white relative z-10 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
                 <div>
                   <div className="text-base font-bold text-gray-900 leading-tight">$50K+</div>
