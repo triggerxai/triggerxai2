@@ -4,28 +4,40 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    text: "Triggerx AI completely changed how we handle lead follow-up. What used to take hours is now fully automated.",
-    name: "Sarah K.",
-    role: "Marketing Agency",
-    initials: "SK",
+    text: "We were spending ₹40,000/month on a follow-up team that was still missing calls. Indrajit built us a voice AI system in 6 days. First week live — 14 booked site visits we would have lost. The ROI conversation was over after that.",
+    name: "Ravi Nambiar",
+    role: "Director, Nambiar Properties — Dubai",
+    initials: "RN",
   },
   {
-    text: "The AI voice assistant reduced missed calls and increased booked appointments within the first week.",
-    name: "Daniel R.",
-    role: "Dental Clinic",
-    initials: "DR",
+    text: "Law firms don't move fast. Ours does now. Every inbound inquiry gets a response in under 2 minutes, qualified before it reaches any of my associates. We've cut intake time by 70% and our close rate on consultations went up immediately.",
+    name: "Melissa Oduya",
+    role: "Founder, ClearPath Legal — Lagos & London",
+    initials: "MO",
   },
   {
-    text: "We replaced multiple manual workflows with one automated system. Huge time saver.",
-    name: "Michael T.",
-    role: "SaaS Founder",
-    initials: "MT",
+    text: "I was skeptical about AI for client-facing work. What Fluxaro built wasn't a chatbot — it was a system. Our WhatsApp response flow now handles 200+ leads a month without a single human touching it until the lead is warm. Game changer.",
+    name: "Tomáš Beneš",
+    role: "CEO, GrowStack Agency — Prague",
+    initials: "TB",
   },
   {
-    text: "Our support response time dropped dramatically after implementing their AI systems.",
-    name: "Olivia M.",
-    role: "Ecommerce Brand",
-    initials: "OM",
+    text: "Appointment booking was our biggest bottleneck. Patients would call, get missed, and book with a competitor. Now our AI handles booking 24/7, sends reminders, reschedules automatically. No-show rate dropped 40% in the first month.",
+    name: "Priya Subramaniam",
+    role: "Operations Head, HealthFirst Clinics — Bangalore",
+    initials: "PS",
+  },
+  {
+    text: "I run 3 gym locations. Following up on trial signups manually was killing us. Fluxaro automated the entire sequence — WhatsApp, SMS, the works. Paid membership conversions went up 28% in 6 weeks. Wish I'd done this 2 years ago.",
+    name: "Jake Corrigan",
+    role: "Founder, Corrigan Fitness — Manchester",
+    initials: "JC",
+  },
+  {
+    text: "In finance, speed and trust are everything. The qualification system Fluxaro built screens leads before they ever reach my team. We only speak to serious prospects now. My team's time is worth a lot — this system respects that.",
+    name: "Anwar Khalidi",
+    role: "MD, Khalidi Capital Advisors — Riyadh",
+    initials: "AK",
   },
 ];
 
@@ -88,7 +100,7 @@ const Testimonials = () => {
             }}
           >
             <p className="text-lg md:text-2xl font-medium leading-relaxed text-foreground/90">
-              "{getCard(0).text}"
+              {getCard(0).text}
             </p>
 
             <div className="flex items-center gap-4 mt-6">
