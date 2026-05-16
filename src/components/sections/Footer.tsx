@@ -35,6 +35,39 @@ const Footer = () => {
             style={{ background: "radial-gradient(circle, rgba(190,242,100,0.30) 0%, transparent 70%)", filter: "blur(60px)" }}
           />
 
+          {/* Decorative flower illustrations */}
+          <svg className="pointer-events-none absolute top-4 left-4 w-20 h-20 md:w-24 md:h-24 opacity-90 z-10" viewBox="0 0 100 100" fill="none">
+            <path d="M50 55 Q48 70 46 88" stroke="#84cc16" strokeWidth="2" strokeLinecap="round" />
+            <path d="M50 60 Q40 65 35 78" stroke="#84cc16" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M50 60 Q60 65 65 78" stroke="#84cc16" strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="38" cy="30" r="7" fill="#f97316" />
+            <circle cx="52" cy="22" r="7" fill="#fb923c" />
+            <circle cx="62" cy="34" r="7" fill="#f97316" />
+            <circle cx="45" cy="42" r="7" fill="#fb923c" />
+            <circle cx="58" cy="48" r="6" fill="#ea580c" />
+          </svg>
+          <svg className="pointer-events-none absolute top-3 right-4 w-16 h-16 md:w-20 md:h-20 opacity-90 z-10" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="50" cy="28" rx="11" ry="16" fill="#c4b5fd" />
+            <ellipse cx="72" cy="50" rx="16" ry="11" fill="#a78bfa" />
+            <ellipse cx="50" cy="72" rx="11" ry="16" fill="#c4b5fd" />
+            <ellipse cx="28" cy="50" rx="16" ry="11" fill="#a78bfa" />
+            <circle cx="50" cy="50" r="8" fill="#fde68a" />
+          </svg>
+          <svg className="pointer-events-none absolute bottom-4 left-6 w-14 h-14 md:w-16 md:h-16 opacity-90 z-10" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="50" cy="32" rx="10" ry="14" fill="#93c5fd" />
+            <ellipse cx="68" cy="50" rx="14" ry="10" fill="#60a5fa" />
+            <ellipse cx="50" cy="68" rx="10" ry="14" fill="#93c5fd" />
+            <ellipse cx="32" cy="50" rx="14" ry="10" fill="#60a5fa" />
+            <circle cx="50" cy="50" r="7" fill="#fcd34d" />
+          </svg>
+          <svg className="pointer-events-none absolute bottom-2 right-2 w-24 h-24 md:w-28 md:h-28 opacity-90 z-10" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="50" cy="22" rx="14" ry="20" fill="#86efac" />
+            <ellipse cx="78" cy="50" rx="20" ry="14" fill="#4ade80" />
+            <ellipse cx="50" cy="78" rx="14" ry="20" fill="#86efac" />
+            <ellipse cx="22" cy="50" rx="20" ry="14" fill="#4ade80" />
+            <circle cx="50" cy="50" r="11" fill="#fef3c7" stroke="#facc15" strokeWidth="1.5" />
+          </svg>
+
           <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 p-10 md:p-14">
             {/* Left */}
             <div className="flex flex-col justify-center">
