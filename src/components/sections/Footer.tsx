@@ -1,55 +1,231 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Workflow, Bot, Zap, Network, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useState } from "react";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmail("");
   };
 
   return (
-    <footer className="relative overflow-hidden bg-white pt-16 pb-0" style={{ height: "280px" }}>
-      {/* Scroll to top button */}
-      
+    <footer className="relative overflow-hidden bg-[#fafaf7] pt-20 pb-0">
+      {/* Ambient glows */}
+      <div
+        className="pointer-events-none absolute -top-20 -left-20 w-[480px] h-[480px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%)", filter: "blur(60px)" }}
+      />
+      <div
+        className="pointer-events-none absolute top-40 -right-20 w-[520px] h-[520px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(190,242,100,0.18) 0%, transparent 70%)", filter: "blur(70px)" }}
+      />
 
+      {/* ========== Top CTA Card ========== */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative rounded-[36px] overflow-hidden border border-black/5 bg-white shadow-[0_30px_80px_-30px_rgba(79,70,229,0.25)]">
+          {/* card glows */}
+          <div
+            className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full"
+            style={{ background: "radial-gradient(circle, rgba(167,139,250,0.35) 0%, transparent 70%)", filter: "blur(50px)" }}
+          />
+          <div
+            className="pointer-events-none absolute -bottom-24 right-1/3 w-96 h-96 rounded-full"
+            style={{ background: "radial-gradient(circle, rgba(190,242,100,0.30) 0%, transparent 70%)", filter: "blur(60px)" }}
+          />
 
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 p-10 md:p-14">
+            {/* Left */}
+            <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-black/5 backdrop-blur text-xs font-medium text-gray-700 mb-6">
+                <Sparkles className="w-3.5 h-3.5 text-violet-500" />
+                Work With Triggerx AI
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.05]">
+                Build AI Systems That Actually Drive Revenue
+              </h2>
+              <p className="mt-5 text-base md:text-lg text-gray-600 max-w-lg">
+                Automate lead generation, conversations, follow-ups, and operations with custom AI workflows.
+              </p>
+              <div className="mt-8">
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-3.5 text-sm font-medium hover:bg-black transition-all shadow-lg shadow-gray-900/20"
+                >
+                  Book A Free Audit Call
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
 
+            {/* Right — AI workflow visual */}
+            <div className="relative h-[340px] md:h-[400px]">
+              {/* orbit grid */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute w-[280px] h-[280px] rounded-full border border-violet-200/60" />
+                <div className="absolute w-[200px] h-[200px] rounded-full border border-lime-200/70" />
+                <div className="absolute w-[120px] h-[120px] rounded-full border border-violet-200/60" />
+              </div>
 
+              {/* connecting lines (svg) */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
+                <line x1="80" y1="90" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="320" y1="80" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="70" y1="310" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="330" y1="320" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#bef264" stopOpacity="0.6" />
+                  </linearGradient>
+                </defs>
+              </svg>
 
+              {/* Center node */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-violet-700 shadow-xl shadow-violet-500/40 flex items-center justify-center">
+                <Bot className="w-9 h-9 text-white" />
+              </div>
 
+              {/* Floating cards */}
+              <div className="absolute top-2 left-2 bg-white rounded-2xl shadow-lg shadow-violet-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_6s_ease-in-out_infinite]">
+                <div className="w-8 h-8 rounded-lg bg-violet-100 flex items-center justify-center">
+                  <Workflow className="w-4 h-4 text-violet-600" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-semibold text-gray-900">Workflow</div>
+                  <div className="text-[9px] text-gray-500">Active</div>
+                </div>
+              </div>
 
-      
+              <div className="absolute top-4 right-2 bg-white rounded-2xl shadow-lg shadow-lime-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_7s_ease-in-out_infinite_0.5s]">
+                <div className="w-8 h-8 rounded-lg bg-lime-100 flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-lime-600" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-semibold text-gray-900">Trigger</div>
+                  <div className="text-[9px] text-gray-500">Live</div>
+                </div>
+              </div>
 
-      {/* Footer links */}
-      <div className="flex justify-center items-center gap-3 mb-10 text-base font-medium" style={{ letterSpacing: "0.5px" }}>
-        <span className="text-gray-600">© 2026 TRIGGERX AI</span>
-        <span className="text-gray-400">·</span>
-        <a href="/privacy-policy" className="text-gray-600 hover:text-gray-900 transition-colors">Privacy</a>
-        <span className="text-gray-400">·</span>
-        <a href="/terms-of-service" className="text-gray-600 hover:text-gray-900 transition-colors">Terms</a>
+              <div className="absolute bottom-4 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_8s_ease-in-out_infinite_1s]">
+                <div className="w-8 h-8 rounded-lg bg-gray-900 flex items-center justify-center">
+                  <Network className="w-4 h-4 text-lime-300" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-semibold text-gray-900">Connected</div>
+                  <div className="text-[9px] text-gray-500">12 nodes</div>
+                </div>
+              </div>
+
+              <div className="absolute bottom-2 right-4 bg-white rounded-2xl shadow-lg shadow-lime-200/50 border border-black/5 px-3.5 py-2.5 animate-[float_6.5s_ease-in-out_infinite_1.5s]">
+                <div className="text-[10px] text-gray-500">Conversion</div>
+                <div className="text-sm font-bold text-gray-900">+248%</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Large cropped background typography */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center select-none pointer-events-none" style={{ lineHeight: 0.85 }}>
-        {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10" style={{ background: "linear-gradient(to right, white, transparent)" }} />
-        {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10" style={{ background: "linear-gradient(to left, white, transparent)" }} />
-        {/* Left glow */}
-        <div className="absolute left-8 top-1/2 -translate-y-1/2 w-36 h-24 rounded-full" style={{ background: "radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%)", filter: "blur(30px)" }} />
-        {/* Right glow */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 w-36 h-24 rounded-full" style={{ background: "radial-gradient(circle, rgba(147,51,234,0.06) 0%, transparent 70%)", filter: "blur(30px)" }} />
+      {/* ========== Footer Columns ========== */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 mt-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-16">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center shadow-md shadow-violet-500/30">
+                <Sparkles className="w-4 h-4 text-white" />
+              </div>
+              <span className="font-bold text-gray-900 tracking-tight">TRIGGERX AI</span>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
+              AI automation systems for modern businesses, agencies, and fast-growing teams.
+            </p>
+          </div>
 
+          {/* Navigation */}
+          <div>
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">Navigation</h4>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#community" className="hover:text-gray-900 transition-colors">Community</a></li>
+              <li><a href="#careers" className="hover:text-gray-900 transition-colors">Careers</a></li>
+              <li><a href="#roi" className="hover:text-gray-900 transition-colors">ROI Calculator</a></li>
+              <li><a href="#cases" className="hover:text-gray-900 transition-colors">Case Studies</a></li>
+            </ul>
+          </div>
+
+          {/* Socials */}
+          <div>
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">Socials</h4>
+            <ul className="space-y-3 text-sm text-gray-600">
+              <li><a href="#" className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"><Twitter className="w-3.5 h-3.5" /> X / Twitter</a></li>
+              <li><a href="#" className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"><Instagram className="w-3.5 h-3.5" /> Instagram</a></li>
+              <li><a href="#" className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"><Linkedin className="w-3.5 h-3.5" /> LinkedIn</a></li>
+              <li><a href="#" className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"><Youtube className="w-3.5 h-3.5" /> YouTube</a></li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="col-span-2 md:col-span-1">
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">Newsletter</h4>
+            <p className="text-sm text-gray-600 mb-4">
+              Get AI automation insights, system updates, and new resources.
+            </p>
+            <form onSubmit={handleSubmit} className="relative">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@email.com"
+                className="w-full rounded-full bg-white border border-black/10 pl-4 pr-12 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-300 transition-all"
+              />
+              <button
+                type="submit"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-black transition-colors"
+                aria-label="Subscribe"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom row */}
+        <div className="relative border-t border-black/5 py-6 flex flex-wrap justify-center md:justify-between items-center gap-3 text-sm text-gray-600">
+          <div>© 2026 TRIGGERX AI</div>
+          <div className="flex items-center gap-3">
+            <a href="/privacy-policy" className="hover:text-gray-900 transition-colors">Privacy</a>
+            <span className="text-gray-300">·</span>
+            <a href="/terms-of-service" className="hover:text-gray-900 transition-colors">Terms</a>
+          </div>
+        </div>
+      </div>
+
+      {/* ========== Large faded TRIGGERX AI typography ========== */}
+      <div className="relative z-0 flex justify-center select-none pointer-events-none overflow-hidden" style={{ lineHeight: 0.85 }}>
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10" style={{ background: "linear-gradient(to right, #fafaf7, transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10" style={{ background: "linear-gradient(to left, #fafaf7, transparent)" }} />
+        <div className="absolute left-8 top-1/2 -translate-y-1/2 w-36 h-24 rounded-full" style={{ background: "radial-gradient(circle, rgba(167,139,250,0.10) 0%, transparent 70%)", filter: "blur(30px)" }} />
+        <div className="absolute right-8 top-1/2 -translate-y-1/2 w-36 h-24 rounded-full" style={{ background: "radial-gradient(circle, rgba(190,242,100,0.10) 0%, transparent 70%)", filter: "blur(30px)" }} />
         <span
-          className="font-extrabold tracking-tighter whitespace-nowrap translate-y-[45%]"
+          className="font-extrabold tracking-tighter whitespace-nowrap translate-y-[35%]"
           style={{
             fontSize: "clamp(5rem, 15vw, 14rem)",
-            color: "rgba(15,23,42,0.07)"
-          }}>
-          
+            color: "rgba(15,23,42,0.07)",
+          }}
+        >
           TRIGGERX AI
         </span>
       </div>
-    </footer>);
 
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+        }
+      `}</style>
+    </footer>
+  );
 };
 
 export default Footer;
