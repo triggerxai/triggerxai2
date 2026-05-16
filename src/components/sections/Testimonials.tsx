@@ -103,18 +103,9 @@ const Testimonials = () => {
               {getCard(0).text}
             </p>
 
-            <div className="flex items-center gap-4 mt-6">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center font-semibold text-foreground"
-                  style={{ background: "var(--gradient-accent)" }}>
-                  {getCard(0).initials}
-                </div>
-                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" />
-              </div>
-              <div>
-                <div className="font-semibold text-foreground">{getCard(0).name}</div>
-                <div className="text-sm text-muted-foreground">{getCard(0).role}</div>
-              </div>
+            <div className="mt-6">
+              <div className="font-semibold text-foreground">{getCard(0).name}</div>
+              <div className="text-sm text-muted-foreground">{getCard(0).role}</div>
             </div>
           </div>
         </div>
