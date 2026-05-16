@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Briefcase, GraduationCap, Heart, DollarSign, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Network, GraduationCap, ShieldCheck, TrendingUp, Linkedin, Youtube } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/triggerx-logo.png";
 
