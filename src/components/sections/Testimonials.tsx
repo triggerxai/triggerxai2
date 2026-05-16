@@ -28,7 +28,7 @@ const testimonials = [
     initials: "PS",
   },
   {
-    text: "I run 3 gym locations. Following up on trial signups manually was killing us. Fluxaro automated the entire sequence — WhatsApp, SMS, the works. Paid membership conversions went up 28% in 6 weeks. Wish I'd done this 2 years ago.",
+    text: "I run 3 gym locations. Following up on trial signups manually was killing us. Fluxaro automated the entire sequence WhatsApp, SMS, the works. Paid membership conversions went up 28% in 6 weeks. Wish I'd done this 2 years ago.",
     name: "Jake Corrigan",
     role: "Founder, Corrigan Fitness — Manchester",
     initials: "JC",
