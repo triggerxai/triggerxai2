@@ -88,7 +88,7 @@ const Navigation = () => {
               </svg>
             </SocialIcon>
             <SocialIcon
-              href="https://instagram.com"
+              href="https://www.instagram.com/aditya_das_222/"
               label="Instagram"
               boxStyle={boxStyle}
             >
