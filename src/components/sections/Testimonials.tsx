@@ -93,17 +93,24 @@ const Testimonials = () => {
           {/* Active card */}
           <div
             key={index}
-            className="relative w-full md:w-[80%] h-full rounded-3xl border border-white/80 shadow-2xl p-8 md:p-12 flex flex-col justify-between transition-transform duration-500 hover:-translate-y-1 animate-fade-in"
+            onCopy={(e) => e.preventDefault()}
+            onCut={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            className="relative w-full md:w-[80%] h-full rounded-3xl border border-white/80 shadow-2xl p-8 md:p-12 flex flex-col justify-between transition-transform duration-500 hover:-translate-y-1 animate-fade-in select-none"
             style={{
               background: "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.75))",
               backdropFilter: "blur(20px)",
+              WebkitUserSelect: "none",
+              userSelect: "none",
+              WebkitTouchCallout: "none",
             }}
           >
-            <p className="text-lg md:text-2xl font-medium leading-relaxed text-foreground/90">
+            <p className="text-lg md:text-2xl font-medium leading-relaxed text-foreground/90 select-none">
               {getCard(0).text}
             </p>
 
-            <div className="mt-6">
+            <div className="mt-6 select-none">
               <div className="font-semibold text-foreground">{getCard(0).name}</div>
               <div className="text-sm text-muted-foreground">{getCard(0).role}</div>
             </div>
