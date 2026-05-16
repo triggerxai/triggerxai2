@@ -16,7 +16,7 @@ const testimonials = [
     initials: "MO",
   },
   {
-    text: "I was skeptical about AI for client-facing work. What Fluxaro built wasn't a chatbot — it was a system. Our WhatsApp response flow now handles 200+ leads a month without a single human touching it until the lead is warm. Game changer.",
+    text: "I was skeptical about AI for client-facing work. What Fluxaro built wasn't a chatbot it was a system. Our WhatsApp response flow now handles 200+ leads a month without a single human touching it until the lead is warm. Game changer.",
     name: "Tomáš Beneš",
     role: "CEO, GrowStack Agency — Prague",
     initials: "TB",
