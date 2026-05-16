@@ -1,5 +1,6 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Workflow, Bot, Zap, Network, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Briefcase, GraduationCap, Heart, DollarSign, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/triggerx-logo.png";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -58,68 +59,75 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Right — AI workflow visual */}
-            <div className="relative h-[340px] md:h-[400px]">
-              {/* orbit grid */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="absolute w-[280px] h-[280px] rounded-full border border-violet-200/60" />
-                <div className="absolute w-[200px] h-[200px] rounded-full border border-lime-200/70" />
-                <div className="absolute w-[120px] h-[120px] rounded-full border border-violet-200/60" />
-              </div>
-
-              {/* connecting lines (svg) */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
-                <line x1="80" y1="90" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="320" y1="80" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="70" y1="310" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="330" y1="320" x2="200" y2="200" stroke="url(#g1)" strokeWidth="1.5" strokeDasharray="4 4" />
+            {/* Right — Interactive stats visual */}
+            <div className="relative h-[380px] md:h-[420px]">
+              {/* connecting lines */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none" preserveAspectRatio="none">
+                <line x1="80" y1="80" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="320" y1="80" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="70" y1="320" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="330" y1="320" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
                 <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.6" />
-                    <stop offset="100%" stopColor="#bef264" stopOpacity="0.6" />
+                  <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#bef264" stopOpacity="0.5" />
                   </linearGradient>
                 </defs>
               </svg>
 
-              {/* Center node */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-violet-700 shadow-xl shadow-violet-500/40 flex items-center justify-center">
-                <Bot className="w-9 h-9 text-white" />
+              {/* orbit rings */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="absolute w-[260px] h-[260px] rounded-full border border-violet-200/50" />
+                <div className="absolute w-[160px] h-[160px] rounded-full border border-lime-200/60" />
               </div>
 
-              {/* Floating cards */}
-              <div className="absolute top-2 left-2 bg-white rounded-2xl shadow-lg shadow-violet-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_6s_ease-in-out_infinite]">
-                <div className="w-8 h-8 rounded-lg bg-violet-100 flex items-center justify-center">
-                  <Workflow className="w-4 h-4 text-violet-600" />
+              {/* Center logo node */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-3xl bg-white shadow-xl shadow-violet-500/30 border border-black/5 flex items-center justify-center p-3">
+                <img src={logo} alt="Triggerx AI" className="w-full h-full object-contain" />
+              </div>
+
+              {/* Stat card 1 — top left */}
+              <div className="absolute top-0 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-violet-300/70 transition-all animate-[float_6s_ease-in-out_infinite]">
+                <div className="w-9 h-9 rounded-xl bg-violet-100 flex items-center justify-center">
+                  <Briefcase className="w-4.5 h-4.5 text-violet-600" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-semibold text-gray-900">Workflow</div>
-                  <div className="text-[9px] text-gray-500">Active</div>
+                  <div className="text-base font-bold text-gray-900 leading-tight">18+</div>
+                  <div className="text-[10px] text-gray-500 leading-tight">Businesses Work With Us</div>
                 </div>
               </div>
 
-              <div className="absolute top-4 right-2 bg-white rounded-2xl shadow-lg shadow-lime-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_7s_ease-in-out_infinite_0.5s]">
-                <div className="w-8 h-8 rounded-lg bg-lime-100 flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-lime-600" />
+              {/* Stat card 2 — top right */}
+              <div className="absolute top-2 right-0 bg-white rounded-2xl shadow-lg shadow-lime-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-lime-300/70 transition-all animate-[float_7s_ease-in-out_infinite_0.5s]">
+                <div className="w-9 h-9 rounded-xl bg-lime-100 flex items-center justify-center">
+                  <GraduationCap className="w-4.5 h-4.5 text-lime-700" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-semibold text-gray-900">Trigger</div>
-                  <div className="text-[9px] text-gray-500">Live</div>
+                  <div className="text-base font-bold text-gray-900 leading-tight">50+</div>
+                  <div className="text-[10px] text-gray-500 leading-tight">People Taught</div>
                 </div>
               </div>
 
-              <div className="absolute bottom-4 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/50 border border-black/5 px-3.5 py-2.5 flex items-center gap-2 animate-[float_8s_ease-in-out_infinite_1s]">
-                <div className="w-8 h-8 rounded-lg bg-gray-900 flex items-center justify-center">
-                  <Network className="w-4 h-4 text-lime-300" />
+              {/* Stat card 3 — bottom left */}
+              <div className="absolute bottom-2 left-0 bg-white rounded-2xl shadow-lg shadow-violet-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-violet-300/70 transition-all animate-[float_8s_ease-in-out_infinite_1s]">
+                <div className="w-9 h-9 rounded-xl bg-gray-900 flex items-center justify-center">
+                  <Heart className="w-4.5 h-4.5 text-lime-300" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-semibold text-gray-900">Connected</div>
-                  <div className="text-[9px] text-gray-500">12 nodes</div>
+                  <div className="text-base font-bold text-gray-900 leading-tight">97%</div>
+                  <div className="text-[10px] text-gray-500 leading-tight">Client Satisfaction</div>
                 </div>
               </div>
 
-              <div className="absolute bottom-2 right-4 bg-white rounded-2xl shadow-lg shadow-lime-200/50 border border-black/5 px-3.5 py-2.5 animate-[float_6.5s_ease-in-out_infinite_1.5s]">
-                <div className="text-[10px] text-gray-500">Conversion</div>
-                <div className="text-sm font-bold text-gray-900">+248%</div>
+              {/* Stat card 4 — bottom right */}
+              <div className="absolute bottom-0 right-2 bg-white rounded-2xl shadow-lg shadow-lime-200/60 border border-black/5 px-4 py-3 flex items-center gap-3 hover:-translate-y-1 hover:shadow-lime-300/70 transition-all animate-[float_6.5s_ease-in-out_infinite_1.5s]">
+                <div className="w-9 h-9 rounded-xl bg-lime-100 flex items-center justify-center">
+                  <DollarSign className="w-4.5 h-4.5 text-lime-700" />
+                </div>
+                <div>
+                  <div className="text-base font-bold text-gray-900 leading-tight">$50K+</div>
+                  <div className="text-[10px] text-gray-500 leading-tight">Generated For Clients</div>
+                </div>
               </div>
             </div>
           </div>
@@ -131,9 +139,9 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center shadow-md shadow-violet-500/30">
-                <Sparkles className="w-4 h-4 text-white" />
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-white border border-black/5 shadow-md shadow-violet-500/20 flex items-center justify-center p-1">
+                <img src={logo} alt="Triggerx AI" className="w-full h-full object-contain" />
               </div>
               <span className="font-bold text-gray-900 tracking-tight">TRIGGERX AI</span>
             </div>
