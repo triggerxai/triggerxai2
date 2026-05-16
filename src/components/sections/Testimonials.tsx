@@ -34,7 +34,7 @@ const testimonials = [
     initials: "JC",
   },
   {
-    text: "In finance, speed and trust are everything. The qualification system Fluxaro built screens leads before they ever reach my team. We only speak to serious prospects now. My team's time is worth a lot — this system respects that.",
+    text: "In finance, speed and trust are everything. The qualification system Fluxaro built screens leads before they ever reach my team. We only speak to serious prospects now. My team's time is worth a lot this system respects that.",
     name: "Anwar Khalidi",
     role: "MD, Khalidi Capital Advisors — Riyadh",
     initials: "AK",
