@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    text: "We were spending ₹40,000/month on a follow-up team that was still missing calls. Indrajit built us a voice AI system in 6 days. First week live — 14 booked site visits we would have lost. The ROI conversation was over after that.",
+    text: "We were spending ₹40,000/month on a follow-up team that was still missing calls. Indrajit built us a voice AI system in 6 days. First week live 14 booked site visits we would have lost. The ROI conversation was over after that.",
     name: "Ravi Nambiar",
     role: "Director, Nambiar Properties — Dubai",
     initials: "RN",
