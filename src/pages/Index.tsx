@@ -6,7 +6,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import Projects from "@/components/sections/Projects";
 import Process from "@/components/sections/Process";
 import Stats from "@/components/sections/Stats";
-import SocialMedia from "@/components/sections/SocialMedia";
+
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
@@ -33,7 +33,7 @@ const Index = () => {
       
       <div className="reveal reveal-stagger"><FAQ /></div>
       <div className="reveal reveal-stagger"><Contact /></div>
-      <div className="reveal reveal-stagger"><SocialMedia className="py-px rounded-2xl" /></div>
+      
       <Footer />
       <FloatingWhatsApp />
       
