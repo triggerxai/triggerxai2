@@ -38,10 +38,6 @@ const Footer = () => {
           <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 p-10 md:p-14">
             {/* Left */}
             <div className="flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-black/5 backdrop-blur text-xs font-medium text-gray-700 mb-6">
-                <Sparkles className="w-3.5 h-3.5 text-violet-500" />
-                Work With Triggerx AI
-              </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.05]">
                 Build AI Systems That Actually Drive Revenue
               </h2>
