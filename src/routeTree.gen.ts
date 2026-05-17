@@ -15,6 +15,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ClientPortalRouteImport } from './routes/client-portal'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ROIRouteImport } from './routes/ROI'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VoiceAgentSupportRouteImport } from './routes/voice-agent.support'
 import { Route as VoiceAgentOutcomeRouteImport } from './routes/voice-agent.outcome'
@@ -51,6 +52,11 @@ const CareersRoute = CareersRouteImport.update({
   path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ROIRoute = ROIRouteImport.update({
+  id: '/ROI',
+  path: '/ROI',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -79,6 +85,7 @@ const ChatbotsOutcomeRoute = ChatbotsOutcomeRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ROI': typeof ROIRoute
   '/careers': typeof CareersRoute
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -92,6 +99,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ROI': typeof ROIRoute
   '/careers': typeof CareersRoute
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -106,6 +114,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ROI': typeof ROIRoute
   '/careers': typeof CareersRoute
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ROI'
     | '/careers'
     | '/client-portal'
     | '/privacy-policy'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ROI'
     | '/careers'
     | '/client-portal'
     | '/privacy-policy'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ROI'
     | '/careers'
     | '/client-portal'
     | '/privacy-policy'
@@ -161,6 +173,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ROIRoute: typeof ROIRoute
   CareersRoute: typeof CareersRoute
   ClientPortalRoute: typeof ClientPortalRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ROI': {
+      id: '/ROI'
+      path: '/ROI'
+      fullPath: '/ROI'
+      preLoaderRoute: typeof ROIRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -257,6 +277,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ROIRoute: ROIRoute,
   CareersRoute: CareersRoute,
   ClientPortalRoute: ClientPortalRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
