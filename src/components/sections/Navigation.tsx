@@ -195,7 +195,7 @@ const Navigation = () => {
 const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
-  const classes = `relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300 hover:bg-[#f5f5f7] ${
+  const classes = `group relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300 hover:bg-[#f5f5f7] ${
     active ? "text-black font-bold" : "text-[#0a0a0a] font-semibold"
   }`;
   const styleProps: React.CSSProperties = {
@@ -203,7 +203,16 @@ const NavPill = ({
     letterSpacing: "-0.005em",
     padding: "8px 16px",
   };
-  const inner = <>{icon}{label}</>;
+  const inner = (
+    <>
+      {icon}
+      {label}
+      <ArrowUpRight
+        strokeWidth={1.5}
+        className="w-3 h-3 -ml-0.5 text-[#0a0a0a]/40 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:-translate-y-0.5 group-hover:text-violet-500"
+      />
+    </>
+  );
   if (onClick) {
     return <button onClick={onClick} data-click-sound className={classes} style={styleProps}>{inner}</button>;
   }
