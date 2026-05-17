@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-[#fafaf7] pt-20 pb-0">
+    <footer className="relative overflow-hidden bg-[#fafaf7] pt-14 pb-0">
       {/* Ambient glows */}
       <div
         className="pointer-events-none absolute -top-20 -left-20 w-[480px] h-[480px] rounded-full"
@@ -60,27 +60,36 @@ const Footer = () => {
             <ellipse cx="32" cy="50" rx="14" ry="10" fill="#60a5fa" />
             <circle cx="50" cy="50" r="7" fill="#fcd34d" />
           </svg>
-          <svg className="pointer-events-none absolute bottom-2 right-2 w-24 h-24 md:w-28 md:h-28 opacity-90 z-10" viewBox="0 0 100 100" fill="none">
-            <ellipse cx="50" cy="22" rx="14" ry="20" fill="#86efac" />
-            <ellipse cx="78" cy="50" rx="20" ry="14" fill="#4ade80" />
-            <ellipse cx="50" cy="78" rx="14" ry="20" fill="#86efac" />
-            <ellipse cx="22" cy="50" rx="20" ry="14" fill="#4ade80" />
-            <circle cx="50" cy="50" r="11" fill="#fef3c7" stroke="#facc15" strokeWidth="1.5" />
+          {/* Minimal geometric decorative element — bottom right */}
+          <svg className="pointer-events-none absolute bottom-4 right-4 w-16 h-16 md:w-20 md:h-20 opacity-80 z-10" viewBox="0 0 100 100" fill="none">
+            <defs>
+              <linearGradient id="geoGrad1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#a78bfa" />
+                <stop offset="100%" stopColor="#bef264" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="32" stroke="url(#geoGrad1)" strokeWidth="1" fill="none" opacity="0.5" />
+            <circle cx="50" cy="50" r="20" stroke="url(#geoGrad1)" strokeWidth="1" fill="none" opacity="0.7" />
+            <circle cx="50" cy="50" r="4" fill="url(#geoGrad1)" />
+            <circle cx="82" cy="50" r="2" fill="#a78bfa" />
+            <circle cx="50" cy="18" r="1.5" fill="#bef264" />
+            <circle cx="18" cy="50" r="1.5" fill="#a78bfa" />
+            <circle cx="70" cy="30" r="1" fill="#bef264" opacity="0.8" />
           </svg>
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 p-10 md:p-14">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 md:p-10">
             {/* Left */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-[1.05]">
                 Build AI Systems That Actually Drive Revenue
               </h2>
-              <p className="mt-5 text-base md:text-lg text-gray-600 max-w-lg">
+              <p className="mt-4 text-sm md:text-base text-gray-600 max-w-lg">
                 Automate lead generation, conversations, follow-ups, and operations with custom AI workflows.
               </p>
-              <div className="mt-8">
+              <div className="mt-6">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-3.5 text-sm font-medium hover:bg-black transition-all shadow-lg shadow-gray-900/20"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-5 py-3 text-sm font-medium hover:bg-black transition-all shadow-lg shadow-gray-900/20"
                 >
                   Book A Free Audit Call
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -89,7 +98,7 @@ const Footer = () => {
             </div>
 
             {/* Right — Interactive stats visual */}
-            <div className="relative h-[380px] md:h-[420px]">
+            <div className="relative h-[300px] md:h-[340px]">
               {/* connecting lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none" preserveAspectRatio="none">
                 <line x1="120" y1="120" x2="200" y2="200" stroke="url(#fg1)" strokeWidth="1.5" strokeDasharray="4 4" />
@@ -106,8 +115,8 @@ const Footer = () => {
 
               {/* orbit rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="absolute w-[230px] h-[230px] rounded-full border border-violet-200/50" />
-                <div className="absolute w-[140px] h-[140px] rounded-full border border-lime-200/60" />
+                <div className="absolute w-[200px] h-[200px] rounded-full border border-violet-200/50" />
+                <div className="absolute w-[120px] h-[120px] rounded-full border border-lime-200/60" />
               </div>
 
               {/* Center logo node — enhanced glow */}
@@ -115,7 +124,7 @@ const Footer = () => {
                 <div className="absolute inset-0 -m-8 rounded-full bg-violet-400/30 blur-2xl animate-pulse" />
                 <div className="absolute inset-0 -m-4 rounded-full bg-lime-300/20 blur-xl" />
               </div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-3xl bg-white shadow-2xl shadow-violet-500/40 border border-black/5 flex items-center justify-center p-3 z-10">
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-2xl bg-white shadow-2xl shadow-violet-500/40 border border-black/5 flex items-center justify-center p-2.5 z-10">
                 <img src={logo} alt="Triggerx AI" className="w-full h-full object-contain" />
               </div>
 
@@ -172,8 +181,8 @@ const Footer = () => {
       </div>
 
       {/* ========== Footer Columns ========== */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 mt-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 mt-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
