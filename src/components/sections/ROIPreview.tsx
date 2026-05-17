@@ -1,69 +1,9 @@
 import { useInView } from "react-intersection-observer";
-import { ArrowRight, Plus } from "lucide-react";
-
+import { ArrowUpRight, Calculator, Clock, DollarSign, Users, TrendingUp } from "lucide-react";
 
 interface ROIPreviewProps {
   onOpenROI?: () => void;
 }
-
-/* Premium glossy calculator app icon */
-const CalculatorIcon = ({ size = 18 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 40 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{
-      filter: "drop-shadow(0 2px 4px rgba(15,23,42,0.25))",
-    }}
-  >
-    <defs>
-      <linearGradient id="calcBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#2a2740" />
-        <stop offset="55%" stopColor="#16121f" />
-        <stop offset="100%" stopColor="#0a0810" />
-      </linearGradient>
-      <linearGradient id="calcScreen" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#fbf9f5" />
-        <stop offset="100%" stopColor="#e9e2d3" />
-      </linearGradient>
-      <linearGradient id="calcGloss" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.35)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-      </linearGradient>
-    </defs>
-    {/* Body */}
-    <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#calcBody)" />
-    {/* Top gloss */}
-    <rect x="2" y="2" width="36" height="16" rx="9" fill="url(#calcGloss)" />
-    {/* Screen */}
-    <rect x="7" y="7" width="26" height="9" rx="2.2" fill="url(#calcScreen)" />
-    <rect
-      x="7"
-      y="7"
-      width="26"
-      height="3.5"
-      rx="2.2"
-      fill="rgba(255,255,255,0.6)"
-    />
-    {/* Buttons row 1 */}
-    <circle cx="10.5" cy="22" r="2.2" fill="#3a3450" />
-    <circle cx="17" cy="22" r="2.2" fill="#3a3450" />
-    <circle cx="23.5" cy="22" r="2.2" fill="#3a3450" />
-    <circle cx="30" cy="22" r="2.2" fill="#bef264" />
-    {/* Buttons row 2 */}
-    <circle cx="10.5" cy="28" r="2.2" fill="#3a3450" />
-    <circle cx="17" cy="28" r="2.2" fill="#3a3450" />
-    <circle cx="23.5" cy="28" r="2.2" fill="#3a3450" />
-    <circle cx="30" cy="28" r="2.2" fill="#c4b5fd" />
-    {/* Buttons row 3 */}
-    <circle cx="10.5" cy="34" r="2.2" fill="#3a3450" />
-    <circle cx="17" cy="34" r="2.2" fill="#3a3450" />
-    <circle cx="23.5" cy="34" r="2.2" fill="#3a3450" />
-    <circle cx="30" cy="34" r="2.2" fill="#a78bfa" />
-  </svg>
-);
 
 const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
@@ -72,212 +12,180 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
     <section className="py-10 md:py-14 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
-        className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
+        className={`relative max-w-6xl mx-auto transition-all duration-1000 ${
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/* Outer rounded container */}
+        {/* OUTER BOX */}
         <div
-          className="relative overflow-hidden rounded-[32px] px-6 sm:px-10 md:px-14 py-8 md:py-10"
+          className="relative overflow-hidden rounded-[36px] p-3 sm:p-4"
           style={{
-            background:
-              "linear-gradient(180deg, #fbf9f5 0%, #faf6ee 50%, #f7f3ea 100%)",
-            border: "1px solid rgba(0,0,0,0.04)",
+            background: "linear-gradient(180deg, #f3eff7 0%, #efeaf4 100%)",
+            border: "1px solid rgba(15,23,42,0.04)",
             boxShadow:
-              "0 30px 80px -40px rgba(120, 100, 180, 0.25), 0 10px 30px -15px rgba(0,0,0,0.06)",
+              "0 30px 80px -40px rgba(120, 100, 180, 0.25), 0 10px 30px -15px rgba(0,0,0,0.05)",
           }}
         >
-          {/* Ambient glows */}
+          {/* INNER BOX */}
           <div
-            className="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full pointer-events-none"
+            className="relative overflow-hidden rounded-[28px] px-6 sm:px-10 md:px-14 py-10 md:py-14"
             style={{
               background:
-                "radial-gradient(closest-side, rgba(196,181,253,0.55), transparent 70%)",
-              filter: "blur(40px)",
+                "linear-gradient(135deg, #faf7fb 0%, #f5f0f8 60%, #efe9f5 100%)",
+              border: "1px solid rgba(255,255,255,0.8)",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9)",
             }}
-          />
-          <div
-            className="absolute -bottom-32 -right-24 w-[460px] h-[460px] rounded-full pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(217,249,157,0.45), transparent 70%)",
-              filter: "blur(50px)",
-            }}
-          />
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(255,255,255,0.6), transparent 70%)",
-              filter: "blur(30px)",
-            }}
-          />
-
-          {/* Decorative shapes */}
-          <div
-            className="hidden md:block absolute top-10 left-12 w-16 h-16 rounded-full pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(135deg, #d9f99d 0%, #bef264 100%)",
-              opacity: 0.55,
-            }}
-          />
-          <div
-            className="hidden md:block absolute bottom-14 left-20 w-10 h-10 rounded-2xl rotate-12 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%)",
-              opacity: 0.5,
-            }}
-          />
-          <div
-            className="hidden md:block absolute top-20 right-16 w-12 h-12 rounded-full pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(135deg, #e9d5ff 0%, #c4b5fd 100%)",
-              opacity: 0.55,
-            }}
-          />
-          <div
-            className="hidden md:block absolute bottom-20 right-24 w-8 h-8 rounded-lg -rotate-12 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(135deg, #d9f99d 0%, #a3e635 100%)",
-              opacity: 0.6,
-            }}
-          />
-
-          {/* Content */}
-          <div className="relative z-10 text-center">
-            {/* Badge */}
+          >
+            {/* Soft ambient glows */}
             <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 backdrop-blur-md"
+              className="absolute -top-32 -left-24 w-[420px] h-[420px] rounded-full pointer-events-none"
               style={{
-                background: "rgba(255,255,255,0.7)",
-                border: "1px solid rgba(167,139,250,0.25)",
-                boxShadow: "0 4px 12px -2px rgba(167,139,250,0.15)",
+                background:
+                  "radial-gradient(closest-side, rgba(196,181,253,0.4), transparent 70%)",
+                filter: "blur(50px)",
               }}
-            >
-              <CalculatorIcon size={16} />
-              <span
-                className="text-xs font-semibold tracking-[0.18em] uppercase"
-                style={{ color: "#7c3aed" }}
-              >
-                ROI Calculator
-              </span>
-            </div>
-
-            {/* Heading */}
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 tracking-tight"
-              style={{ color: "#0f172a" }}
-            >
-              See Your Potential ROI
-            </h2>
-
-            {/* Subtitle */}
-            <p
-              className="text-base sm:text-lg max-w-xl mx-auto mb-8"
-              style={{ color: "#64748b" }}
-            >
-              Estimate how much time and revenue AI automation can save your
-              business.
-            </p>
-
-            {/* Preview card */}
-            <div className="relative max-w-2xl mx-auto">
-              <div
-                className="relative rounded-3xl p-6 sm:p-7 text-left transition-all duration-500"
+            />
+            <div
+              className="absolute -bottom-32 -right-24 w-[460px] h-[460px] rounded-full pointer-events-none"
               style={{
-                background: "rgba(255,255,255,0.85)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.9)",
-                boxShadow:
-                  "0 20px 50px -20px rgba(124, 58, 237, 0.18), 0 8px 20px -10px rgba(0,0,0,0.06)",
+                background:
+                  "radial-gradient(closest-side, rgba(217,249,157,0.3), transparent 70%)",
+                filter: "blur(60px)",
               }}
-            >
-              {/* Top row */}
-              <div className="flex items-center gap-3 mb-2">
+            />
+
+            {/* GRID */}
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              {/* LEFT — copy */}
+              <div className="text-left">
+                {/* Badge */}
                 <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-7"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%)",
-                    border: "1px solid rgba(0,0,0,0.06)",
+                    background: "rgba(217,249,157,0.55)",
+                    border: "1px solid rgba(163,230,53,0.35)",
                   }}
                 >
-                  <CalculatorIcon size={20} />
+                  <Calculator className="w-3.5 h-3.5" style={{ color: "#4d7c0f" }} />
+                  <span
+                    className="text-[11px] font-bold tracking-[0.18em] uppercase"
+                    style={{ color: "#4d7c0f" }}
+                  >
+                    ROI Calculator
+                  </span>
                 </div>
-                <h3
-                  className="text-base sm:text-lg font-semibold"
+
+                {/* Heading */}
+                <h2
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-[1.05]"
                   style={{ color: "#0f172a" }}
                 >
-                  Calculate Your Potential Savings
-                </h3>
-              </div>
+                  Your ROI,
+                  <br />
+                  Clearly{" "}
+                  <span style={{ color: "#7c3aed" }}>Calculated</span>
+                </h2>
 
-              <p
-                className="text-sm mb-5 ml-12"
-                style={{ color: "#6b7280" }}
-              >
-                Answer a few quick questions and see the impact AI can make.
-              </p>
+                {/* Subtitle */}
+                <p
+                  className="text-base sm:text-lg mb-8 max-w-md leading-relaxed"
+                  style={{ color: "#64748b" }}
+                >
+                  Find out the real impact AI automation can create for your
+                  business.
+                </p>
 
-              {/* Input-style row */}
-              <button
-                onClick={onOpenROI}
-                className="group w-full flex items-center gap-3 sm:gap-4 p-2 sm:p-2.5 rounded-2xl transition-all duration-300"
-                style={{
-                  background: "#fafafa",
-                  border: "1px solid rgba(0,0,0,0.06)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#f5f3ff";
-                  e.currentTarget.style.borderColor = "rgba(167,139,250,0.35)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#fafafa";
-                  e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
-                }}
-              >
-                <div
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                {/* CTA */}
+                <button
+                  onClick={onOpenROI}
+                  data-click-sound
+                  className="group inline-flex items-center gap-2.5 pl-6 pr-5 py-4 rounded-2xl font-semibold text-[15px] transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     background:
-                      "linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%)",
-                    border: "1px solid rgba(167,139,250,0.3)",
+                      "linear-gradient(135deg, #d9f99d 0%, #bef264 100%)",
+                    color: "#0f172a",
+                    boxShadow:
+                      "0 12px 28px -10px rgba(163,230,53,0.55), inset 0 1px 0 rgba(255,255,255,0.6)",
+                    border: "1px solid rgba(163,230,53,0.4)",
                   }}
                 >
-                  <Plus className="w-5 h-5" style={{ color: "#7c3aed" }} />
-                </div>
+                  Get Your ROI Estimate
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
+              </div>
 
-                <div className="flex-1 text-left">
-                  <p
-                    className="text-sm sm:text-[15px] font-semibold"
-                    style={{ color: "#0f172a" }}
-                  >
-                    Start Your Free ROI Audit
-                  </p>
-                </div>
-
-                <span
-                  className="hidden sm:inline-block text-xs font-medium mr-1"
-                  style={{ color: "#94a3b8" }}
-                >
-                  ~ 1 min
-                </span>
-
+              {/* RIGHT — Orbit calculator */}
+              <div className="relative h-[340px] sm:h-[380px] md:h-[400px] flex items-center justify-center">
+                {/* Orbit rings */}
                 <div
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+                  className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full pointer-events-none"
                   style={{
-                    background: "#0a0a0a",
-                    boxShadow: "0 6px 16px -4px rgba(0,0,0,0.3)",
+                    border: "1px dashed rgba(167,139,250,0.35)",
                   }}
-                >
-                  <ArrowRight className="w-4 h-4 text-white" />
+                />
+                <div
+                  className="absolute w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] rounded-full pointer-events-none"
+                  style={{
+                    border: "1px dashed rgba(167,139,250,0.25)",
+                  }}
+                />
+
+                {/* Tiny orbit dots */}
+                <span className="absolute top-[12%] left-[18%] w-1.5 h-1.5 rounded-full" style={{ background: "#a78bfa" }} />
+                <span className="absolute top-[78%] left-[22%] w-1.5 h-1.5 rounded-full" style={{ background: "#bef264" }} />
+                <span className="absolute top-[28%] right-[14%] w-1.5 h-1.5 rounded-full" style={{ background: "#a78bfa" }} />
+                <span className="absolute bottom-[18%] right-[20%] w-1.5 h-1.5 rounded-full" style={{ background: "#bef264" }} />
+
+                {/* Center 3D Calculator */}
+                <div className="relative z-10">
+                  <div
+                    className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] rounded-[28px] flex items-center justify-center"
+                    style={{
+                      background:
+                        "linear-gradient(160deg, #ffffff 0%, #f3eaff 55%, #e9d5ff 100%)",
+                      boxShadow:
+                        "0 30px 60px -20px rgba(124,58,237,0.45), 0 10px 20px -8px rgba(124,58,237,0.25), inset 0 2px 0 rgba(255,255,255,0.9), inset 0 -10px 20px rgba(167,139,250,0.18)",
+                      border: "1px solid rgba(255,255,255,0.9)",
+                    }}
+                  >
+                    <Calculator
+                      className="w-14 h-14 sm:w-16 sm:h-16"
+                      strokeWidth={1.8}
+                      style={{ color: "#7c3aed" }}
+                    />
+                  </div>
+                  {/* Base shadow plate */}
+                  <div
+                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[110px] sm:w-[130px] h-3 rounded-full"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse, rgba(124,58,237,0.35), transparent 70%)",
+                      filter: "blur(6px)",
+                    }}
+                  />
                 </div>
-              </button>
+
+                {/* Floating chips */}
+                <Chip
+                  className="top-[6%] left-[4%] sm:left-[6%]"
+                  icon={<Clock className="w-3.5 h-3.5" style={{ color: "#7c3aed" }} />}
+                  label="Time Saved"
+                />
+                <Chip
+                  className="top-[6%] right-[2%] sm:right-[4%]"
+                  icon={<DollarSign className="w-3.5 h-3.5" style={{ color: "#4d7c0f" }} />}
+                  label="Cost Savings"
+                />
+                <Chip
+                  className="bottom-[10%] left-[6%] sm:left-[8%]"
+                  icon={<Users className="w-3.5 h-3.5" style={{ color: "#7c3aed" }} />}
+                  label="Leads Recovered"
+                />
+                <Chip
+                  className="bottom-[10%] right-[2%] sm:right-[4%]"
+                  icon={<TrendingUp className="w-3.5 h-3.5" style={{ color: "#4d7c0f" }} />}
+                  label="Revenue Impact"
+                />
               </div>
             </div>
           </div>
@@ -286,5 +194,38 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
     </section>
   );
 };
+
+const Chip = ({
+  className = "",
+  icon,
+  label,
+}: {
+  className?: string;
+  icon: React.ReactNode;
+  label: string;
+}) => (
+  <div
+    className={`absolute inline-flex items-center gap-2 pl-2 pr-3.5 py-2 rounded-full backdrop-blur-md ${className}`}
+    style={{
+      background: "rgba(255,255,255,0.92)",
+      border: "1px solid rgba(15,23,42,0.05)",
+      boxShadow:
+        "0 8px 20px -8px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
+    }}
+  >
+    <span
+      className="w-6 h-6 rounded-full flex items-center justify-center"
+      style={{
+        background:
+          "linear-gradient(135deg, rgba(237,233,254,0.9), rgba(217,249,157,0.5))",
+      }}
+    >
+      {icon}
+    </span>
+    <span className="text-[12px] font-semibold" style={{ color: "#0f172a" }}>
+      {label}
+    </span>
+  </div>
+);
 
 export default ROIPreview;
