@@ -282,4 +282,31 @@ const Footer = () => {
   );
 };
 
+const FooterLink = ({
+  href,
+  label,
+  external,
+  leading,
+}: {
+  href: string;
+  label: string;
+  external?: boolean;
+  leading?: React.ReactNode;
+}) => (
+  <a
+    href={href}
+    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    className="group inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+  >
+    {leading}
+    <span>{label}</span>
+    <ArrowUpRight
+      strokeWidth={1.5}
+      className="w-3 h-3 text-gray-400 opacity-60 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-500"
+      style={{ filter: "drop-shadow(0 0 0 transparent)" }}
+    />
+  </a>
+);
+
 export default Footer;
+
