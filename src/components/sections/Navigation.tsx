@@ -78,12 +78,12 @@ const Navigation = () => {
 
           {/* Social icons */}
           <div className="hidden md:flex items-center gap-2">
-            <SocialIcon
+          <SocialIcon
               href="https://x.com/Aditya_das_222"
               label="X (Twitter)"
               boxStyle={boxStyle}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </SocialIcon>
@@ -92,7 +92,7 @@ const Navigation = () => {
               label="Instagram"
               boxStyle={boxStyle}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
