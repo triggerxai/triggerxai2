@@ -32,16 +32,16 @@ const Navigation = () => {
           {/* Logo box */}
           <a
             href="/"
-            className="flex items-center gap-2.5 shrink-0 rounded-2xl px-4 h-12 transition-all duration-500"
+            className="flex items-center gap-3 shrink-0 rounded-2xl px-5 h-14 transition-all duration-500"
             style={boxStyle}
           >
             <img
               src="/lovable-uploads/14bcde09-cf75-409a-bcbf-e346efc47a4f.png"
               alt="Triggerx AI Logo"
-              className="w-7 h-7 object-contain"
+              className="w-8 h-8 object-contain"
             />
             <span
-              className="text-base md:text-[17px]"
+              className="text-[17px] md:text-[19px]"
               style={{
                 fontFamily: "'Inter', 'Sora', sans-serif",
                 fontWeight: 700,
