@@ -56,7 +56,7 @@ const Navigation = () => {
 
           {/* Center nav capsule */}
           <div
-            className="relative hidden md:flex items-center h-12 rounded-2xl px-2"
+            className="relative hidden md:flex items-center h-14 rounded-2xl px-2.5"
             style={boxStyle}
           >
             <NavPill
