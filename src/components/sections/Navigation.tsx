@@ -32,16 +32,16 @@ const Navigation = () => {
           {/* Logo box */}
           <a
             href="/"
-            className="flex items-center gap-2.5 shrink-0 rounded-2xl px-4 h-12 transition-all duration-500"
+            className="flex items-center gap-3 shrink-0 rounded-2xl px-5 h-14 transition-all duration-500"
             style={boxStyle}
           >
             <img
               src="/lovable-uploads/14bcde09-cf75-409a-bcbf-e346efc47a4f.png"
               alt="Triggerx AI Logo"
-              className="w-7 h-7 object-contain"
+              className="w-8 h-8 object-contain"
             />
             <span
-              className="text-base md:text-[17px]"
+              className="text-[17px] md:text-[19px]"
               style={{
                 fontFamily: "'Inter', 'Sora', sans-serif",
                 fontWeight: 700,
@@ -56,7 +56,7 @@ const Navigation = () => {
 
           {/* Center nav capsule */}
           <div
-            className="relative hidden md:flex items-center h-12 rounded-2xl px-2"
+            className="relative hidden md:flex items-center h-14 rounded-2xl px-2.5"
             style={boxStyle}
           >
             <NavPill
@@ -78,12 +78,12 @@ const Navigation = () => {
 
           {/* Social icons */}
           <div className="hidden md:flex items-center gap-2">
-            <SocialIcon
+          <SocialIcon
               href="https://x.com/Aditya_das_222"
               label="X (Twitter)"
               boxStyle={boxStyle}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </SocialIcon>
@@ -92,7 +92,7 @@ const Navigation = () => {
               label="Instagram"
               boxStyle={boxStyle}
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -109,7 +109,7 @@ const Navigation = () => {
               )
             }
             data-click-sound
-            className="hidden md:inline-flex items-center px-6 h-12 rounded-2xl text-[15px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)]"
+            className="hidden md:inline-flex items-center px-7 h-14 rounded-2xl text-[16px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)]"
             style={{
               background: "#0a0a0a",
               color: "#ffffff",
@@ -195,13 +195,13 @@ const Navigation = () => {
 const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
-  const classes = `group relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300 hover:bg-[#f5f5f7] ${
+  const classes = `group relative flex items-center gap-1.5 rounded-xl text-[15px] transition-all duration-300 hover:bg-[#f5f5f7] ${
     active ? "text-black font-bold" : "text-[#0a0a0a] font-semibold"
   }`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: "-0.005em",
-    padding: "8px 16px",
+    padding: "10px 18px",
   };
   const inner = (
     <>
@@ -232,7 +232,7 @@ const SocialIcon = ({
     rel="noopener noreferrer"
     aria-label={label}
     data-click-sound
-    className="flex items-center justify-center w-12 h-12 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
+    className="flex items-center justify-center w-14 h-14 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
     style={boxStyle}
   >
     {children}

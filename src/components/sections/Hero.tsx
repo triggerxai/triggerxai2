@@ -35,10 +35,10 @@ const Hero = () => {
   return (
     <section className="relative px-3 sm:px-6 md:px-8 lg:px-10 pt-20 md:pt-28 pb-6 md:pb-10">
       <div
-        className="relative mx-auto w-full max-w-[1400px] overflow-hidden transition-all duration-500 hover:-translate-y-0.5"
+        className="relative mx-auto w-full max-w-[1320px] overflow-hidden transition-all duration-500 hover:-translate-y-0.5"
         style={{
-          borderRadius: 'clamp(28px, 3vw, 40px)',
-          padding: 'clamp(20px, 3vw, 56px) clamp(16px, 3vw, 48px)',
+          borderRadius: 'clamp(26px, 2.8vw, 38px)',
+          padding: 'clamp(18px, 2.7vw, 52px) clamp(14px, 2.7vw, 44px)',
           background:
             'linear-gradient(135deg, rgba(250,243,232,0.85) 0%, rgba(255,255,255,0.92) 45%, rgba(237,233,254,0.78) 100%)',
           border: '1px solid rgba(255,255,255,0.7)',

@@ -9,10 +9,10 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section className="py-10 md:py-14 px-4 sm:px-6 lg:px-8">
+    <section className="py-8 md:py-12 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
-        className={`relative max-w-6xl mx-auto transition-all duration-1000 ${
+        className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -28,7 +28,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
         >
           {/* INNER BOX */}
           <div
-            className="relative overflow-hidden rounded-[28px] px-6 sm:px-10 md:px-14 py-10 md:py-14"
+            className="relative overflow-hidden rounded-[28px] px-6 sm:px-9 md:px-12 py-8 md:py-12"
             style={{
               background:
                 "linear-gradient(135deg, #faf7fb 0%, #f5f0f8 60%, #efe9f5 100%)",
