@@ -195,13 +195,13 @@ const Navigation = () => {
 const NavPill = ({
   label, href, external, onClick, icon, active,
 }: { label: string; href?: string; external?: boolean; onClick?: () => void; icon?: React.ReactNode; active?: boolean }) => {
-  const classes = `group relative flex items-center gap-1.5 rounded-xl text-[14px] transition-all duration-300 hover:bg-[#f5f5f7] ${
+  const classes = `group relative flex items-center gap-1.5 rounded-xl text-[15px] transition-all duration-300 hover:bg-[#f5f5f7] ${
     active ? "text-black font-bold" : "text-[#0a0a0a] font-semibold"
   }`;
   const styleProps: React.CSSProperties = {
     fontFamily: "'Inter', 'Sora', sans-serif",
     letterSpacing: "-0.005em",
-    padding: "8px 16px",
+    padding: "10px 18px",
   };
   const inner = (
     <>
