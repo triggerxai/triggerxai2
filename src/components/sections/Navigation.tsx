@@ -232,7 +232,7 @@ const SocialIcon = ({
     rel="noopener noreferrer"
     aria-label={label}
     data-click-sound
-    className="flex items-center justify-center w-12 h-12 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
+    className="flex items-center justify-center w-14 h-14 rounded-2xl text-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(167,139,250,0.25)]"
     style={boxStyle}
   >
     {children}
