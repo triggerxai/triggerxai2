@@ -115,7 +115,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               </div>
 
               {/* RIGHT — Orbit calculator */}
-              <div className="relative h-[340px] sm:h-[380px] md:h-[400px] flex items-center justify-center">
+              <div className="relative h-[280px] sm:h-[320px] md:h-[340px] flex items-center justify-center">
                 {/* Orbit rings */}
                 <div
                   className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full pointer-events-none"
