@@ -9,7 +9,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section className="py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+    <section className="py-5 md:py-8 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
         className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
