@@ -60,7 +60,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               <div className="text-left">
                 {/* Badge */}
                 <div
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-7"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-4"
                   style={{
                     background: "rgba(217,249,157,0.55)",
                     border: "1px solid rgba(163,230,53,0.35)",
