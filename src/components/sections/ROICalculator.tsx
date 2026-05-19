@@ -401,7 +401,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
                   "_blank"
                 )
               }
-              data-click-sound
               className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white font-semibold text-sm transition-all hover:-translate-y-0.5"
               style={{
                 background: "#0a0a0a",
