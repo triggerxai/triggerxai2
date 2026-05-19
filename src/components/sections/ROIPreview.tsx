@@ -83,7 +83,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                   Your ROI,
                   <br />
                   Clearly{" "}
-                  <span style={{ color: "#7c3aed" }}>Calculated</span>
+                  <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #fb7185, #e11d48)" }}>Calculated</span>
                 </h2>
 
                 {/* Subtitle */}
