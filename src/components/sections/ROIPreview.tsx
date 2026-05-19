@@ -118,7 +118,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               <div className="relative h-[280px] sm:h-[320px] md:h-[340px] flex items-center justify-center">
                 {/* Orbit rings */}
                 <div
-                  className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full pointer-events-none"
+                  className="absolute w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] rounded-full pointer-events-none"
                   style={{
                     border: "1px dashed rgba(167,139,250,0.35)",
                   }}
