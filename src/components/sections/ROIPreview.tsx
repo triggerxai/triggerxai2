@@ -9,16 +9,16 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section className="py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+    <section className="py-5 md:py-8 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
-        className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
+        className={`relative max-w-6xl mx-auto transition-all duration-1000 ${
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
         {/* OUTER BOX */}
         <div
-          className="relative overflow-hidden rounded-[36px] p-3 sm:p-4"
+          className="relative overflow-hidden rounded-[36px] p-2.5 sm:p-3"
           style={{
             background: "linear-gradient(180deg, #f3eff7 0%, #efeaf4 100%)",
             border: "1px solid rgba(15,23,42,0.04)",
@@ -28,7 +28,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
         >
           {/* INNER BOX */}
           <div
-            className="relative overflow-hidden rounded-[28px] px-6 sm:px-9 md:px-12 py-8 md:py-12"
+            className="relative overflow-hidden rounded-[28px] px-7 sm:px-10 md:px-14 py-6 md:py-9"
             style={{
               background:
                 "linear-gradient(135deg, #faf7fb 0%, #f5f0f8 60%, #efe9f5 100%)",
@@ -55,12 +55,12 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
             />
 
             {/* GRID */}
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               {/* LEFT — copy */}
               <div className="text-left">
                 {/* Badge */}
                 <div
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-7"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-4"
                   style={{
                     background: "rgba(217,249,157,0.55)",
                     border: "1px solid rgba(163,230,53,0.35)",
@@ -77,18 +77,18 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
 
                 {/* Heading */}
                 <h2
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-[1.05]"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 tracking-tight leading-[1.05]"
                   style={{ color: "#0f172a" }}
                 >
                   Your ROI,
                   <br />
                   Clearly{" "}
-                  <span style={{ color: "#7c3aed" }}>Calculated</span>
+                  <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #fb7185, #e11d48)" }}>Calculated</span>
                 </h2>
 
                 {/* Subtitle */}
                 <p
-                  className="text-base sm:text-lg mb-8 max-w-md leading-relaxed"
+                  className="text-base sm:text-lg mb-5 max-w-md leading-relaxed"
                   style={{ color: "#64748b" }}
                 >
                   Find out the real impact AI automation can create for your
@@ -115,16 +115,16 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
               </div>
 
               {/* RIGHT — Orbit calculator */}
-              <div className="relative h-[340px] sm:h-[380px] md:h-[400px] flex items-center justify-center">
+              <div className="relative h-[280px] sm:h-[320px] md:h-[340px] flex items-center justify-center">
                 {/* Orbit rings */}
                 <div
-                  className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full pointer-events-none"
+                  className="absolute w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] rounded-full pointer-events-none"
                   style={{
                     border: "1px dashed rgba(167,139,250,0.35)",
                   }}
                 />
                 <div
-                  className="absolute w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] rounded-full pointer-events-none"
+                  className="absolute w-[170px] h-[170px] sm:w-[205px] sm:h-[205px] rounded-full pointer-events-none"
                   style={{
                     border: "1px dashed rgba(167,139,250,0.25)",
                   }}
@@ -139,7 +139,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                 {/* Center 3D Calculator */}
                 <div className="relative z-10">
                   <div
-                    className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] rounded-[28px] flex items-center justify-center"
+                    className="w-[105px] h-[105px] sm:w-[122px] sm:h-[122px] rounded-[24px] flex items-center justify-center"
                     style={{
                       background:
                         "linear-gradient(160deg, #ffffff 0%, #f3eaff 55%, #e9d5ff 100%)",
@@ -149,14 +149,14 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                     }}
                   >
                     <Calculator
-                      className="w-14 h-14 sm:w-16 sm:h-16"
+                      className="w-12 h-12 sm:w-14 sm:h-14"
                       strokeWidth={1.8}
                       style={{ color: "#7c3aed" }}
                     />
                   </div>
                   {/* Base shadow plate */}
                   <div
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[110px] sm:w-[130px] h-3 rounded-full"
+                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[95px] sm:w-[112px] h-3 rounded-full"
                     style={{
                       background:
                         "radial-gradient(ellipse, rgba(124,58,237,0.35), transparent 70%)",
