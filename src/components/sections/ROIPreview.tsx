@@ -77,7 +77,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
 
                 {/* Heading */}
                 <h2
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 tracking-tight leading-[1.05]"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 tracking-tight leading-[1.05]"
                   style={{ color: "#0f172a" }}
                 >
                   Your ROI,
