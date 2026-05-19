@@ -18,7 +18,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
       >
         {/* OUTER BOX */}
         <div
-          className="relative overflow-hidden rounded-[36px] p-3 sm:p-4"
+          className="relative overflow-hidden rounded-[36px] p-2.5 sm:p-3"
           style={{
             background: "linear-gradient(180deg, #f3eff7 0%, #efeaf4 100%)",
             border: "1px solid rgba(15,23,42,0.04)",
