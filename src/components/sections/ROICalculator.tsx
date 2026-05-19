@@ -216,7 +216,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
               return (
                 <button
                   key={s.id}
-                  data-click-sound
                   onClick={() => setService(s.id)}
                   className={`flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-medium transition-all ${
                     active
