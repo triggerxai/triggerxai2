@@ -28,7 +28,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
         >
           {/* INNER BOX */}
           <div
-            className="relative overflow-hidden rounded-[28px] px-6 sm:px-9 md:px-12 py-8 md:py-12"
+            className="relative overflow-hidden rounded-[28px] px-7 sm:px-10 md:px-14 py-6 md:py-9"
             style={{
               background:
                 "linear-gradient(135deg, #faf7fb 0%, #f5f0f8 60%, #efe9f5 100%)",
