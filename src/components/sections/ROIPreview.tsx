@@ -55,7 +55,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
             />
 
             {/* GRID */}
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               {/* LEFT — copy */}
               <div className="text-left">
                 {/* Badge */}
