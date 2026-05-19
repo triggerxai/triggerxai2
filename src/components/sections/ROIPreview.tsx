@@ -156,7 +156,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                   </div>
                   {/* Base shadow plate */}
                   <div
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[110px] sm:w-[130px] h-3 rounded-full"
+                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[95px] sm:w-[112px] h-3 rounded-full"
                     style={{
                       background:
                         "radial-gradient(ellipse, rgba(124,58,237,0.35), transparent 70%)",
