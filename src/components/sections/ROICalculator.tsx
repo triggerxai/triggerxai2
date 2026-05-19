@@ -200,7 +200,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
           </div>
           <button
             onClick={onClose}
-            data-click-sound
             className="w-7 h-7 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-[#f5f5f7] transition-colors"
             aria-label="Close"
           >
@@ -217,7 +216,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
               return (
                 <button
                   key={s.id}
-                  data-click-sound
                   onClick={() => setService(s.id)}
                   className={`flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-medium transition-all ${
                     active
@@ -403,7 +401,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
                   "_blank"
                 )
               }
-              data-click-sound
               className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white font-semibold text-sm transition-all hover:-translate-y-0.5"
               style={{
                 background: "#0a0a0a",
