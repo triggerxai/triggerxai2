@@ -124,7 +124,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                   }}
                 />
                 <div
-                  className="absolute w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] rounded-full pointer-events-none"
+                  className="absolute w-[170px] h-[170px] sm:w-[205px] sm:h-[205px] rounded-full pointer-events-none"
                   style={{
                     border: "1px dashed rgba(167,139,250,0.25)",
                   }}
