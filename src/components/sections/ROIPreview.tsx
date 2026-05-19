@@ -12,7 +12,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
     <section className="py-5 md:py-8 px-4 sm:px-6 lg:px-8">
       <div
         ref={ref}
-        className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
+        className={`relative max-w-6xl mx-auto transition-all duration-1000 ${
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
