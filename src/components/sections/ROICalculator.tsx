@@ -200,7 +200,6 @@ const ROICalculator = ({ open, onClose }: ROICalculatorProps) => {
           </div>
           <button
             onClick={onClose}
-            data-click-sound
             className="w-7 h-7 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-[#f5f5f7] transition-colors"
             aria-label="Close"
           >
