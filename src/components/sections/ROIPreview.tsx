@@ -139,7 +139,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                 {/* Center 3D Calculator */}
                 <div className="relative z-10">
                   <div
-                    className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] rounded-[28px] flex items-center justify-center"
+                    className="w-[105px] h-[105px] sm:w-[122px] sm:h-[122px] rounded-[24px] flex items-center justify-center"
                     style={{
                       background:
                         "linear-gradient(160deg, #ffffff 0%, #f3eaff 55%, #e9d5ff 100%)",
