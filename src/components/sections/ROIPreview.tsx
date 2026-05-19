@@ -88,7 +88,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
 
                 {/* Subtitle */}
                 <p
-                  className="text-base sm:text-lg mb-8 max-w-md leading-relaxed"
+                  className="text-base sm:text-lg mb-5 max-w-md leading-relaxed"
                   style={{ color: "#64748b" }}
                 >
                   Find out the real impact AI automation can create for your
