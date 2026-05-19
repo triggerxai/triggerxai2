@@ -149,7 +149,7 @@ const ROIPreview = ({ onOpenROI }: ROIPreviewProps) => {
                     }}
                   >
                     <Calculator
-                      className="w-14 h-14 sm:w-16 sm:h-16"
+                      className="w-12 h-12 sm:w-14 sm:h-14"
                       strokeWidth={1.8}
                       style={{ color: "#7c3aed" }}
                     />
