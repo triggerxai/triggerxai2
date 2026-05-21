@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ClientPortalRouteImport } from './routes/client-portal'
@@ -30,6 +31,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
   path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/testimonials': typeof TestimonialsRoute
   '/chatbots/outcome': typeof ChatbotsOutcomeRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/testimonials': typeof TestimonialsRoute
   '/chatbots/outcome': typeof ChatbotsOutcomeRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/client-portal': typeof ClientPortalRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/testimonials': typeof TestimonialsRoute
   '/chatbots/outcome': typeof ChatbotsOutcomeRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/client-portal'
     | '/privacy-policy'
     | '/resources'
+    | '/sitemap.xml'
     | '/terms-of-service'
     | '/testimonials'
     | '/chatbots/outcome'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/client-portal'
     | '/privacy-policy'
     | '/resources'
+    | '/sitemap.xml'
     | '/terms-of-service'
     | '/testimonials'
     | '/chatbots/outcome'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/client-portal'
     | '/privacy-policy'
     | '/resources'
+    | '/sitemap.xml'
     | '/terms-of-service'
     | '/testimonials'
     | '/chatbots/outcome'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   ClientPortalRoute: typeof ClientPortalRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ResourcesRoute: typeof ResourcesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   TestimonialsRoute: typeof TestimonialsRoute
   ChatbotsOutcomeRoute: typeof ChatbotsOutcomeRoute
@@ -200,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/terms-of-service'
       fullPath: '/terms-of-service'
       preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClientPortalRoute: ClientPortalRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ResourcesRoute: ResourcesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
   TestimonialsRoute: TestimonialsRoute,
   ChatbotsOutcomeRoute: ChatbotsOutcomeRoute,
