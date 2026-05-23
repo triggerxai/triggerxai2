@@ -1,0 +1,4 @@
+project_id = "triggerx"
+
+[functions.subscribe-newsletter]
+verify_jwt = false

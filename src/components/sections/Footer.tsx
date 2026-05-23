@@ -1,13 +1,43 @@
-import { ArrowRight, ArrowUpRight, Sparkles, Network, GraduationCap, ShieldCheck, TrendingUp, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Network, GraduationCap, ShieldCheck, TrendingUp, Linkedin, Youtube, Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/triggerx-logo.png";
+import { supabase } from "@/integrations/supabase/client";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEmail("");
+    if (status === "loading") return;
+    const value = email.trim().toLowerCase();
+    if (!EMAIL_RE.test(value)) {
+      setStatus("error");
+      setMessage("Please enter a valid email.");
+      return;
+    }
+    setStatus("loading");
+    setMessage("");
+    try {
+      const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
+        body: { email: value },
+      });
+      if (error || !data?.ok) {
+        setStatus("error");
+        setMessage((data as { error?: string } | null)?.error ?? "Something went wrong. Try again.");
+        return;
+      }
+      setStatus("success");
+      setMessage(data.duplicate ? "You're already subscribed ✨" : "Thanks for subscribing ✨");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
   };
 
   return (
@@ -229,17 +259,35 @@ const Footer = () => {
                 type="email"
                 required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
                 placeholder="you@email.com"
-                className="w-full rounded-full bg-white border border-black/10 pl-4 pr-12 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-300 transition-all"
+                disabled={status === "loading" || status === "success"}
+                className="w-full rounded-full bg-white border border-black/10 pl-4 pr-12 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-300 transition-all disabled:opacity-70"
               />
               <button
                 type="submit"
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-black transition-colors"
+                disabled={status === "loading" || status === "success"}
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-black transition-colors disabled:opacity-80"
                 aria-label="Subscribe"
               >
-                <ArrowRight className="w-4 h-4" />
+                {status === "loading" ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : status === "success" ? (
+                  <Check className="w-4 h-4" />
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
               </button>
+              {message && (
+                <p
+                  className={`mt-2 text-xs transition-opacity duration-300 ${
+                    status === "success" ? "text-emerald-600" : status === "error" ? "text-red-500" : "text-gray-500"
+                  }`}
+                  role="status"
+                >
+                  {message}
+                </p>
+              )}
             </form>
           </div>
         </div>
