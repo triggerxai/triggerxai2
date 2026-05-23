@@ -21,7 +21,6 @@ import { Route as VoiceAgentSupportRouteImport } from './routes/voice-agent.supp
 import { Route as VoiceAgentOutcomeRouteImport } from './routes/voice-agent.outcome'
 import { Route as ChatbotsSupportRouteImport } from './routes/chatbots.support'
 import { Route as ChatbotsOutcomeRouteImport } from './routes/chatbots.outcome'
-import { Route as ApiPublicSubscribeNewsletterRouteImport } from './routes/api/public/subscribe-newsletter'
 
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
@@ -83,12 +82,6 @@ const ChatbotsOutcomeRoute = ChatbotsOutcomeRouteImport.update({
   path: '/chatbots/outcome',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicSubscribeNewsletterRoute =
-  ApiPublicSubscribeNewsletterRouteImport.update({
-    id: '/api/public/subscribe-newsletter',
-    path: '/api/public/subscribe-newsletter',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,7 +96,6 @@ export interface FileRoutesByFullPath {
   '/chatbots/support': typeof ChatbotsSupportRoute
   '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
   '/voice-agent/support': typeof VoiceAgentSupportRoute
-  '/api/public/subscribe-newsletter': typeof ApiPublicSubscribeNewsletterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,7 +110,6 @@ export interface FileRoutesByTo {
   '/chatbots/support': typeof ChatbotsSupportRoute
   '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
   '/voice-agent/support': typeof VoiceAgentSupportRoute
-  '/api/public/subscribe-newsletter': typeof ApiPublicSubscribeNewsletterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,7 +125,6 @@ export interface FileRoutesById {
   '/chatbots/support': typeof ChatbotsSupportRoute
   '/voice-agent/outcome': typeof VoiceAgentOutcomeRoute
   '/voice-agent/support': typeof VoiceAgentSupportRoute
-  '/api/public/subscribe-newsletter': typeof ApiPublicSubscribeNewsletterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,7 +141,6 @@ export interface FileRouteTypes {
     | '/chatbots/support'
     | '/voice-agent/outcome'
     | '/voice-agent/support'
-    | '/api/public/subscribe-newsletter'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,7 +155,6 @@ export interface FileRouteTypes {
     | '/chatbots/support'
     | '/voice-agent/outcome'
     | '/voice-agent/support'
-    | '/api/public/subscribe-newsletter'
   id:
     | '__root__'
     | '/'
@@ -181,7 +169,6 @@ export interface FileRouteTypes {
     | '/chatbots/support'
     | '/voice-agent/outcome'
     | '/voice-agent/support'
-    | '/api/public/subscribe-newsletter'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,7 +184,6 @@ export interface RootRouteChildren {
   ChatbotsSupportRoute: typeof ChatbotsSupportRoute
   VoiceAgentOutcomeRoute: typeof VoiceAgentOutcomeRoute
   VoiceAgentSupportRoute: typeof VoiceAgentSupportRoute
-  ApiPublicSubscribeNewsletterRoute: typeof ApiPublicSubscribeNewsletterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -286,13 +272,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChatbotsOutcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/subscribe-newsletter': {
-      id: '/api/public/subscribe-newsletter'
-      path: '/api/public/subscribe-newsletter'
-      fullPath: '/api/public/subscribe-newsletter'
-      preLoaderRoute: typeof ApiPublicSubscribeNewsletterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -309,7 +288,6 @@ const rootRouteChildren: RootRouteChildren = {
   ChatbotsSupportRoute: ChatbotsSupportRoute,
   VoiceAgentOutcomeRoute: VoiceAgentOutcomeRoute,
   VoiceAgentSupportRoute: VoiceAgentSupportRoute,
-  ApiPublicSubscribeNewsletterRoute: ApiPublicSubscribeNewsletterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
