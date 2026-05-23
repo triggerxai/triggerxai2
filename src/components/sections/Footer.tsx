@@ -3,6 +3,7 @@ import { useState } from "react";
 import logo from "@/assets/triggerx-logo.png";
 import { supabase } from "@/integrations/supabase/client";
 
+const CALENDLY_URL = "https://calendly.com/aditya_das/triggerx-aditya-das-consultation";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Footer = () => {
@@ -118,7 +119,10 @@ const Footer = () => {
               </p>
               <div className="mt-6">
                 <a
-                  href="#contact"
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-click-sound
                   className="group inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-5 py-3 text-sm font-medium hover:bg-black transition-all shadow-lg shadow-gray-900/20"
                 >
                   Book A Free Audit Call
@@ -230,7 +234,7 @@ const Footer = () => {
           <div>
             <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">Navigation</h4>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><FooterLink href="#community" label="Community" /></li>
+              <li><FooterLink href="https://triggerxai.com/resources" external label="Resource Hub" /></li>
               <li><FooterLink href="#careers" label="Careers" /></li>
               <li><FooterLink href="#roi" label="ROI Calculator" /></li>
               <li><FooterLink href="#cases" label="Case Studies" /></li>

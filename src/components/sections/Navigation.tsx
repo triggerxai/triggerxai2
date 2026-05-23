@@ -65,9 +65,8 @@ const Navigation = () => {
               external
             />
             <NavPill
-              label="Careers"
-              href="/careers"
-              active={location.pathname.startsWith("/careers")}
+              label="Testimonials"
+              href="/#testimonials"
             />
             <NavPill
               label="ROI Cal"
@@ -158,7 +157,7 @@ const Navigation = () => {
                 external
                 onClose={() => setIsMobileMenuOpen(false)}
               />
-              <MobilePill label="Careers" href="/careers" onClose={() => setIsMobileMenuOpen(false)} />
+              <MobilePill label="Testimonials" href="/#testimonials" onClose={() => setIsMobileMenuOpen(false)} />
               <MobilePill
                 label="ROI Cal"
                 icon={<Calculator className="w-4 h-4" />}
