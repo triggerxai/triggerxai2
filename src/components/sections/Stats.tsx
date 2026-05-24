@@ -15,22 +15,39 @@ const Stats = () => {
       <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
+          const cardClasses = `glass-card-hover text-center px-3 py-3 transition-all duration-700 ${stat.clickable === false ? "" : "cursor-pointer hover:scale-105"} ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`;
+          const cardStyle: React.CSSProperties = { transitionDelay: `${index * 150}ms` };
+          const inner = (
+            <>
+              <div className="text-2xl md:text-3xl font-bold text-foreground mb-0.5">
+                {stat.value}
+              </div>
+              <p className="text-xs font-medium text-foreground/80">{stat.label}</p>
+            </>
+          );
+          if (stat.clickable === false) {
+            return (
+              <div
+                key={stat.label}
+                className={cardClasses}
+                style={cardStyle}
+              >
+                {inner}
+              </div>
+            );
+          }
           return (
             <a
               href={stat.href}
               target="_blank"
               rel="noopener noreferrer"
               key={stat.label}
-              className={`glass-card-hover text-center px-3 py-3 transition-all duration-700 cursor-pointer hover:scale-105 ${
-                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              className={cardClasses}
+              style={cardStyle}
             >
-              
-              <div className="text-2xl md:text-3xl font-bold text-foreground mb-0.5">
-                {stat.value}
-              </div>
-              <p className="text-xs font-medium text-foreground/80">{stat.label}</p>
+              {inner}
             </a>
           );
         })}

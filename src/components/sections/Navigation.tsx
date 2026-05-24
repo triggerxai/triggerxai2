@@ -61,7 +61,7 @@ const Navigation = () => {
           >
             <NavPill
               label="Community"
-              href="https://www.skool.com/agents-space-1751"
+              href="https://web.facebook.com/groups/1129871225741454"
               external
             />
             <NavPill
@@ -153,7 +153,7 @@ const Navigation = () => {
             >
               <MobilePill
                 label="Community"
-                href="https://www.skool.com/agents-space-1751"
+                href="https://web.facebook.com/groups/1129871225741454"
                 external
                 onClose={() => setIsMobileMenuOpen(false)}
               />
