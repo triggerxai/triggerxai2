@@ -37,7 +37,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="relative py-16 md:py-20 overflow-hidden">
+    <section id="faq" className="relative py-16 md:py-20 overflow-hidden bg-background">
       {/* Decorative brand glows */}
       <div aria-hidden className="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/10 blur-3xl" />
