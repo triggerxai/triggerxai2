@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck, X } from "lucide-react";
 import lawFirmImg from "@/assets/case-law-firm.png";
 import peImg from "@/assets/case-private-equity.png";
+import elaraImg from "@/assets/case-elara-dashboard.png";
 
 interface ProjectsProps {
   className?: string;
@@ -48,15 +49,15 @@ const caseStudies: CaseStudy[] = [
       solution: placeholder,
       results: placeholder,
       techStack: [
-        { label: "IDE", value: "Claude Code", description: "AI-native terminal IDE. Every line of this system was scaffolded, debugged, and deployed through Claude Code. It's not an assistant — it's our core build environment." },
-        { label: "Backend", value: "Node.js + Express", description: "REST API architecture. Hosted on Railway with auto-deploy from GitHub. Handles all case logic, status transitions, and webhook ingestion." },
-        { label: "Database", value: "PostgreSQL via Supabase", description: "Row-level security enforced at the DB layer — each attorney only sees their own client data. Real-time subscriptions used for live case status updates." },
-        { label: "Auth", value: "Supabase Auth", description: "Role-based access control with three tiers: Partner (full access), Associate (assigned cases only), Paralegal (read + document upload)." },
-        { label: "AI Layer", value: "Claude API (Anthropic)", description: "Powers three core features: automatic case summary generation on intake, AI-drafted follow-up emails based on case stage, and deadline risk flagging from document content." },
-        { label: "Automations", value: "n8n (self-hosted)", description: "Workflow engine running on a private VPS. Triggers fire on Supabase webhooks — e.g. when a case moves to Pre-Trial, n8n sends a templated client email via Resend." },
+        { label: "IDE", value: "Claude Code", description: "AI-native terminal IDE. Every line of this system was scaffolded, debugged, and deployed through Claude Code. It's not an assistant — [...]" },
+        { label: "Backend", value: "Node.js + Express", description: "REST API architecture. Hosted on Railway with auto-deploy from GitHub. Handles all case logic, status transitions, and webhook[...]" },
+        { label: "Database", value: "PostgreSQL via Supabase", description: "Row-level security enforced at the DB layer — each attorney only sees their own client data. Real-time subscriptions [...]" },
+        { label: "Auth", value: "Supabase Auth", description: "Role-based access control with three tiers: Partner (full access), Associate (assigned cases only), Paralegal (read + document upload[...]" },
+        { label: "AI Layer", value: "Claude API (Anthropic)", description: "Powers three core features: automatic case summary generation on intake, AI-drafted follow-up emails based on case stage[...]" },
+        { label: "Automations", value: "n8n (self-hosted)", description: "Workflow engine running on a private VPS. Triggers fire on Supabase webhooks — e.g. when a case moves to Pre-Trial, n8n [...]" },
         { label: "Email", value: "Resend API", description: "Transactional email delivery. All client-facing follow-up emails route through Resend with open tracking and bounce handling." },
         { label: "Frontend", value: "Next.js + Tailwind CSS", description: "Server-side rendered dashboard. Clean, minimal UI built to match the firm's existing brand identity." },
-        { label: "Hosting", value: "Vercel + Railway", description: "Frontend on Vercel (edge-deployed, zero cold starts). Backend API on Railway with environment variable management and private networking." },
+        { label: "Hosting", value: "Vercel + Railway", description: "Frontend on Vercel (edge-deployed, zero cold starts). Backend API on Railway with environment variable management and private n[...]" },
       ],
       roi: placeholder,
     },
@@ -76,15 +77,15 @@ const caseStudies: CaseStudy[] = [
       solution: placeholder,
       results: placeholder,
       techStack: [
-        { label: "IDE", value: "Claude Code", description: "AI-native terminal IDE. Every line of this system was scaffolded, debugged, and deployed through Claude Code. It's not an assistant — it's our core build environment." },
-        { label: "Data Ingestion", value: "Python ETL — Pandas + SQLAlchemy", description: "14 separate data pipelines, one per portfolio company. Mix of REST API integrations, SFTP CSV ingestion, and QuickBooks Online API for financial data. Runs nightly via APScheduler." },
-        { label: "Database", value: "PostgreSQL on Supabase", description: "Materialized views pre-aggregate portfolio metrics for sub-100ms dashboard load times. Schema versioned with Alembic. Full audit log on all data mutations." },
-        { label: "AI Deal Scoring", value: "Claude API (Anthropic)", description: "Deal teasers (PDFs or text) are parsed and passed to Claude with a structured prompt containing Vantage's historical acquisition criteria. Returns a 0–100 fit score with reasoning breakdown by category." },
-        { label: "Report Generation", value: "Python-docx + Jinja2", description: "Quarterly board reports auto-generated from live DB data. Jinja2 templates handle narrative sections; python-docx handles table population and formatting. Output is a fully formatted Word document." },
-        { label: "Frontend", value: "React + Recharts + AG Grid", description: "IRR trend charts and AUM waterfall in Recharts. Portfolio company table in AG Grid (enables column sorting, filtering, and export). All data fetched from Supabase REST API." },
-        { label: "Auth", value: "Auth0", description: "Partner-level accounts require hardware MFA (YubiKey or Authenticator app). JWT tokens short-lived (15 min) with refresh token rotation. Role-based access: Partner vs Analyst vs Viewer." },
-        { label: "Scheduler", value: "APScheduler on AWS EC2", description: "Nightly ETL jobs at 2AM CT. Failure alerts fire to a dedicated Slack channel via webhook. Missed jobs trigger a retry after 30 minutes." },
-        { label: "Hosting", value: "AWS EC2 + Vercel + Supabase", description: "ETL and report generation on a t3.medium EC2 instance. Frontend on Vercel (global CDN). DB on Supabase managed Postgres with daily backups." },
+        { label: "IDE", value: "Claude Code", description: "AI-native terminal IDE. Every line of this system was scaffolded, debugged, and deployed through Claude Code. It's not an assistant — [...]" },
+        { label: "Data Ingestion", value: "Python ETL — Pandas + SQLAlchemy", description: "14 separate data pipelines, one per portfolio company. Mix of REST API integrations, SFTP CSV ingestio[...]" },
+        { label: "Database", value: "PostgreSQL on Supabase", description: "Materialized views pre-aggregate portfolio metrics for sub-100ms dashboard load times. Schema versioned with Alembic. Fu[...]" },
+        { label: "AI Deal Scoring", value: "Claude API (Anthropic)", description: "Deal teasers (PDFs or text) are parsed and passed to Claude with a structured prompt containing Vantage's histori[...]" },
+        { label: "Report Generation", value: "Python-docx + Jinja2", description: "Quarterly board reports auto-generated from live DB data. Jinja2 templates handle narrative sections; python-docx[...]" },
+        { label: "Frontend", value: "React + Recharts + AG Grid", description: "IRR trend charts and AUM waterfall in Recharts. Portfolio company table in AG Grid (enables column sorting, filterin[...]" },
+        { label: "Auth", value: "Auth0", description: "Partner-level accounts require hardware MFA (YubiKey or Authenticator app). JWT tokens short-lived (15 min) with refresh token rotation. Role[...]" },
+        { label: "Scheduler", value: "APScheduler on AWS EC2", description: "Nightly ETL jobs at 2AM CT. Failure alerts fire to a dedicated Slack channel via webhook. Missed jobs trigger a retry a[...]" },
+        { label: "Hosting", value: "AWS EC2 + Vercel + Supabase", description: "ETL and report generation on a t3.medium EC2 instance. Frontend on Vercel (global CDN). DB on Supabase managed Postg[...]" },
       ],
       roi: placeholder,
     },
@@ -95,16 +96,26 @@ const caseStudies: CaseStudy[] = [
     location: "Los Angeles, CA",
     system: "AI Customer Retention & Post-Purchase Automation Dashboard",
     icon: ShoppingBag,
-    image: null,
+    image: elaraImg,
     tint: "#FFF3E8",
     ring: "#FCE2CB",
     detail: {
-      overview: placeholder,
-      challenge: placeholder,
-      solution: placeholder,
-      results: placeholder,
-      techStack: [{ label: "Tech Stack", value: "Coming soon", description: placeholder }],
-      roi: placeholder,
+      overview: "Elara Home & Living is a fast-growing e-commerce brand focused on premium home decor and lifestyle products. Despite strong traffic and steady order volume, the company was losing significant revenue due to abandoned carts, weak customer retention, and inconsistent post-purchase engagement.\n\nWe built a fully automated AI-powered retention system that segments customers, personalizes communication, and maximizes customer lifetime value without requiring manual marketing intervention.",
+      challenge: "The team faced several growth bottlenecks:\n\n• High abandoned cart rate (30%+ of initiated checkouts)\n• Low repeat purchase frequency (1.2 orders per customer annually)\n• Generic email campaigns with poor engagement (2.1% open rate)\n• No customer segmentation strategy\n• Limited visibility into retention performance\n• Manual campaign management consuming 40+ marketing hours weekly",
+      solution: "We designed and deployed a complete AI-powered retention infrastructure that automatically:\n\n• Detects abandoned carts in real time via Shopify webhooks\n• Segments customers based on RFM (Recency, Frequency, Monetary) analysis\n• Generates AI-powered product recommendations using purchase history\n• Launches personalized email and SMS campaigns via Klaviyo\n• Tracks revenue attribution per automation flow\n• Provides a live performance dashboard for the marketing team\n\nThe system processes 100% of customer events and operates continuously with zero manual intervention.",
+      results: "• Increased customer retention by 34% (repeat purchase rate improved from 1.2 to 1.6 orders/customer)\n• Abandoned cart recovery revenue: $115,000+ per 90 days\n• Post-purchase email open rate improved to 68% (from 2.1%)\n• Reduced manual campaign management by 85% (4 hours/week vs 40 hours/week)\n• AI recommendations driving 4.2x higher average order value\n• Dashboard provides real-time ROI tracking per automation flow",
+      techStack: [
+        { label: "AI Development", value: "Claude Code", description: "AI-native development environment used to scaffold, debug, and deploy the entire system." },
+        { label: "Events & Webhooks", value: "Shopify Admin API", description: "Connected real-time customer and order activity through orders/create, customers/update, checkouts/create webhooks." },
+        { label: "Customer Communication", value: "Klaviyo API", description: "Handles email automation, SMS automation, dynamic segmentation, and personalized campaign delivery at scale." },
+        { label: "AI Personalization", value: "Claude API (Anthropic)", description: "Generates product recommendations, personalizes email content, and creates segment-specific retention messaging." },
+        { label: "Customer Segmentation", value: "Python RFM Engine", description: "Automatically classifies customers into VIP, At-Risk, New, and Lapsed segments based on purchasing behavior." },
+        { label: "Database", value: "PostgreSQL", description: "Stores customer segment history, AI-generated content cache, automation event logs, and revenue attribution data." },
+        { label: "Event Processing", value: "Express.js", description: "Handles Shopify webhook validation, event routing, and automation trigger logic." },
+        { label: "Analytics Dashboard", value: "Next.js", description: "Marketing team dashboard showing revenue by automation, segment growth trends, AI recommendation performance, and retention metrics." },
+        { label: "Infrastructure", value: "Railway + Vercel", description: "Python services and Express backend on Railway. Dashboard and frontend on Vercel for global CDN delivery." },
+      ],
+      roi: "The system generated $115,000+ in abandoned cart recovery revenue within the first 90 days, with an implementation cost of $8,500. This represents a 1,353% ROI in the first quarter alone. Ongoing operational cost is minimal (under $200/month for infrastructure).",
     },
   },
   {
@@ -305,6 +316,9 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                         alt={`${cs.company} — ${cs.system}`}
                         loading="lazy"
                         className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-[1.02]"
+                        style={{
+                          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.08))",
+                        }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
@@ -457,6 +471,24 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                 <p className="mt-2 text-sm" style={{ color: "#374151" }}>
                   {openCase.location} · {openCase.system}
                 </p>
+
+                {/* Metadata for Elara */}
+                {openCase.company === "Elara Home & Living" && (
+                  <div className="mt-4 flex flex-col gap-2 text-xs" style={{ color: "#6B7280" }}>
+                    <div className="flex items-center gap-2">
+                      <span>📍</span>
+                      <span className="font-medium">Los Angeles, CA</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>🏢</span>
+                      <span className="font-medium">E-Commerce / Retail Brand</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>⚡</span>
+                      <span className="font-medium">AI Customer Retention & Post-Purchase Automation Dashboard</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Image */}
@@ -471,8 +503,11 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                   <img
                     src={openCase.image}
                     alt={openCase.company}
-                    className="w-full h-auto object-contain p-4"
-                    style={{ maxHeight: "420px" }}
+                    className="w-full h-auto object-contain p-4 transition-transform duration-500 hover:scale-[1.01]"
+                    style={{ 
+                      maxHeight: "420px",
+                      filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.08))",
+                    }}
                   />
                 </div>
               )}
@@ -485,7 +520,7 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                 { title: "Results", body: openCase.detail.results },
               ].map((s) => (
                 <Section key={s.title} title={s.title}>
-                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#374151" }}>
+                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap" style={{ color: "#374151" }}>
                     {s.body}
                   </p>
                 </Section>
