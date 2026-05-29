@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck } from "lucide-react";
+import lawFirmImg from "@/assets/case-law-firm.png";
+import peImg from "@/assets/case-private-equity.png";
 
 interface ProjectsProps {
   className?: string;
@@ -14,7 +16,8 @@ const caseStudies = [
     location: "New York, NY",
     system: "AI-Powered Client CRM & Case Pipeline",
     icon: Scale,
-    tint: "#F3EEFF", // soft purple
+    image: lawFirmImg,
+    tint: "#F3EEFF",
     ring: "#E5D9FF",
   },
   {
@@ -23,7 +26,8 @@ const caseStudies = [
     location: "Chicago, IL",
     system: "Central Portfolio Intelligence Dashboard",
     icon: TrendingUp,
-    tint: "#EEF7E0", // soft lime
+    image: peImg,
+    tint: "#EEF7E0",
     ring: "#DCEFC0",
   },
   {
@@ -32,7 +36,8 @@ const caseStudies = [
     location: "Los Angeles, CA",
     system: "AI Customer Retention & Post-Purchase Automation Dashboard",
     icon: ShoppingBag,
-    tint: "#FFF3E8", // soft peach
+    image: null as string | null,
+    tint: "#FFF3E8",
     ring: "#FCE2CB",
   },
   {
@@ -41,7 +46,8 @@ const caseStudies = [
     location: "Atlanta, GA",
     system: "AI Voice Agent & Policy Renewal Automation System",
     icon: ShieldCheck,
-    tint: "#E8F2FF", // soft sky
+    image: null as string | null,
+    tint: "#E8F2FF",
     ring: "#CFE2FB",
   },
 ];
@@ -51,23 +57,29 @@ const Projects = ({ className }: ProjectsProps = {}) => {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const updateArrows = () => {
+  const updateState = () => {
     const el = scrollerRef.current;
     if (!el) return;
     setCanPrev(el.scrollLeft > 4);
     setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    if (card) {
+      const step = card.offsetWidth + 24;
+      setActiveIndex(Math.round(el.scrollLeft / step));
+    }
   };
 
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
-    updateArrows();
-    el.addEventListener("scroll", updateArrows, { passive: true });
-    window.addEventListener("resize", updateArrows);
+    updateState();
+    el.addEventListener("scroll", updateState, { passive: true });
+    window.addEventListener("resize", updateState);
     return () => {
-      el.removeEventListener("scroll", updateArrows);
-      window.removeEventListener("resize", updateArrows);
+      el.removeEventListener("scroll", updateState);
+      window.removeEventListener("resize", updateState);
     };
   }, []);
 
@@ -141,25 +153,28 @@ const Projects = ({ className }: ProjectsProps = {}) => {
           </div>
         </div>
 
-        {/* Carousel */}
+        {/* Carousel - 2 cards visible on desktop with peek */}
         <div
           ref={scrollerRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth"
           style={{ scrollbarWidth: "none" }}
         >
           <style>{`section#projects div::-webkit-scrollbar{display:none;}`}</style>
 
           {caseStudies.map((cs, index) => {
             const Icon = cs.icon;
+            const isActive = index === activeIndex;
             return (
               <div
                 key={cs.company}
                 data-card
-                className="snap-start shrink-0 w-[85%] sm:w-[60%] md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-3rem)/3)] will-change-transform"
+                className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-[calc((100%-1.5rem)/2)] will-change-transform"
                 style={{
                   opacity: inView ? 1 : 0,
-                  transform: inView ? "translateY(0)" : "translateY(40px)",
-                  transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
+                  transform: inView
+                    ? `translateY(0) scale(${isActive ? 1 : 0.96})`
+                    : "translateY(40px)",
+                  transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms, transform 0.5s cubic-bezier(0.16,1,0.3,1)`,
                 }}
               >
                 <div
@@ -167,66 +182,88 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                   style={{
                     background: cs.tint,
                     border: `1px solid ${cs.ring}`,
-                    boxShadow: "0 8px 28px rgba(17,17,17,0.05)",
+                    boxShadow: isActive
+                      ? "0 20px 45px rgba(17,17,17,0.10)"
+                      : "0 8px 24px rgba(17,17,17,0.05)",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-6px)";
-                    e.currentTarget.style.boxShadow = "0 18px 40px rgba(17,17,17,0.10)";
+                    e.currentTarget.style.boxShadow = "0 24px 50px rgba(17,17,17,0.12)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 8px 28px rgba(17,17,17,0.05)";
+                    e.currentTarget.style.boxShadow = isActive
+                      ? "0 20px 45px rgba(17,17,17,0.10)"
+                      : "0 8px 24px rgba(17,17,17,0.05)";
                   }}
                 >
-                  {/* Circular image placeholder */}
-                  <div className="flex items-center justify-center pt-6 pb-8">
-                    <div
-                      className="w-32 h-32 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105"
-                      style={{
-                        background: "rgba(255,255,255,0.65)",
-                        border: `1px solid ${cs.ring}`,
-                        backdropFilter: "blur(10px)",
-                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.8), 0 6px 18px rgba(17,17,17,0.06)",
-                      }}
-                    >
-                      <Icon className="w-10 h-10" style={{ color: "#1f2937", opacity: 0.75 }} />
-                    </div>
+                  {/* Top: large image/banner ~62% */}
+                  <div
+                    className="rounded-2xl overflow-hidden relative"
+                    style={{
+                      aspectRatio: "16 / 10",
+                      background: "rgba(255,255,255,0.6)",
+                      border: `1px solid ${cs.ring}`,
+                    }}
+                  >
+                    {cs.image ? (
+                      <img
+                        src={cs.image}
+                        alt={`${cs.company} — ${cs.system}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center"
+                        style={{
+                          background: `linear-gradient(135deg, ${cs.tint} 0%, rgba(255,255,255,0.7) 100%)`,
+                        }}
+                      >
+                        <div
+                          className="w-24 h-24 rounded-full flex items-center justify-center"
+                          style={{
+                            background: "rgba(255,255,255,0.75)",
+                            border: `1px solid ${cs.ring}`,
+                            backdropFilter: "blur(10px)",
+                            boxShadow: "0 6px 18px rgba(17,17,17,0.06)",
+                          }}
+                        >
+                          <Icon className="w-9 h-9" style={{ color: "#1f2937", opacity: 0.75 }} />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Inner white card */}
+                  {/* Bottom: white content */}
                   <div
-                    className="rounded-2xl p-5 flex flex-col flex-grow"
+                    className="rounded-2xl p-5 mt-3 flex flex-col flex-grow"
                     style={{
-                      background: "rgba(255,255,255,0.92)",
+                      background: "rgba(255,255,255,0.95)",
                       border: "1px solid rgba(255,255,255,0.9)",
                       backdropFilter: "blur(10px)",
                       boxShadow: "0 2px 10px rgba(17,17,17,0.04)",
                     }}
                   >
                     <span
-                      className="text-[10px] font-semibold tracking-[0.15em] uppercase mb-3"
-                      style={{ color: "#9CA3AF" }}
-                    >
-                      Case Study
-                    </span>
-                    <span
                       className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-2"
-                      style={{ color: "#6B7280" }}
+                      style={{ color: "#9CA3AF" }}
                     >
                       {cs.category}
                     </span>
                     <h3
-                      className="text-lg font-bold leading-snug mb-2"
+                      className="text-xl font-bold leading-snug mb-1"
                       style={{ color: "#111111" }}
                     >
                       {cs.company}
                     </h3>
+                    <p className="text-sm mb-1" style={{ color: "#374151", fontWeight: 500 }}>
+                      {cs.location}
+                    </p>
                     <p
                       className="text-sm leading-relaxed mb-5 flex-grow"
                       style={{ color: "#6B7280" }}
                     >
-                      <span style={{ color: "#374151", fontWeight: 500 }}>{cs.location}</span>
-                      <span style={{ color: "#9CA3AF" }}> · </span>
                       {cs.system}
                     </p>
 
@@ -234,7 +271,7 @@ const Projects = ({ className }: ProjectsProps = {}) => {
                       className="inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 self-start"
                       style={{ color: "#111111" }}
                     >
-                      View Case Study
+                      Read More
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
