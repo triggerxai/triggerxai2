@@ -125,7 +125,7 @@ const caseStudies: CaseStudy[] = [
     location: "Atlanta, GA",
     system: "AI Voice Agent & Policy Renewal Automation System",
     icon: ShieldCheck,
-    image: null,
+    image: insuranceImg,
     tint: "#E8F2FF",
     ring: "#CFE2FB",
     detail: {
