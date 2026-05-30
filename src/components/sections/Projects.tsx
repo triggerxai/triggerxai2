@@ -272,7 +272,7 @@ const Projects = ({ className }: ProjectsProps = {}) => {
               <div
                 key={cs.company}
                 data-card
-                className="snap-start shrink-0 w-[82%] sm:w-[66%] md:w-[calc((100%-1.5rem)/2)] will-change-transform"
+                className="snap-start shrink-0 w-[82%] sm:w-[60%] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] will-change-transform"
                 style={{
                   opacity: inView ? 1 : 0,
                   transform: inView
