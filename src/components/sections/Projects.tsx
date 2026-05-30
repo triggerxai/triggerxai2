@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck, X, Rocket } from "lucide-react";
 import lawFirmImg from "@/assets/case-law-firm.png";
 import peImg from "@/assets/case-private-equity.png";
 import elaraImg from "@/assets/case-elara-dashboard.png";
+import insuranceImg from "@/assets/case-insurance.png";
 
 interface ProjectsProps {
   className?: string;
