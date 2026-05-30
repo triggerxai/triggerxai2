@@ -517,22 +517,3 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 export default Projects;
-        </div>
-      )}
-    </section>
-  );
-};
-
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-7">
-    <h4
-      className="text-xs font-bold tracking-[0.18em] uppercase mb-3 pb-2"
-      style={{ color: "#111111", borderBottom: "1px solid rgba(17,17,17,0.08)" }}
-    >
-      {title}
-    </h4>
-    {children}
-  </div>
-);
-
-export default Projects;
