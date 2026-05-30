@@ -42,7 +42,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-[#fafaf7] pt-14 pb-0">
+    <footer className="relative overflow-hidden pt-14 pb-0">
       {/* Ambient glows */}
       <div
         className="pointer-events-none absolute -top-20 -left-20 w-[480px] h-[480px] rounded-full"
