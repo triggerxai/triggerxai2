@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Scale, TrendingUp, ShoppingBag, ShieldCheck, X, Rocket } from "lucide-react";
 import lawFirmImg from "@/assets/case-law-firm.png";
 import peImg from "@/assets/case-private-equity.png";
 import elaraImg from "@/assets/case-elara-dashboard.png";
+import insuranceImg from "@/assets/case-insurance.png";
 
 interface ProjectsProps {
   className?: string;
@@ -124,7 +125,7 @@ const caseStudies: CaseStudy[] = [
     location: "Atlanta, GA",
     system: "AI Voice Agent & Policy Renewal Automation System",
     icon: ShieldCheck,
-    image: null,
+    image: insuranceImg,
     tint: "#E8F2FF",
     ring: "#CFE2FB",
     detail: {
@@ -199,7 +200,7 @@ const Projects = ({ className }: ProjectsProps = {}) => {
       id="projects"
       className={`py-16 md:py-20 px-4 sm:px-6 lg:px-8 ${className || ""}`}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
           ref={ref}
@@ -271,7 +272,7 @@ const Projects = ({ className }: ProjectsProps = {}) => {
               <div
                 key={cs.company}
                 data-card
-                className="snap-start shrink-0 w-[82%] sm:w-[66%] md:w-[calc((100%-1.5rem)/2)] will-change-transform"
+                className="snap-start shrink-0 w-[82%] sm:w-[60%] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] will-change-transform"
                 style={{
                   opacity: inView ? 1 : 0,
                   transform: inView
@@ -433,9 +434,9 @@ const Projects = ({ className }: ProjectsProps = {}) => {
             @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.98) } to { opacity: 1; transform: translateY(0) scale(1) } }
           `}</style>
           <div
-            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl"
+            className="relative w-full max-w-md rounded-3xl overflow-hidden"
             style={{
-              background: `linear-gradient(180deg, ${openCase.tint} 0%, #FFFFFF 35%)`,
+              background: `linear-gradient(180deg, ${openCase.tint} 0%, #FFFFFF 60%)`,
               border: `1px solid ${openCase.ring}`,
               boxShadow: "0 30px 80px rgba(17,17,17,0.25)",
               animation: "slideUp 0.35s cubic-bezier(0.16,1,0.3,1)",
@@ -456,110 +457,45 @@ const Projects = ({ className }: ProjectsProps = {}) => {
               <X className="w-4 h-4" style={{ color: "#1f2937" }} />
             </button>
 
-            <div className="p-6 sm:p-10">
-              {/* Header */}
-              <div className="mb-8">
-                <span
-                  className="text-[10px] font-semibold tracking-[0.18em] uppercase"
-                  style={{ color: "#6B7280" }}
-                >
-                  {openCase.category}
-                </span>
-                <h3 className="text-3xl sm:text-4xl font-bold mt-2 tracking-tight" style={{ color: "#111111" }}>
-                  {openCase.company}
-                </h3>
-                <p className="mt-2 text-sm" style={{ color: "#374151" }}>
-                  {openCase.location} · {openCase.system}
-                </p>
-
-                {/* Metadata for Elara */}
-                {openCase.company === "Elara Home & Living" && (
-                  <div className="mt-4 flex flex-col gap-2 text-xs" style={{ color: "#6B7280" }}>
-                    <div className="flex items-center gap-2">
-                      <span>📍</span>
-                      <span className="font-medium">Los Angeles, CA</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>🏢</span>
-                      <span className="font-medium">E-Commerce / Retail Brand</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>⚡</span>
-                      <span className="font-medium">AI Customer Retention & Post-Purchase Automation Dashboard</span>
-                    </div>
-                  </div>
-                )}
+            <div className="p-8 sm:p-10 flex flex-col items-center text-center">
+              <div
+                className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
+                style={{
+                  background: "rgba(255,255,255,0.85)",
+                  border: `1px solid ${openCase.ring}`,
+                  boxShadow: "0 10px 30px rgba(17,17,17,0.08)",
+                  animation: "floatY 3s ease-in-out infinite",
+                }}
+              >
+                <Rocket className="w-9 h-9" style={{ color: "#111111" }} />
               </div>
+              <style>{`@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }`}</style>
 
-              {/* Image */}
-              {openCase.image && (
-                <div
-                  className="rounded-2xl overflow-hidden mb-8"
-                  style={{
-                    background: `linear-gradient(135deg, ${openCase.tint} 0%, rgba(255,255,255,0.85) 100%)`,
-                    border: `1px solid ${openCase.ring}`,
-                  }}
-                >
-                  <img
-                    src={openCase.image}
-                    alt={openCase.company}
-                    className="w-full h-auto object-contain p-4 transition-transform duration-500 hover:scale-[1.01]"
-                    style={{ 
-                      maxHeight: "420px",
-                      filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.08))",
-                    }}
-                  />
-                </div>
-              )}
+              <span
+                className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-2"
+                style={{ color: "#6B7280" }}
+              >
+                {openCase.category}
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold mb-3 tracking-tight" style={{ color: "#111111" }}>
+                🚀 Coming Soon
+              </h3>
+              <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: "#374151" }}>
+                We're currently preparing this case study. Check back soon for the full breakdown, results, tech stack, and implementation details.
+              </p>
 
-              {/* Sections */}
-              {[
-                { title: "Company Overview", body: openCase.detail.overview },
-                { title: "Challenge", body: openCase.detail.challenge },
-                { title: "Solution", body: openCase.detail.solution },
-                { title: "Results", body: openCase.detail.results },
-              ].map((s) => (
-                <Section key={s.title} title={s.title}>
-                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap" style={{ color: "#374151" }}>
-                    {s.body}
-                  </p>
-                </Section>
-              ))}
-
-              {/* Tech Stack */}
-              <Section title="Tech Stack">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {openCase.detail.techStack.map((t) => (
-                    <div
-                      key={t.label + t.value}
-                      className="rounded-2xl p-4"
-                      style={{
-                        background: "rgba(255,255,255,0.7)",
-                        border: `1px solid ${openCase.ring}`,
-                      }}
-                    >
-                      <div
-                        className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-1"
-                        style={{ color: "#9CA3AF" }}
-                      >
-                        {t.label}
-                      </div>
-                      <div className="text-sm font-bold mb-1.5" style={{ color: "#111111" }}>
-                        {t.value}
-                      </div>
-                      <p className="text-xs leading-relaxed" style={{ color: "#6B7280" }}>
-                        {t.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </Section>
-
-              <Section title="ROI / Business Impact">
-                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#374151" }}>
-                  {openCase.detail.roi}
-                </p>
-              </Section>
+              <button
+                type="button"
+                onClick={() => setOpenIndex(null)}
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-[1.03]"
+                style={{
+                  background: "#111111",
+                  color: "#ffffff",
+                  boxShadow: "0 6px 18px rgba(0,0,0,0.18)",
+                }}
+              >
+                Got it
+              </button>
             </div>
           </div>
         </div>
