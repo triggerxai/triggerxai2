@@ -97,10 +97,14 @@ const ServiceRow = ({
     );
   };
 
+  const isUgcSection = service.title === "AI-Powered Content Systems For Fast-Growing Brands , Agencies & Creators";
+
   return (
     <div
       ref={ref}
-      className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center transition-all duration-1000 ${
+      className={`grid grid-cols-1 ${
+        isUgcSection ? "md:grid-cols-[1fr_1.35fr]" : "md:grid-cols-2"
+      } gap-10 ${isUgcSection ? "md:gap-10" : "md:gap-16"} items-center transition-all duration-1000 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
@@ -139,11 +143,7 @@ const ServiceRow = ({
       {/* Image */}
       <div className={`${reversed ? "md:order-1" : "md:order-2"} flex justify-center`}>
         <div className={`relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 ${
-          service.title === "AI-Powered Customer Conversations"
-            ? "w-[94%]"
-            : service.title === "AI-Powered Content Systems For Fast-Growing Brands , Agencies & Creators"
-            ? "w-[92%]"
-            : "w-full"
+          isUgcSection ? "w-full" : "w-full"
         }`}>
           <img
             src={service.image}
