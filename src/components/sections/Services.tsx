@@ -143,11 +143,7 @@ const ServiceRow = ({
       {/* Image */}
       <div className={`${reversed ? "md:order-1" : "md:order-2"} flex justify-center`}>
         <div className={`relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 ${
-          service.title === "AI-Powered Customer Conversations"
-            ? "w-[94%]"
-            : service.title === "AI-Powered Content Systems For Fast-Growing Brands , Agencies & Creators"
-            ? "w-[92%]"
-            : "w-full"
+          isUgcSection ? "w-full" : "w-full"
         }`}>
           <img
             src={service.image}
