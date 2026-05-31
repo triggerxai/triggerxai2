@@ -1,8 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
 import saasImg from "@/assets/service-saas.jpg";
-import voiceImg from "@/assets/service-voice.jpg";
-import chatbotImg from "@/assets/service-chatbot.jpg";
+import voiceChatImg from "@/assets/service-voice-chat.jpg";
 import consultingImg from "@/assets/service-consulting.jpg";
 import leadGenImg from "@/assets/service-lead-gen.jpg";
 
@@ -22,28 +21,15 @@ const services = [
   },
   {
     label: "AI Service",
-    title: "AI Voice Agents That Handle Calls",
+    title: "AI-Powered Customer Conversations & Voice Agents",
     description:
-      "Automate inbound and outbound calls to qualify leads, book appointments, and sync data.",
-    image: voiceImg,
+      "Capture, qualify, and convert leads automatically with AI-powered voice agents and conversational systems that work across calls, chat, WhatsApp, and your CRM.",
+    image: voiceChatImg,
     steps: [
-      { title: "Call Handling", desc: "Answer and manage incoming calls 24/7." },
-      { title: "Lead Qualification", desc: "Ask questions and filter quality leads." },
-      { title: "Appointment Booking", desc: "Schedule calls directly into your calendar." },
-      { title: "CRM Sync", desc: "Store call data, transcripts, and summaries." },
-    ],
-  },
-  {
-    label: "AI Service",
-    title: "AI-Powered Customer Conversations",
-    description:
-      "Engage, qualify, and convert your leads automatically with intelligent AI conversations across your website, WhatsApp, and CRM.",
-    image: chatbotImg,
-    steps: [
-      { title: "Smart Responses", desc: "Answers questions using your business knowledge." },
-      { title: "Lead Capture", desc: "Collects user info and qualifies prospects automatically." },
-      { title: "Multi-Channel", desc: "Works on website, WhatsApp, Instagram, and more." },
-      { title: "Human Handoff", desc: "Transfers to your team when needed." },
+      { title: "Lead Capture & Qualification", desc: "Instantly engages visitors, collects information, and qualifies prospects before they reach your team." },
+      { title: "AI Voice & Chat Conversations", desc: "Handles inbound calls, website chat, WhatsApp, and social media conversations 24/7." },
+      { title: "Appointment Booking & Follow-Ups", desc: "Automatically books meetings, sends reminders, and follows up with leads until they're ready to buy." },
+      { title: "CRM Sync & Human Handoff", desc: "Logs conversations, updates your CRM, and transfers qualified leads to the right team member when needed." },
     ],
   },
   {
