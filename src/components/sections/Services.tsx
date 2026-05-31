@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
 import saasImg from "@/assets/service-saas.jpg";
 import voiceChatImg from "@/assets/service-voice-chat.jpg";
-import consultingImg from "@/assets/service-consulting.jpg";
+import consultingImg from "@/assets/service-content.png";
 import leadGenImg from "@/assets/service-lead-gen.jpg";
 
 const services = [
