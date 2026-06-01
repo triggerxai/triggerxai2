@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Pause, Quote } from "lucide-react";
+import videoAsset from "@/assets/testimonial-video.mp4.asset.json";
 
 const testimonials = [
   {
@@ -43,33 +44,59 @@ const testimonials = [
 
 const Testimonials = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [index, setIndex] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
   const [auto, setAuto] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!auto) return;
-    const t = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 5500);
+    const t = setInterval(
+      () => setActiveIdx((i) => (i + 1) % testimonials.length),
+      5500
+    );
     return () => clearInterval(t);
   }, [auto]);
 
-  const go = (dir: number) => {
+  const handleCardClick = (i: number) => {
     setAuto(false);
-    setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
+    setActiveIdx(i);
   };
 
-  const getCard = (offset: number) => testimonials[(index + offset) % testimonials.length];
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setIsPlaying(true);
+      setAuto(false);
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const active = testimonials[activeIdx];
 
   return (
     <section id="testimonials" ref={ref} className="relative py-24 px-4 overflow-hidden">
       {/* Ambient glows */}
-      <div className="pointer-events-none absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full blur-3xl opacity-60"
-        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lavender) / 0.45), transparent)" }} />
-      <div className="pointer-events-none absolute bottom-0 -right-20 w-[460px] h-[460px] rounded-full blur-3xl opacity-60"
-        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lime) / 0.4), transparent)" }} />
+      <div
+        className="pointer-events-none absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full blur-3xl opacity-60"
+        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lavender) / 0.45), transparent)" }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 -right-20 w-[460px] h-[460px] rounded-full blur-3xl opacity-60"
+        style={{ background: "radial-gradient(closest-side, hsl(var(--glow-lime) / 0.4), transparent)" }}
+      />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div
+          className={`text-center mb-16 transition-all duration-700 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-white/60 backdrop-blur border border-border text-foreground/70">
             Testimonials
           </span>
@@ -81,73 +108,188 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Stacked cards */}
-        <div className={`relative h-[340px] md:h-[300px] flex items-center justify-center transition-all duration-700 delay-150 ${inView ? "opacity-100" : "opacity-0"}`}>
-          {/* Back card 2 */}
-          <div className="absolute w-[88%] md:w-[70%] h-full rounded-3xl bg-white/40 backdrop-blur-xl border border-white/60 shadow-xl"
-            style={{ transform: "rotate(-6deg) translateY(28px) scale(0.92)" }} />
-          {/* Back card 1 */}
-          <div className="absolute w-[92%] md:w-[76%] h-full rounded-3xl bg-white/55 backdrop-blur-xl border border-white/70 shadow-xl"
-            style={{ transform: "rotate(3deg) translateY(14px) scale(0.96)" }} />
+        {/* Grid: side cards + centered video */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Left column */}
+          <div className="lg:col-span-3 flex flex-col gap-5">
+            {[0, 1, 2].map((offset) => {
+              const i = (activeIdx + 1 + offset) % testimonials.length;
+              const t = testimonials[i];
+              return (
+                <TestimonialCard
+                  key={`l-${i}`}
+                  t={t}
+                  onClick={() => handleCardClick(i)}
+                  delay={offset * 80}
+                  inView={inView}
+                />
+              );
+            })}
+          </div>
 
-          {/* Active card */}
-          <div
-            key={index}
-            onCopy={(e) => e.preventDefault()}
-            onCut={(e) => e.preventDefault()}
-            onContextMenu={(e) => e.preventDefault()}
-            onDragStart={(e) => e.preventDefault()}
-            className="relative w-full md:w-[80%] h-full rounded-3xl border border-white/80 shadow-2xl p-8 md:p-12 flex flex-col justify-between transition-transform duration-500 hover:-translate-y-1 animate-fade-in select-none"
-            style={{
-              background: "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.75))",
-              backdropFilter: "blur(20px)",
-              WebkitUserSelect: "none",
-              userSelect: "none",
-              WebkitTouchCallout: "none",
-            }}
-          >
-            <p className="text-lg md:text-2xl font-medium leading-relaxed text-foreground/90 select-none">
-              {getCard(0).text}
-            </p>
+          {/* Center: featured video + active quote */}
+          <div className="lg:col-span-6 flex flex-col gap-5">
+            <div
+              className={`relative group rounded-3xl overflow-hidden border border-white/80 shadow-2xl transition-all duration-700 ${
+                inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(258 40% 96%), hsl(0 0% 100%))",
+                aspectRatio: "16 / 10",
+              }}
+            >
+              <video
+                ref={videoRef}
+                src={videoAsset.url}
+                className="absolute inset-0 w-full h-full object-cover"
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => setIsPlaying(false)}
+              />
+              {/* Overlay gradient */}
+              <div
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
+                  isPlaying ? "opacity-0" : "opacity-100"
+                }`}
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.55) 100%)",
+                }}
+              />
 
-            <div className="mt-6 select-none">
-              <div className="font-semibold text-foreground">{getCard(0).name}</div>
-              <div className="text-sm text-muted-foreground">{getCard(0).role}</div>
+              {/* Play button */}
+              <button
+                onClick={togglePlay}
+                aria-label={isPlaying ? "Pause video testimonial" : "Play video testimonial"}
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                  isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                }`}
+              >
+                <span className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur border border-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                  <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                  {isPlaying ? (
+                    <Pause className="w-8 h-8 text-foreground relative" />
+                  ) : (
+                    <Play className="w-8 h-8 text-foreground ml-1 relative" fill="currentColor" />
+                  )}
+                </span>
+              </button>
+
+              {/* Featured label */}
+              <div className="absolute top-5 left-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-medium tracking-wider uppercase text-foreground/80 border border-white shadow-sm">
+                Featured
+              </div>
+            </div>
+
+            {/* Active testimonial quote */}
+            <div
+              key={activeIdx}
+              className="relative rounded-3xl border border-white/80 p-6 md:p-8 shadow-xl animate-fade-in"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(258 40% 98% / 0.8))",
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <Quote className="w-7 h-7 text-primary/40 mb-3" />
+              <p className="text-base md:text-lg font-medium leading-relaxed text-foreground/90">
+                {active.text}
+              </p>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center text-sm font-semibold text-foreground">
+                  {active.initials}
+                </div>
+                <div>
+                  <div className="font-semibold text-foreground text-sm">{active.name}</div>
+                  <div className="text-xs text-muted-foreground">{active.role}</div>
+                </div>
+              </div>
+
+              {/* Dots */}
+              <div className="absolute right-6 top-6 flex gap-1.5">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleCardClick(i)}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === activeIdx ? "w-5 bg-foreground" : "w-1.5 bg-foreground/25"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <button
-            onClick={() => go(-1)}
-            aria-label="Previous testimonial"
-            className="w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-border hover:bg-white transition-all hover:-translate-y-0.5 shadow-sm flex items-center justify-center"
-          >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
-          </button>
-
-          <div className="flex gap-2">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setAuto(false); setIndex(i); }}
-                aria-label={`Go to testimonial ${i + 1}`}
-                className={`h-2 rounded-full transition-all ${i === index ? "w-8 bg-foreground" : "w-2 bg-foreground/30"}`}
-              />
-            ))}
+          {/* Right column */}
+          <div className="lg:col-span-3 flex flex-col gap-5">
+            {[3, 4, 5].map((offset) => {
+              const i = (activeIdx + 1 + offset) % testimonials.length;
+              const t = testimonials[i];
+              return (
+                <TestimonialCard
+                  key={`r-${i}`}
+                  t={t}
+                  onClick={() => handleCardClick(i)}
+                  delay={offset * 80}
+                  inView={inView}
+                />
+              );
+            })}
           </div>
-
-          <button
-            onClick={() => go(1)}
-            aria-label="Next testimonial"
-            className="w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-border hover:bg-white transition-all hover:-translate-y-0.5 shadow-sm flex items-center justify-center"
-          >
-            <ChevronRight className="w-5 h-5 text-foreground" />
-          </button>
         </div>
       </div>
     </section>
+  );
+};
+
+const TestimonialCard = ({
+  t,
+  onClick,
+  delay,
+  inView,
+}: {
+  t: { text: string; name: string; role: string; initials: string };
+  onClick: () => void;
+  delay: number;
+  inView: boolean;
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`group text-left rounded-2xl border border-white/70 p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 flex-1 min-h-[160px] ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+    >
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.7))",
+        }}
+      />
+      <div
+        className="relative rounded-2xl"
+        style={{ backdropFilter: "blur(20px)" }}
+      >
+        <p className="text-sm leading-relaxed text-foreground/85 line-clamp-5">
+          {t.text}
+        </p>
+        <div className="mt-4 flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center text-[10px] font-semibold text-foreground">
+            {t.initials}
+          </div>
+          <div className="min-w-0">
+            <div className="font-semibold text-foreground text-xs truncate">{t.name}</div>
+            <div className="text-[11px] text-muted-foreground truncate">{t.role}</div>
+          </div>
+        </div>
+      </div>
+    </button>
   );
 };
 
