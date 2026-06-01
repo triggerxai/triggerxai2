@@ -102,14 +102,18 @@ const ServiceRow = ({
   return (
     <div
       ref={ref}
-      className={`grid grid-cols-1 ${
-        isUgcSection ? "md:grid-cols-[1fr_1.35fr]" : "md:grid-cols-2"
-      } gap-10 ${isUgcSection ? "md:gap-10" : "md:gap-16"} items-center transition-all duration-1000 ${
+      className={`group relative rounded-3xl border border-border/60 bg-card/40 backdrop-blur-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] transition-all duration-1000 p-6 md:p-10 lg:p-14 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
+      <div
+        className={`grid grid-cols-1 ${
+          isUgcSection ? "md:grid-cols-[1fr_1.35fr]" : "md:grid-cols-2"
+        } gap-10 ${isUgcSection ? "md:gap-12" : "md:gap-16"} items-center`}
+      >
       {/* Text */}
       <div className={`${reversed ? "md:order-2" : "md:order-1"} max-w-lg`}>
+
         <h3 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-foreground leading-tight">
           {service.title}
         </h3>
@@ -155,9 +159,11 @@ const ServiceRow = ({
           />
         </div>
       </div>
+      </div>
     </div>
   );
 };
+
 
 const Services = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
