@@ -230,11 +230,11 @@ const TestimonialCard = ({
 }) => {
   return (
     <div
-      style={{ transitionDelay: `${delay}ms` }}
       className={`rounded-2xl border border-white/70 p-6 shadow-lg transition-all duration-500 flex-1 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
       style={{
+        transitionDelay: `${delay}ms`,
         background: "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.7))",
         backdropFilter: "blur(20px)",
       }}
