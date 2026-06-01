@@ -159,9 +159,11 @@ const ServiceRow = ({
           />
         </div>
       </div>
+      </div>
     </div>
   );
 };
+
 
 const Services = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
