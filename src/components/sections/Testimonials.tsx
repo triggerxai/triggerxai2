@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import { Play, Pause, Quote } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import videoAsset from "@/assets/testimonial-video.mp4.asset.json";
 
 const testimonials = [
@@ -45,23 +45,16 @@ const testimonials = [
 const Testimonials = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [activeIdx, setActiveIdx] = useState(0);
-  const [auto, setAuto] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (!auto) return;
     const t = setInterval(
       () => setActiveIdx((i) => (i + 1) % testimonials.length),
       5500
     );
     return () => clearInterval(t);
-  }, [auto]);
-
-  const handleCardClick = (i: number) => {
-    setAuto(false);
-    setActiveIdx(i);
-  };
+  }, []);
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -69,7 +62,6 @@ const Testimonials = () => {
     if (v.paused) {
       v.play();
       setIsPlaying(true);
-      setAuto(false);
     } else {
       v.pause();
       setIsPlaying(false);
@@ -119,7 +111,6 @@ const Testimonials = () => {
                 <TestimonialCard
                   key={`l-${i}`}
                   t={t}
-                  onClick={() => handleCardClick(i)}
                   delay={offset * 80}
                   inView={inView}
                 />
@@ -130,7 +121,7 @@ const Testimonials = () => {
           {/* Center: featured video + active quote */}
           <div className="lg:col-span-6 flex flex-col gap-5">
             <div
-              className={`relative group rounded-3xl overflow-hidden border border-white/80 shadow-2xl transition-all duration-700 ${
+              className={`relative rounded-3xl overflow-hidden border border-white/80 shadow-2xl transition-all duration-700 ${
                 inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
               style={{
@@ -144,7 +135,7 @@ const Testimonials = () => {
                 src={videoAsset.url}
                 className="absolute inset-0 w-full h-full object-cover"
                 playsInline
-                preload="metadata"
+                preload="auto"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
@@ -165,10 +156,10 @@ const Testimonials = () => {
                 onClick={togglePlay}
                 aria-label={isPlaying ? "Pause video testimonial" : "Play video testimonial"}
                 className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                  isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                  isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"
                 }`}
               >
-                <span className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur border border-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                <span className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur border border-white shadow-2xl transition-transform duration-300 hover:scale-110">
                   <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
                   {isPlaying ? (
                     <Pause className="w-8 h-8 text-foreground relative" />
@@ -178,48 +169,31 @@ const Testimonials = () => {
                 </span>
               </button>
 
-              {/* Featured label */}
-              <div className="absolute top-5 left-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-medium tracking-wider uppercase text-foreground/80 border border-white shadow-sm">
-                Featured
+              {/* Category badge */}
+              <div className="absolute top-5 left-5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground/70 border border-white/60 shadow-sm">
+                Real Estate — Australia
               </div>
             </div>
 
             {/* Active testimonial quote */}
             <div
-              key={activeIdx}
-              className="relative rounded-3xl border border-white/80 p-6 md:p-8 shadow-xl animate-fade-in"
+              className="relative rounded-3xl border border-white/80 p-6 md:p-8 shadow-xl"
               style={{
                 background:
                   "linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(258 40% 98% / 0.8))",
                 backdropFilter: "blur(20px)",
               }}
             >
-              <Quote className="w-7 h-7 text-primary/40 mb-3" />
-              <p className="text-base md:text-lg font-medium leading-relaxed text-foreground/90">
+              <p className="text-base md:text-lg font-medium leading-relaxed text-foreground/90 select-none">
                 {active.text}
               </p>
-              <div className="mt-5 flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center text-sm font-semibold text-foreground">
-                  {active.initials}
+              <div className="mt-6">
+                <div className="font-semibold text-foreground text-sm select-none">
+                  {active.name}
                 </div>
-                <div>
-                  <div className="font-semibold text-foreground text-sm">{active.name}</div>
-                  <div className="text-xs text-muted-foreground">{active.role}</div>
+                <div className="text-xs text-muted-foreground select-none">
+                  {active.role}
                 </div>
-              </div>
-
-              {/* Dots */}
-              <div className="absolute right-6 top-6 flex gap-1.5">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handleCardClick(i)}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all ${
-                      i === activeIdx ? "w-5 bg-foreground" : "w-1.5 bg-foreground/25"
-                    }`}
-                  />
-                ))}
               </div>
             </div>
           </div>
@@ -233,7 +207,6 @@ const Testimonials = () => {
                 <TestimonialCard
                   key={`r-${i}`}
                   t={t}
-                  onClick={() => handleCardClick(i)}
                   delay={offset * 80}
                   inView={inView}
                 />
@@ -248,48 +221,36 @@ const Testimonials = () => {
 
 const TestimonialCard = ({
   t,
-  onClick,
   delay,
   inView,
 }: {
   t: { text: string; name: string; role: string; initials: string };
-  onClick: () => void;
   delay: number;
   inView: boolean;
 }) => {
   return (
-    <button
-      onClick={onClick}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`group text-left rounded-2xl border border-white/70 p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 flex-1 min-h-[160px] ${
+    <div
+      className={`rounded-2xl border border-white/70 p-6 shadow-lg transition-all duration-500 flex-1 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
+      style={{
+        transitionDelay: `${delay}ms`,
+        background: "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.7))",
+        backdropFilter: "blur(20px)",
+      }}
     >
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(258 40% 98% / 0.7))",
-        }}
-      />
-      <div
-        className="relative rounded-2xl"
-        style={{ backdropFilter: "blur(20px)" }}
-      >
-        <p className="text-sm leading-relaxed text-foreground/85 line-clamp-5">
-          {t.text}
-        </p>
-        <div className="mt-4 flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center text-[10px] font-semibold text-foreground">
-            {t.initials}
-          </div>
-          <div className="min-w-0">
-            <div className="font-semibold text-foreground text-xs truncate">{t.name}</div>
-            <div className="text-[11px] text-muted-foreground truncate">{t.role}</div>
-          </div>
+      <p className="text-[15px] leading-relaxed text-foreground/85 line-clamp-5 select-none">
+        {t.text}
+      </p>
+      <div className="mt-5">
+        <div className="font-semibold text-foreground text-sm select-none">
+          {t.name}
+        </div>
+        <div className="text-[11px] text-muted-foreground select-none">
+          {t.role}
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 
